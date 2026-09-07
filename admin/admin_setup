@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create First Admin</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(135deg,#173e64,#008590);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}.card{width:100%;max-width:430px;background:#fff;border-radius:16px;padding:30px;box-shadow:0 20px 60px rgba(0,0,0,.22)}h1{margin:0 0 8px;color:#075c73;font-family:Georgia,serif;font-size:30px}.note{margin:0 0 22px;color:#667785;line-height:1.5}.field{margin-top:15px}label{display:block;margin-bottom:7px;font-weight:700;color:#17324a}input{width:100%;padding:12px;border:1px solid #ccd5dd;border-radius:7px;font-size:16px}button{width:100%;margin-top:22px;padding:13px;border:0;border-radius:7px;background:#076b84;color:white;font-size:17px;font-weight:700;cursor:pointer}button:disabled{opacity:.65;cursor:not-allowed}.msg{display:none;margin-top:16px;padding:12px;border-radius:7px;line-height:1.45}.ok{background:#e8f7ef;color:#17633b}.err{background:#ffe8ea;color:#9a2833}.small{margin-top:16px;font-size:13px;color:#7b8995;line-height:1.45}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Create First Admin</h1>
+    <p class="note">Create the first portfolio administrator. The password is sent only to the database function and is stored as a bcrypt hash.</p>
+
+    <form id="setupForm">
+      <div class="field">
+        <label for="username">User ID</label>
+        <input id="username" value="nusrat" autocomplete="username" required>
+      </div>
+
+      <div class="field">
+        <label for="password">Password</label>
+        <input id="password" type="password" autocomplete="new-password" minlength="8" required>
+      </div>
+
+      <div class="field">
+        <label for="confirmPassword">Confirm Password</label>
+        <input id="confirmPassword" type="password" autocomplete="new-password" minlength="8" required>
+      </div>
+
+      <button id="submitBtn" type="submit">Create Admin</button>
+      <div id="message" class="msg"></div>
+    </form>
+
+    <div class="small">Use a new private password. Do not send the password to anyone. After the admin is created successfully, this setup file is no longer needed.</div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    const SUPABASE_URL = "https://clyqhkpvhqeukgblklbu.supabase.co";
+    const SUPABASE_KEY = "sb_publishable_MRdyQEcrzKMaeFnHJ5gKMg_4c8EGRAY";
+    const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    const form = document.getElementById('setupForm');
+    const button = document.getElementById('submitBtn');
+    const message = document.getElementById('message');
+
+    function show(text, ok) {
+      message.textContent = text;
+      message.className = 'msg ' + (ok ? 'ok' : 'err');
+      message.style.display = 'block';
+    }
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      message.style.display = 'none';
+
+      const username = document.getElementById('username').value.trim().toLowerCase();
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+
+      if (!username) {
+        show('User ID is required.', false);
+        return;
+      }
+      if (password.length < 8) {
+        show('Password must be at least 8 characters.', false);
+        return;
+      }
+      if (password !== confirmPassword) {
+        show('Passwords do not match.', false);
+        return;
+      }
+
+      button.disabled = true;
+      button.textContent = 'Creating...';
+
+      try {
+        const { data, error } = await supabaseClient.rpc('create_first_admin', {
+          p_username: username,
+          p_password: password
+        });
+
+        if (error) throw error;
+
+        if (data && data.success) {
+          document.getElementById('password').value = '';
+          document.getElementById('confirmPassword').value = '';
+          show('Admin created successfully. You can close this file now.', true);
+        } else {
+          show((data && data.message) ? data.message : 'Admin could not be created.', false);
+        }
+      } catch (err) {
+        show(err.message || 'Something went wrong.', false);
+      } finally {
+        button.disabled = false;
+        button.textContent = 'Create Admin';
+      }
+    });
+  </script>
+</body>
+</html>
