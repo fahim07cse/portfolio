@@ -311,27 +311,160 @@
     </div>
   </div>
 
-  <script>
-    document
-      .getElementById("loginForm")
-      .addEventListener("submit", function (event) {
-        event.preventDefault();
+ <script>
 
-        const userId = document
-          .getElementById("userId")
-          .value.trim();
+  const STORAGE_KEY = "fatemaPortfolioPages";
 
-        const password = document
-          .getElementById("password")
-          .value;
+  /*
+    Admin Dashboard যে pages save করবে,
+    public website সেই একই data পড়বে।
+  */
 
-        if (!userId || !password) {
-          alert("Please enter User ID and Password.");
-          return;
-        }
+  let pages = JSON.parse(
+    localStorage.getItem(STORAGE_KEY)
+  ) || [
+    {
+      title: "Home",
+      slug: "home",
+      content: "",
+      visible: true,
+      showInMenu: true,
+      order: 1,
+      isHome: true
+    }
+  ];
 
-        alert("Admin login design is ready.");
-      });
-  </script>
+
+  /* =========================
+     CREATE DYNAMIC MENU
+  ========================= */
+
+  function createMenu() {
+
+    const menu =
+      document.getElementById("dynamicMenu");
+
+    menu.innerHTML = "";
+
+    const visiblePages = pages
+      .filter(page =>
+        page.visible &&
+        page.showInMenu
+      )
+      .sort((a, b) =>
+        Number(a.order) - Number(b.order)
+      );
+
+
+    visiblePages.forEach(page => {
+
+      const link =
+        document.createElement("a");
+
+      link.textContent =
+        page.title;
+
+      if (page.isHome) {
+
+        link.href = "#home";
+
+      } else {
+
+        link.href =
+          "#" + page.slug;
+
+      }
+
+      menu.appendChild(link);
+
+    });
+
+  }
+
+
+  /* =========================
+     CREATE DYNAMIC PAGES
+  ========================= */
+
+  function createPages() {
+
+    const container =
+      document.getElementById(
+        "dynamicContent"
+      );
+
+    container.innerHTML = "";
+
+    const visiblePages = pages
+      .filter(page => page.visible)
+      .sort((a, b) =>
+        Number(a.order) - Number(b.order)
+      );
+
+
+    visiblePages.forEach(page => {
+
+      /*
+        Home already exists as hero,
+        so don't create Home twice.
+      */
+
+      if (page.isHome) {
+        return;
+      }
+
+      const section =
+        document.createElement("section");
+
+      section.className =
+        "dynamic-section";
+
+      section.id =
+        page.slug;
+
+      section.innerHTML = `
+        <h2>${escapeHTML(page.title)}</h2>
+
+        <p>
+          ${formatContent(page.content || "")}
+        </p>
+      `;
+
+      container.appendChild(section);
+
+    });
+
+  }
+
+
+  /* =========================
+     SAFE TEXT
+  ========================= */
+
+  function escapeHTML(text) {
+
+    const div =
+      document.createElement("div");
+
+    div.textContent =
+      text;
+
+    return div.innerHTML;
+
+  }
+
+
+  function formatContent(text) {
+
+    return escapeHTML(text)
+      .replace(/\n/g, "<br>");
+
+  }
+
+
+  createMenu();
+  createPages();
+
+</script>
 </body>
 </html>
