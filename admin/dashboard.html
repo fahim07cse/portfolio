@@ -2,15 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Admin Dashboard | Fatema Nusrat Jahan</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    Admin Dashboard | Fatema Nusrat Jahan
+  </title>
 
   <style>
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -19,259 +30,556 @@
       color: #17324a;
     }
 
+
+    /* =========================
+       TOP BAR
+    ========================= */
+
     .topbar {
-      background: linear-gradient(135deg, #173e64, #008590);
+      background:
+        linear-gradient(
+          135deg,
+          #173e64,
+          #008590
+        );
+
       color: white;
-      padding: 22px 28px;
+
+      padding: 20px 28px;
+
       display: flex;
       justify-content: space-between;
       align-items: center;
+
+      gap: 20px;
     }
 
-    .topbar h1 {
+    .brand h1 {
       font-family: Georgia, serif;
-      font-size: 30px;
-      font-weight: 400;
+      font-size: 28px;
+      font-weight: normal;
+    }
+
+    .brand p {
+      margin-top: 5px;
+      font-size: 13px;
+      opacity: .8;
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .username {
+      font-size: 14px;
     }
 
     .logout-btn {
       border: 1px solid rgba(255,255,255,.6);
       background: transparent;
       color: white;
+
       padding: 10px 16px;
+
       border-radius: 6px;
       cursor: pointer;
     }
 
+    .logout-btn:hover {
+      background: rgba(255,255,255,.1);
+    }
+
+
+    /* =========================
+       LAYOUT
+    ========================= */
+
     .layout {
-      max-width: 1200px;
+      max-width: 1250px;
+
       margin: 35px auto;
-      padding: 0 20px;
+
+      padding: 0 20px 60px;
+
       display: grid;
-      grid-template-columns: 340px 1fr;
+
+      grid-template-columns:
+        350px 1fr;
+
       gap: 25px;
     }
 
     .panel {
       background: white;
+
       border-radius: 12px;
+
       padding: 25px;
-      box-shadow: 0 10px 30px rgba(20,50,70,.08);
+
+      box-shadow:
+        0 10px 30px
+        rgba(20,50,70,.08);
     }
 
     .panel h2 {
-      margin-bottom: 20px;
       color: #075c73;
+
+      font-family: Georgia, serif;
+
+      font-size: 26px;
+
+      margin-bottom: 20px;
     }
+
+
+    /* =========================
+       FORM
+    ========================= */
 
     label {
       display: block;
+
       margin-top: 15px;
       margin-bottom: 7px;
+
       font-weight: 700;
     }
 
     input,
     textarea {
+
       width: 100%;
+
       padding: 12px;
+
       border: 1px solid #ccd5dd;
+
       border-radius: 6px;
+
       font-size: 15px;
+
+      outline: none;
+    }
+
+    input:focus,
+    textarea:focus {
+
+      border-color: #078095;
+
+      box-shadow:
+        0 0 0 3px
+        rgba(0,128,149,.08);
     }
 
     textarea {
-      min-height: 130px;
+      min-height: 160px;
       resize: vertical;
     }
 
     .checkbox-row {
+
       display: flex;
+
       gap: 18px;
-      margin-top: 18px;
+
+      margin-top: 20px;
+
       flex-wrap: wrap;
     }
 
     .checkbox-row label {
+
       margin: 0;
-      font-weight: 500;
+
+      font-weight: normal;
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 6px;
     }
 
     .checkbox-row input {
       width: auto;
-      margin-right: 6px;
     }
 
     .save-btn {
+
       width: 100%;
-      margin-top: 22px;
+
+      margin-top: 23px;
+
       padding: 13px;
+
       border: none;
+
       border-radius: 6px;
-      background: #076b84;
+
+      background:
+        linear-gradient(
+          135deg,
+          #075c73,
+          #008995
+        );
+
       color: white;
-      font-size: 17px;
-      font-weight: 700;
+
+      font-size: 16px;
+
+      font-weight: bold;
+
       cursor: pointer;
+    }
+
+    .save-btn:disabled {
+      opacity: .6;
+      cursor: not-allowed;
     }
 
     .cancel-btn {
-      width: 100%;
-      margin-top: 10px;
-      padding: 13px;
-      border: none;
-      border-radius: 6px;
-      background: #6b7783;
-      color: white;
-      cursor: pointer;
+
       display: none;
+
+      width: 100%;
+
+      margin-top: 10px;
+
+      padding: 12px;
+
+      border: none;
+
+      border-radius: 6px;
+
+      background: #6d7883;
+
+      color: white;
+
+      cursor: pointer;
     }
 
+
+    /* =========================
+       MESSAGE
+    ========================= */
+
     .message {
-      margin-top: 15px;
-      padding: 12px;
-      border-radius: 6px;
+
       display: none;
+
+      margin-top: 15px;
+
+      padding: 12px;
+
+      border-radius: 6px;
+
       font-size: 14px;
     }
 
-    .success {
-      background: #e8f7ef;
-      color: #17633b;
+    .message.success {
+
+      display: block;
+
+      background: #e7f7ee;
+
+      color: #17623b;
     }
 
-    .error {
-      background: #ffe8ea;
-      color: #9a2833;
+    .message.error {
+
+      display: block;
+
+      background: #ffe6e8;
+
+      color: #9c2b38;
     }
+
+
+    /* =========================
+       PAGE LIST
+    ========================= */
 
     .page-item {
-      border: 1px solid #e1e7ec;
-      border-radius: 9px;
+
+      border:
+        1px solid #e1e7ec;
+
+      border-radius: 10px;
+
       padding: 18px;
+
       margin-bottom: 15px;
 
       display: flex;
-      justify-content: space-between;
-      gap: 20px;
+
+      justify-content:
+        space-between;
+
       align-items: center;
+
+      gap: 20px;
+    }
+
+    .page-info {
+      flex: 1;
     }
 
     .page-info h3 {
-      margin-bottom: 6px;
+
       color: #173e64;
+
+      font-size: 20px;
+
+      margin-bottom: 6px;
     }
 
-    .page-info small {
-      color: #7b8995;
+    .slug {
+
+      color: #778793;
+
+      font-size: 13px;
+    }
+
+    .preview {
+
+      margin-top: 10px;
+
+      color: #657582;
+
+      font-size: 14px;
+
+      line-height: 1.5;
+
+      max-width: 550px;
+    }
+
+
+    /* =========================
+       BADGES
+    ========================= */
+
+    .badges {
+      margin-top: 10px;
     }
 
     .badge {
+
       display: inline-block;
-      padding: 4px 9px;
-      margin-top: 8px;
+
       margin-right: 5px;
+      margin-bottom: 5px;
+
+      padding: 5px 9px;
+
       border-radius: 20px;
-      font-size: 12px;
+
       background: #eef3f6;
+
+      font-size: 12px;
     }
 
+    .badge.home {
+      background: #e6f3ff;
+      color: #176098;
+    }
+
+    .badge.hidden {
+      background: #fff0d5;
+      color: #8a6200;
+    }
+
+
+    /* =========================
+       ACTION BUTTONS
+    ========================= */
+
     .actions {
+
       display: flex;
+
+      justify-content:
+        flex-end;
+
       gap: 7px;
+
       flex-wrap: wrap;
-      justify-content: flex-end;
+
+      max-width: 300px;
     }
 
     .actions button {
+
       border: none;
+
       padding: 8px 11px;
+
       border-radius: 5px;
+
       cursor: pointer;
+
+      font-size: 13px;
     }
 
-    .edit {
-      background: #e8f4f7;
+    .edit-btn {
+      background: #e4f3f7;
       color: #08657a;
     }
 
-    .toggle {
-      background: #fff2cc;
-      color: #755c00;
+    .visibility-btn {
+      background: #fff1c9;
+      color: #745800;
     }
 
-    .delete {
+    .menu-btn {
+      background: #ede9ff;
+      color: #57439e;
+    }
+
+    .delete-btn {
       background: #ffe3e5;
-      color: #a52b38;
+      color: #a62c38;
     }
 
-    .menu-toggle {
-      background: #ece8ff;
-      color: #5743a6;
-    }
 
+    /* =========================
+       EMPTY / LOADING
+    ========================= */
+
+    .loading,
     .empty {
-      color: #7c8995;
+
       text-align: center;
-      padding: 40px 10px;
+
+      padding: 45px 10px;
+
+      color: #71818d;
     }
 
-    .loading {
-      text-align: center;
-      padding: 30px;
-      color: #70808d;
-    }
 
-    @media (max-width: 850px) {
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media(max-width: 900px) {
+
       .layout {
         grid-template-columns: 1fr;
       }
 
+    }
+
+    @media(max-width: 650px) {
+
       .topbar {
+
         flex-direction: column;
-        gap: 12px;
-        text-align: center;
+
+        align-items: flex-start;
+      }
+
+      .top-actions {
+
+        width: 100%;
+
+        justify-content:
+          space-between;
       }
 
       .page-item {
+
         flex-direction: column;
+
         align-items: flex-start;
       }
 
       .actions {
-        justify-content: flex-start;
+
+        justify-content:
+          flex-start;
+
+        max-width: none;
       }
+
     }
+
   </style>
 </head>
 
+
 <body>
 
-  <div class="topbar">
-    <h1>Fatema Nusrat Jahan — Admin Dashboard</h1>
 
-    <button class="logout-btn" onclick="logout()">
-      Log Out
-    </button>
-  </div>
+  <!-- =========================
+       TOP BAR
+  ========================== -->
+
+  <header class="topbar">
+
+    <div class="brand">
+
+      <h1>
+        Fatema Nusrat Jahan
+      </h1>
+
+      <p>
+        Admin Dashboard
+      </p>
+
+    </div>
 
 
-  <div class="layout">
+    <div class="top-actions">
 
-    <!-- ADD / EDIT FORM -->
+      <div
+        class="username"
+        id="currentUser"
+      >
+        Checking login...
+      </div>
 
-    <div class="panel">
+      <button
+        class="logout-btn"
+        onclick="logout()"
+      >
+        Log Out
+      </button>
+
+    </div>
+
+  </header>
+
+
+
+  <!-- =========================
+       MAIN
+  ========================== -->
+
+  <main class="layout">
+
+
+    <!-- ADD / EDIT -->
+
+    <section class="panel">
 
       <h2 id="formTitle">
         Add New Page
       </h2>
 
+
       <form id="pageForm">
 
-        <input type="hidden" id="editId">
+
+        <input
+          type="hidden"
+          id="editId"
+        >
 
 
-        <label>Page Title</label>
+        <label for="title">
+          Page Title
+        </label>
 
         <input
           type="text"
@@ -281,7 +589,9 @@
         >
 
 
-        <label>Page Slug</label>
+        <label for="slug">
+          Page Slug
+        </label>
 
         <input
           type="text"
@@ -291,15 +601,19 @@
         >
 
 
-        <label>Content</label>
+        <label for="content">
+          Content
+        </label>
 
         <textarea
           id="content"
-          placeholder="Write page content here..."
+          placeholder="Write the page content here..."
         ></textarea>
 
 
-        <label>Menu Order</label>
+        <label for="menuOrder">
+          Menu Order
+        </label>
 
         <input
           type="number"
@@ -313,22 +627,28 @@
         <div class="checkbox-row">
 
           <label>
+
             <input
               type="checkbox"
               id="visible"
               checked
             >
+
             Visible
+
           </label>
 
 
           <label>
+
             <input
               type="checkbox"
               id="showInMenu"
               checked
             >
+
             Show in Menu
+
           </label>
 
         </div>
@@ -358,38 +678,53 @@
           class="message"
         ></div>
 
+
       </form>
 
-    </div>
+    </section>
 
 
-    <!-- PAGE LIST -->
 
-    <div class="panel">
+    <!-- MANAGE PAGES -->
+
+    <section class="panel">
 
       <h2>
         Manage Pages
       </h2>
 
+
       <div id="pageList">
+
         <div class="loading">
           Loading pages...
         </div>
+
       </div>
 
-    </div>
+    </section>
 
-  </div>
+
+  </main>
+
 
 
   <!-- SUPABASE -->
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+  </script>
+
 
   <script>
 
+    /* =====================================
+       SUPABASE CONNECTION
+    ===================================== */
+
     const SUPABASE_URL =
       "https://clyqhkpvhqeukgblklbu.supabase.co";
+
 
     const SUPABASE_KEY =
       "sb_publishable_MRdyQEcrzKMaeFnHJ5gKMg_4c8EGRAY";
@@ -405,124 +740,311 @@
     let pages = [];
 
 
-    /* ===========================
-       LOAD PAGES
-    =========================== */
+    /* =====================================
+       GET TOKEN
+    ===================================== */
+
+    function getToken() {
+
+      return sessionStorage.getItem(
+        "portfolio_admin_token"
+      );
+
+    }
+
+
+
+    /* =====================================
+       LOGIN / SESSION CHECK
+    ===================================== */
+
+    async function checkLogin() {
+
+      const token =
+        getToken();
+
+
+      if (!token) {
+
+        goToLogin();
+
+        return false;
+
+      }
+
+
+      try {
+
+        const { data, error } =
+          await supabaseClient.rpc(
+            "check_admin_session",
+            {
+              p_token: token
+            }
+          );
+
+
+        if (
+          error ||
+          !data ||
+          data.valid !== true
+        ) {
+
+          clearSession();
+
+          goToLogin();
+
+          return false;
+
+        }
+
+
+        document
+          .getElementById(
+            "currentUser"
+          )
+          .textContent =
+          "Logged in: " +
+          data.username;
+
+
+        return true;
+
+      }
+
+      catch (error) {
+
+        console.error(error);
+
+        clearSession();
+
+        goToLogin();
+
+        return false;
+
+      }
+
+    }
+
+
+
+    /* =====================================
+       LOAD ALL PAGES
+    ===================================== */
 
     async function loadPages() {
 
+      const token =
+        getToken();
+
+
       const pageList =
-        document.getElementById("pageList");
+        document.getElementById(
+          "pageList"
+        );
 
 
       pageList.innerHTML =
         '<div class="loading">Loading pages...</div>';
 
 
-      const { data, error } =
-        await supabaseClient
-          .from("pages")
-          .select("*")
-          .order(
-            "menu_order",
-            { ascending: true }
+      try {
+
+        const { data, error } =
+          await supabaseClient.rpc(
+            "admin_get_pages",
+            {
+              p_token: token
+            }
           );
 
 
-      if (error) {
+        if (error) {
+
+          console.error(error);
+
+
+          if (
+            error.message
+              .toLowerCase()
+              .includes("session")
+          ) {
+
+            clearSession();
+            goToLogin();
+
+            return;
+          }
+
+
+          pageList.innerHTML =
+            '<div class="empty">Unable to load pages.</div>';
+
+          return;
+
+        }
+
+
+        pages =
+          data || [];
+
+
+        renderPages();
+
+
+        if (
+          !document
+            .getElementById("editId")
+            .value
+        ) {
+
+          setNextMenuOrder();
+
+        }
+
+      }
+
+      catch (error) {
 
         console.error(error);
 
         pageList.innerHTML =
           '<div class="empty">Unable to load pages.</div>';
 
-        showMessage(
-          error.message,
-          "error"
-        );
-
-        return;
       }
-
-
-      pages = data || [];
-
-      renderPages();
 
     }
 
 
 
-    /* ===========================
-       RENDER PAGES
-    =========================== */
+    /* =====================================
+       RENDER PAGE LIST
+    ===================================== */
 
     function renderPages() {
 
       const pageList =
-        document.getElementById("pageList");
+        document.getElementById(
+          "pageList"
+        );
 
 
       pageList.innerHTML = "";
 
 
-      if (pages.length === 0) {
+      if (
+        !pages ||
+        pages.length === 0
+      ) {
 
         pageList.innerHTML =
           '<div class="empty">No pages found.</div>';
 
         return;
+
       }
 
 
       pages.forEach(page => {
 
+
         const item =
-          document.createElement("div");
+          document.createElement(
+            "div"
+          );
 
 
         item.className =
           "page-item";
 
 
-        const left =
-          document.createElement("div");
+
+        /* PAGE INFO */
+
+        const info =
+          document.createElement(
+            "div"
+          );
 
 
-        left.className =
+        info.className =
           "page-info";
 
 
-        const title =
-          document.createElement("h3");
+
+        const heading =
+          document.createElement(
+            "h3"
+          );
 
 
-        title.textContent =
+        heading.textContent =
           page.title;
 
 
+
         const slug =
-          document.createElement("small");
+          document.createElement(
+            "div"
+          );
+
+
+        slug.className =
+          "slug";
 
 
         slug.textContent =
           "/" + page.slug;
 
 
-        left.appendChild(title);
-        left.appendChild(slug);
+
+        const preview =
+          document.createElement(
+            "div"
+          );
 
 
-        left.appendChild(
+        preview.className =
+          "preview";
+
+
+        const shortContent =
+          page.content || "";
+
+
+        preview.textContent =
+          shortContent.length > 120
+            ? shortContent.substring(
+                0,
+                120
+              ) + "..."
+            : shortContent;
+
+
+
+        const badges =
+          document.createElement(
+            "div"
+          );
+
+
+        badges.className =
+          "badges";
+
+
+        badges.appendChild(
           createBadge(
             page.visible
               ? "Visible"
-              : "Hidden"
+              : "Hidden",
+            page.visible
+              ? ""
+              : "hidden"
           )
         );
 
 
-        left.appendChild(
+        badges.appendChild(
           createBadge(
             page.show_in_menu
               ? "In Menu"
@@ -531,97 +1053,135 @@
         );
 
 
-        left.appendChild(
+        badges.appendChild(
           createBadge(
-            "Order: " + page.menu_order
+            "Order: " +
+            page.menu_order
           )
         );
 
 
         if (page.is_home) {
 
-          left.appendChild(
-            createBadge("Home")
+          badges.appendChild(
+            createBadge(
+              "Home",
+              "home"
+            )
           );
 
         }
 
 
+        info.appendChild(
+          heading
+        );
+
+        info.appendChild(
+          slug
+        );
+
+        info.appendChild(
+          preview
+        );
+
+        info.appendChild(
+          badges
+        );
+
+
+
+        /* ACTION BUTTONS */
+
         const actions =
-          document.createElement("div");
+          document.createElement(
+            "div"
+          );
 
 
         actions.className =
           "actions";
 
 
-        const editButton =
-          createButton(
-            "Edit",
-            "edit",
-            () => editPage(page.id)
-          );
-
 
         actions.appendChild(
-          editButton
+          createButton(
+            "Edit",
+            "edit-btn",
+            function() {
+              editPage(page.id);
+            }
+          )
         );
 
 
-        const visibilityButton =
+
+        actions.appendChild(
           createButton(
             page.visible
               ? "Hide"
               : "Show",
-            "toggle",
-            () =>
-              toggleVisibility(page)
-          );
 
+            "visibility-btn",
 
-        actions.appendChild(
-          visibilityButton
+            function() {
+              toggleVisibility(
+                page.id
+              );
+            }
+          )
         );
 
 
-        const menuButton =
+
+        actions.appendChild(
           createButton(
             page.show_in_menu
               ? "Remove Menu"
               : "Add Menu",
-            "menu-toggle",
-            () =>
-              toggleMenu(page)
-          );
 
+            "menu-btn",
 
-        actions.appendChild(
-          menuButton
+            function() {
+              toggleMenu(
+                page.id
+              );
+            }
+          )
         );
+
 
 
         if (!page.is_home) {
 
-          const deleteButton =
+          actions.appendChild(
             createButton(
               "Delete",
-              "delete",
-              () =>
-                deletePage(page)
-            );
+              "delete-btn",
 
-
-          actions.appendChild(
-            deleteButton
+              function() {
+                deletePage(page);
+              }
+            )
           );
 
         }
 
 
-        item.appendChild(left);
-        item.appendChild(actions);
 
-        pageList.appendChild(item);
+        item.appendChild(
+          info
+        );
+
+
+        item.appendChild(
+          actions
+        );
+
+
+        pageList.appendChild(
+          item
+        );
 
       });
 
@@ -629,22 +1189,39 @@
 
 
 
-    function createBadge(text) {
+    /* =====================================
+       CREATE BADGE
+    ===================================== */
+
+    function createBadge(
+      text,
+      extraClass = ""
+    ) {
 
       const badge =
-        document.createElement("span");
+        document.createElement(
+          "span"
+        );
+
 
       badge.className =
-        "badge";
+        "badge " +
+        extraClass;
+
 
       badge.textContent =
         text;
+
 
       return badge;
 
     }
 
 
+
+    /* =====================================
+       CREATE BUTTON
+    ===================================== */
 
     function createButton(
       text,
@@ -653,16 +1230,26 @@
     ) {
 
       const button =
-        document.createElement("button");
+        document.createElement(
+          "button"
+        );
+
+
+      button.type =
+        "button";
+
 
       button.textContent =
         text;
 
+
       button.className =
         className;
 
+
       button.onclick =
         callback;
+
 
       return button;
 
@@ -670,12 +1257,14 @@
 
 
 
-    /* ===========================
-       SAVE PAGE
-    =========================== */
+    /* =====================================
+       SAVE / UPDATE PAGE
+    ===================================== */
 
     document
-      .getElementById("pageForm")
+      .getElementById(
+        "pageForm"
+      )
       .addEventListener(
         "submit",
         async function(event) {
@@ -683,64 +1272,85 @@
           event.preventDefault();
 
 
+          const token =
+            getToken();
+
+
+          if (!token) {
+
+            goToLogin();
+
+            return;
+
+          }
+
+
+
           const editId =
             document
-              .getElementById("editId")
+              .getElementById(
+                "editId"
+              )
               .value;
+
 
 
           const title =
             document
-              .getElementById("title")
+              .getElementById(
+                "title"
+              )
               .value
               .trim();
 
 
+
           const slug =
             document
-              .getElementById("slug")
+              .getElementById(
+                "slug"
+              )
               .value
-              .trim()
-              .toLowerCase()
-              .replace(/[^a-z0-9]+/g, "-")
-              .replace(/^-|-$/g, "");
+              .trim();
+
 
 
           const content =
             document
-              .getElementById("content")
+              .getElementById(
+                "content"
+              )
               .value;
+
 
 
           const menuOrder =
             Number(
               document
-                .getElementById("menuOrder")
+                .getElementById(
+                  "menuOrder"
+                )
                 .value
             );
 
 
+
           const visible =
             document
-              .getElementById("visible")
+              .getElementById(
+                "visible"
+              )
               .checked;
+
 
 
           const showInMenu =
             document
-              .getElementById("showInMenu")
+              .getElementById(
+                "showInMenu"
+              )
               .checked;
 
-
-          if (!slug) {
-
-            showMessage(
-              "Please enter a valid slug.",
-              "error"
-            );
-
-            return;
-          }
 
 
           const saveButton =
@@ -749,102 +1359,149 @@
             );
 
 
-          saveButton.disabled = true;
+          saveButton.disabled =
+            true;
+
+
           saveButton.textContent =
             "Saving...";
 
 
-          let result;
+          try {
 
 
-          /* NEW PAGE */
+            const { data, error } =
+              await supabaseClient.rpc(
+                "admin_save_page",
+                {
 
-          if (!editId) {
+                  p_token:
+                    token,
 
-            result =
-              await supabaseClient
-                .from("pages")
-                .insert({
-                  title: title,
-                  slug: slug,
-                  content: content,
-                  visible: visible,
-                  show_in_menu:
+                  p_id:
+                    editId || null,
+
+                  p_title:
+                    title,
+
+                  p_slug:
+                    slug,
+
+                  p_content:
+                    content,
+
+                  p_visible:
+                    visible,
+
+                  p_show_in_menu:
                     showInMenu,
-                  menu_order:
-                    menuOrder,
-                  is_home: false
-                });
 
-          }
-
-
-          /* EDIT PAGE */
-
-          else {
-
-            result =
-              await supabaseClient
-                .from("pages")
-                .update({
-                  title: title,
-                  slug: slug,
-                  content: content,
-                  visible: visible,
-                  show_in_menu:
-                    showInMenu,
-                  menu_order:
+                  p_menu_order:
                     menuOrder
-                })
-                .eq(
-                  "id",
-                  editId
-                );
 
-          }
+                }
+              );
 
 
-          saveButton.disabled = false;
-          saveButton.textContent =
-            "Save Page";
+
+            if (error) {
+
+              console.error(error);
 
 
-          if (result.error) {
+              if (
+                error.message
+                  .toLowerCase()
+                  .includes(
+                    "session"
+                  )
+              ) {
 
-            console.error(
-              result.error
-            );
+                clearSession();
+
+                goToLogin();
+
+                return;
+
+              }
+
+
+              showMessage(
+                error.message,
+                "error"
+              );
+
+
+              return;
+
+            }
+
+
+
+            if (
+              !data ||
+              data.success !== true
+            ) {
+
+              showMessage(
+                data?.message ||
+                "Unable to save page.",
+                "error"
+              );
+
+
+              return;
+
+            }
+
 
 
             showMessage(
-              result.error.message,
+              data.message ||
+              "Page saved successfully.",
+              "success"
+            );
+
+
+            resetForm();
+
+
+            await loadPages();
+
+
+          }
+
+          catch (error) {
+
+            console.error(error);
+
+
+            showMessage(
+              "Unable to save page.",
               "error"
             );
 
-            return;
           }
 
+          finally {
 
-          showMessage(
-            editId
-              ? "Page updated successfully."
-              : "Page added successfully.",
-            "success"
-          );
+            saveButton.disabled =
+              false;
 
 
-          resetForm();
+            saveButton.textContent =
+              "Save Page";
 
-          await loadPages();
+          }
 
         }
       );
 
 
 
-    /* ===========================
-       EDIT
-    =========================== */
+    /* =====================================
+       EDIT PAGE
+    ===================================== */
 
     function editPage(id) {
 
@@ -855,59 +1512,79 @@
         );
 
 
-      if (!page) return;
+      if (!page) {
+        return;
+      }
 
 
       document
-        .getElementById("editId")
+        .getElementById(
+          "editId"
+        )
         .value =
         page.id;
 
 
       document
-        .getElementById("title")
+        .getElementById(
+          "title"
+        )
         .value =
         page.title;
 
 
       document
-        .getElementById("slug")
+        .getElementById(
+          "slug"
+        )
         .value =
         page.slug;
 
 
       document
-        .getElementById("content")
+        .getElementById(
+          "content"
+        )
         .value =
         page.content || "";
 
 
       document
-        .getElementById("menuOrder")
+        .getElementById(
+          "menuOrder"
+        )
         .value =
         page.menu_order;
 
 
       document
-        .getElementById("visible")
+        .getElementById(
+          "visible"
+        )
         .checked =
         page.visible;
 
 
       document
-        .getElementById("showInMenu")
+        .getElementById(
+          "showInMenu"
+        )
         .checked =
         page.show_in_menu;
 
 
       document
-        .getElementById("formTitle")
+        .getElementById(
+          "formTitle"
+        )
         .textContent =
         "Edit Page";
 
 
       document
-        .getElementById("cancelButton")
+        .getElementById(
+          "cancelButton"
+        )
         .style.display =
         "block";
 
@@ -921,83 +1598,137 @@
 
 
 
-    /* ===========================
-       SHOW / HIDE
-    =========================== */
+    /* =====================================
+       TOGGLE VISIBILITY
+    ===================================== */
 
-    async function toggleVisibility(page) {
+    async function toggleVisibility(
+      id
+    ) {
 
-      const { error } =
-        await supabaseClient
-          .from("pages")
-          .update({
-            visible:
-              !page.visible
-          })
-          .eq(
-            "id",
-            page.id
+      const token =
+        getToken();
+
+
+      try {
+
+        const { data, error } =
+          await supabaseClient.rpc(
+            "admin_toggle_visibility",
+            {
+              p_token: token,
+              p_id: id
+            }
           );
 
 
-      if (error) {
+        if (error) {
 
-        showMessage(
-          error.message,
-          "error"
-        );
+          handleRpcError(error);
 
-        return;
+          return;
+
+        }
+
+
+        if (
+          data &&
+          data.success === false
+        ) {
+
+          showMessage(
+            data.message,
+            "error"
+          );
+
+          return;
+
+        }
+
+
+        await loadPages();
+
       }
 
+      catch (error) {
 
-      await loadPages();
+        console.error(error);
+
+      }
 
     }
 
 
 
-    /* ===========================
-       MENU ON / OFF
-    =========================== */
+    /* =====================================
+       TOGGLE MENU
+    ===================================== */
 
-    async function toggleMenu(page) {
+    async function toggleMenu(
+      id
+    ) {
 
-      const { error } =
-        await supabaseClient
-          .from("pages")
-          .update({
-            show_in_menu:
-              !page.show_in_menu
-          })
-          .eq(
-            "id",
-            page.id
+      const token =
+        getToken();
+
+
+      try {
+
+        const { data, error } =
+          await supabaseClient.rpc(
+            "admin_toggle_menu",
+            {
+              p_token: token,
+              p_id: id
+            }
           );
 
 
-      if (error) {
+        if (error) {
 
-        showMessage(
-          error.message,
-          "error"
-        );
+          handleRpcError(error);
 
-        return;
+          return;
+
+        }
+
+
+        if (
+          data &&
+          data.success === false
+        ) {
+
+          showMessage(
+            data.message,
+            "error"
+          );
+
+          return;
+
+        }
+
+
+        await loadPages();
+
       }
 
+      catch (error) {
 
-      await loadPages();
+        console.error(error);
+
+      }
 
     }
 
 
 
-    /* ===========================
-       DELETE
-    =========================== */
+    /* =====================================
+       DELETE PAGE
+    ===================================== */
 
-    async function deletePage(page) {
+    async function deletePage(
+      page
+    ) {
 
       if (page.is_home) {
 
@@ -1006,6 +1737,7 @@
         );
 
         return;
+
       }
 
 
@@ -1017,94 +1749,179 @@
         );
 
 
-      if (!confirmed) return;
-
-
-      const { error } =
-        await supabaseClient
-          .from("pages")
-          .delete()
-          .eq(
-            "id",
-            page.id
-          );
-
-
-      if (error) {
-
-        showMessage(
-          error.message,
-          "error"
-        );
-
+      if (!confirmed) {
         return;
       }
 
 
-      showMessage(
-        "Page deleted successfully.",
-        "success"
-      );
+      const token =
+        getToken();
 
 
-      await loadPages();
+      try {
+
+        const { data, error } =
+          await supabaseClient.rpc(
+            "admin_delete_page",
+            {
+
+              p_token:
+                token,
+
+              p_id:
+                page.id
+
+            }
+          );
+
+
+        if (error) {
+
+          handleRpcError(error);
+
+          return;
+
+        }
+
+
+        if (
+          !data ||
+          data.success !== true
+        ) {
+
+          showMessage(
+            data?.message ||
+            "Unable to delete page.",
+            "error"
+          );
+
+          return;
+
+        }
+
+
+        showMessage(
+          data.message,
+          "success"
+        );
+
+
+        await loadPages();
+
+      }
+
+      catch (error) {
+
+        console.error(error);
+
+      }
 
     }
 
 
 
-    /* ===========================
+    /* =====================================
        RESET FORM
-    =========================== */
+    ===================================== */
 
     function resetForm() {
 
       document
-        .getElementById("pageForm")
+        .getElementById(
+          "pageForm"
+        )
         .reset();
 
 
       document
-        .getElementById("editId")
+        .getElementById(
+          "editId"
+        )
         .value = "";
 
 
       document
-        .getElementById("formTitle")
+        .getElementById(
+          "formTitle"
+        )
         .textContent =
         "Add New Page";
 
 
       document
-        .getElementById("visible")
+        .getElementById(
+          "visible"
+        )
         .checked =
         true;
 
 
       document
-        .getElementById("showInMenu")
+        .getElementById(
+          "showInMenu"
+        )
         .checked =
         true;
 
 
       document
-        .getElementById("menuOrder")
-        .value =
-        pages.length + 1;
-
-
-      document
-        .getElementById("cancelButton")
+        .getElementById(
+          "cancelButton"
+        )
         .style.display =
         "none";
+
+
+      setNextMenuOrder();
 
     }
 
 
 
-    /* ===========================
+    /* =====================================
+       NEXT MENU ORDER
+    ===================================== */
+
+    function setNextMenuOrder() {
+
+      let highestOrder = 0;
+
+
+      pages.forEach(page => {
+
+        const order =
+          Number(
+            page.menu_order
+          ) || 0;
+
+
+        if (
+          order >
+          highestOrder
+        ) {
+
+          highestOrder =
+            order;
+
+        }
+
+      });
+
+
+      document
+        .getElementById(
+          "menuOrder"
+        )
+        .value =
+        highestOrder + 1;
+
+    }
+
+
+
+    /* =====================================
        MESSAGE
-    =========================== */
+    ===================================== */
 
     function showMessage(
       text,
@@ -1122,29 +1939,100 @@
 
 
       message.className =
-        "message " + type;
+        "message " +
+        type;
 
 
-      message.style.display =
-        "block";
+      setTimeout(
+        function() {
 
+          message.className =
+            "message";
 
-      setTimeout(() => {
-
-        message.style.display =
-          "none";
-
-      }, 5000);
+        },
+        5000
+      );
 
     }
 
 
 
-    /* ===========================
-       LOGOUT
-    =========================== */
+    /* =====================================
+       RPC ERROR
+    ===================================== */
 
-    function logout() {
+    function handleRpcError(
+      error
+    ) {
+
+      console.error(error);
+
+
+      const errorText =
+        (
+          error.message || ""
+        ).toLowerCase();
+
+
+      if (
+        errorText.includes(
+          "session"
+        )
+      ) {
+
+        clearSession();
+
+        goToLogin();
+
+        return;
+
+      }
+
+
+      showMessage(
+        error.message ||
+        "Something went wrong.",
+        "error"
+      );
+
+    }
+
+
+
+    /* =====================================
+       LOGOUT
+    ===================================== */
+
+    async function logout() {
+
+      const token =
+        getToken();
+
+
+      try {
+
+        if (token) {
+
+          await supabaseClient.rpc(
+            "admin_logout",
+            {
+              p_token: token
+            }
+          );
+
+        }
+
+      }
+
+      catch (error) {
+
+        console.error(error);
+
+      }
+
+
+      clearSession();
+
 
       window.location.href =
         "index.html";
@@ -1153,11 +2041,67 @@
 
 
 
-    /* START */
+    /* =====================================
+       CLEAR SESSION
+    ===================================== */
 
-    loadPages();
+    function clearSession() {
+
+      sessionStorage.removeItem(
+        "portfolio_admin_token"
+      );
+
+
+      sessionStorage.removeItem(
+        "portfolio_admin_username"
+      );
+
+
+      sessionStorage.removeItem(
+        "portfolio_admin_role"
+      );
+
+    }
+
+
+
+    /* =====================================
+       LOGIN PAGE
+    ===================================== */
+
+    function goToLogin() {
+
+      window.location.href =
+        "index.html";
+
+    }
+
+
+
+    /* =====================================
+       START DASHBOARD
+    ===================================== */
+
+    async function startDashboard() {
+
+      const valid =
+        await checkLogin();
+
+
+      if (!valid) {
+        return;
+      }
+
+
+      await loadPages();
+
+    }
+
+
+    startDashboard();
 
   </script>
+
 
 </body>
 </html>
