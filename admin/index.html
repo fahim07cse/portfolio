@@ -1,11 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fatema Nusrat Jahan | Admin</title>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    Admin Login | Fatema Nusrat Jahan
+  </title>
 
   <style>
+
     * {
       margin: 0;
       padding: 0;
@@ -13,329 +21,696 @@
     }
 
     body {
-      font-family: Arial, Helvetica, sans-serif;
+
       min-height: 100vh;
-      background: linear-gradient(
-        160deg,
-        #183d64 0%,
-        #005e74 48%,
-        #008a94 100%
-      );
-      color: white;
-    }
 
-    .page {
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      padding: 60px 25px 35px;
-    }
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 
-    .container {
-      width: 100%;
-      max-width: 900px;
-    }
+      background:
+        linear-gradient(
+          135deg,
+          #173e64,
+          #007f89
+        );
 
-    .portfolio-of {
-      font-size: 23px;
-      font-weight: 700;
-      letter-spacing: 7px;
-    }
-
-    .name {
-      font-family: Georgia, serif;
-      font-size: 58px;
-      font-weight: 400;
-      margin-top: 4px;
-    }
-
-    .pink-line {
-      width: 155px;
-      height: 7px;
-      background: #ff6c7d;
-      border-radius: 10px;
-      margin: 35px 0;
-    }
-
-    .portal {
       display: flex;
       align-items: center;
-      gap: 25px;
-      font-size: 22px;
-      font-weight: 700;
-      letter-spacing: 8px;
-      margin-bottom: 40px;
+      justify-content: center;
+
+      padding: 25px;
+
     }
 
-    .portal::after {
-      content: "";
-      width: 150px;
-      height: 2px;
-      background: rgba(255, 255, 255, 0.5);
+
+    .login-wrapper {
+
+      width: 100%;
+      max-width: 440px;
+
     }
+
+
+    .brand {
+
+      text-align: center;
+      color: white;
+
+      margin-bottom: 28px;
+
+    }
+
+
+    .small-title {
+
+      font-size: 14px;
+
+      letter-spacing: 5px;
+
+      font-weight: bold;
+
+      margin-bottom: 12px;
+
+    }
+
+
+    .brand h1 {
+
+      font-family:
+        Georgia,
+        serif;
+
+      font-size: 38px;
+
+      font-weight: normal;
+
+      line-height: 1.15;
+
+    }
+
+
+    .pink-line {
+
+      width: 100px;
+      height: 5px;
+
+      background: #ff7183;
+
+      border-radius: 20px;
+
+      margin:
+        18px auto;
+
+    }
+
+
+    .portal-title {
+
+      font-size: 14px;
+
+      letter-spacing: 4px;
+
+      font-weight: bold;
+
+    }
+
 
     .login-card {
-      position: relative;
+
       background: white;
-      color: #153b61;
-      border-radius: 10px;
-      padding: 55px 48px;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.18);
-      overflow: hidden;
+
+      border-radius: 15px;
+
+      padding: 35px;
+
+      box-shadow:
+        0 25px 60px
+        rgba(0,0,0,.20);
+
     }
 
-    .login-card::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 12px;
-      height: 50%;
-      background: #ff6c7d;
+
+    .login-card h2 {
+
+      text-align: center;
+
+      font-family:
+        Georgia,
+        serif;
+
+      color: #075c73;
+
+      font-size: 28px;
+
+      margin-bottom: 28px;
+
     }
 
-    .login-card::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 12px;
-      height: 50%;
-      background: #11b5be;
-    }
 
-    .login-card h1 {
-      font-size: 46px;
-      margin-bottom: 18px;
-    }
+    label {
 
-    .description {
-      color: #68768a;
-      font-size: 22px;
-      margin-bottom: 45px;
-    }
-
-    .field {
-      margin-bottom: 25px;
-    }
-
-    .field label {
       display: block;
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 10px;
+
+      margin-top: 15px;
+      margin-bottom: 7px;
+
+      font-weight: bold;
+
+      color: #31495a;
+
     }
 
-    .input-box {
-      position: relative;
-    }
-
-    .icon {
-      position: absolute;
-      left: 20px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 23px;
-    }
 
     input {
+
       width: 100%;
-      padding: 20px 20px 20px 65px;
-      font-size: 20px;
-      background: #fafbfc;
-      border: 2px solid #d5dce5;
-      border-radius: 6px;
+
+      padding: 13px 14px;
+
+      border:
+        1px solid #ccd6dd;
+
+      border-radius: 7px;
+
+      font-size: 16px;
+
       outline: none;
+
     }
+
 
     input:focus {
-      border-color: #08728a;
+
+      border-color: #078098;
+
+      box-shadow:
+        0 0 0 3px
+        rgba(0,128,152,.10);
+
     }
 
-    .login-button {
+
+    button {
+
       width: 100%;
-      padding: 20px;
-      margin-top: 10px;
+
       border: none;
-      border-radius: 6px;
-      background: #056b86;
+
+      margin-top: 25px;
+
+      padding: 14px;
+
+      border-radius: 7px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #075c73,
+          #008894
+        );
+
       color: white;
-      font-size: 24px;
-      font-weight: 700;
+
+      font-size: 17px;
+
+      font-weight: bold;
+
       cursor: pointer;
+
     }
 
-    .login-button:hover {
-      background: #045b72;
+
+    button:hover {
+
+      opacity: .94;
+
     }
 
-    .security {
-      margin-top: 55px;
-      padding-top: 30px;
-      border-top: 1px solid #d6dce3;
+
+    button:disabled {
+
+      opacity: .65;
+
+      cursor: not-allowed;
+
+    }
+
+
+    .message {
+
+      display: none;
+
+      margin-top: 18px;
+
+      padding: 12px;
+
+      border-radius: 7px;
+
       text-align: center;
-      color: #6c7887;
-      font-size: 17px;
-      line-height: 1.7;
+
+      font-size: 14px;
+
     }
 
-    footer {
-      margin-top: 35px;
+
+    .error {
+
+      display: block;
+
+      background: #ffe7e9;
+
+      color: #9d2b39;
+
+    }
+
+
+    .success {
+
+      display: block;
+
+      background: #e6f7ee;
+
+      color: #17633b;
+
+    }
+
+
+    .footer {
+
       text-align: center;
-      font-size: 17px;
-      letter-spacing: 2px;
-      line-height: 1.8;
+
+      margin-top: 22px;
+
+      color:
+        rgba(255,255,255,.8);
+
+      font-size: 13px;
+
     }
 
-    footer strong {
-      letter-spacing: 3px;
-    }
 
-    @media (max-width: 700px) {
-      .page {
-        padding: 35px 18px;
+    @media(max-width: 500px) {
+
+      .brand h1 {
+
+        font-size: 31px;
+
       }
 
-      .portfolio-of {
-        font-size: 17px;
-        letter-spacing: 5px;
-      }
-
-      .name {
-        font-size: 40px;
-      }
-
-      .portal {
-        font-size: 17px;
-        letter-spacing: 5px;
-      }
 
       .login-card {
-        padding: 38px 25px;
+
+        padding: 27px 22px;
+
       }
 
-      .login-card h1 {
-        font-size: 34px;
-      }
-
-      .description {
-        font-size: 18px;
-      }
-
-      input {
-        font-size: 17px;
-      }
-
-      .login-button {
-        font-size: 20px;
-      }
     }
+
   </style>
 </head>
 
-<body>
-  <div class="page">
-    <div class="container">
 
-      <div class="portfolio-of">
+<body>
+
+
+  <div class="login-wrapper">
+
+
+    <div class="brand">
+
+      <div class="small-title">
         PORTFOLIO OF
       </div>
 
-      <div class="name">
+      <h1>
         Fatema Nusrat Jahan
-      </div>
+      </h1>
 
       <div class="pink-line"></div>
 
-      <div class="portal">
+      <div class="portal-title">
         ADMIN PORTAL
       </div>
 
-      <div class="login-card">
-        <h1>Admin Login</h1>
+    </div>
 
-        <div class="description">
-          Please sign in to continue
-        </div>
 
-        <form id="loginForm">
 
-          <div class="field">
-            <label for="userId">User ID</label>
+    <div class="login-card">
 
-            <div class="input-box">
-              <span class="icon">✉</span>
+      <h2>
+        Admin Login
+      </h2>
 
-              <input
-                type="text"
-                id="userId"
-                placeholder="Enter your User ID"
-                required
-              />
-            </div>
-          </div>
 
-          <div class="field">
-            <label for="password">Password</label>
+      <form id="loginForm">
 
-            <div class="input-box">
-              <span class="icon">●</span>
 
-              <input
-                type="password"
-                id="password"
-                placeholder="Enter your password"
-                required
-              />
-            </div>
-          </div>
+        <label for="userId">
+          User ID
+        </label>
 
-          <button type="submit" class="login-button">
-            Log In →
-          </button>
+        <input
+          type="text"
+          id="userId"
+          autocomplete="username"
+          placeholder="Enter User ID"
+          required
+        >
 
-        </form>
 
-        <div class="security">
-          Secure admin access · direct/reloaded links require login again ·
-          automatic logout after 10 minutes of inactivity.
-        </div>
-      </div>
 
-      <footer>
-        © 2026 Fatema Nusrat Jahan
-        <br />
-        <strong>PORTFOLIO</strong>
-      </footer>
+        <label for="password">
+          Password
+        </label>
+
+        <input
+          type="password"
+          id="password"
+          autocomplete="current-password"
+          placeholder="Enter Password"
+          required
+        >
+
+
+
+        <button
+          type="submit"
+          id="loginButton"
+        >
+          Log In
+        </button>
+
+
+
+        <div
+          id="message"
+          class="message"
+        ></div>
+
+
+      </form>
 
     </div>
+
+
+
+    <div class="footer">
+      © 2026 Fatema Nusrat Jahan
+    </div>
+
+
   </div>
 
- <script>
-  document
-    .getElementById("loginForm")
-    .addEventListener("submit", function (event) {
 
-      event.preventDefault();
 
-      const userId =
-        document.getElementById("userId").value.trim();
+  <!-- SUPABASE -->
 
-      const password =
-        document.getElementById("password").value;
+  <script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+  </script>
 
-      /* TEMPORARY TEST LOGIN */
 
-      if (
-        userId === "admin" &&
-        password === "1234"
-      ) {
-        window.location.href = "dashboard.html";
-      } else {
-        alert("Invalid User ID or Password");
+  <script>
+
+    const SUPABASE_URL =
+      "https://clyqhkpvhqeukgblklbu.supabase.co";
+
+
+    const SUPABASE_KEY =
+      "sb_publishable_MRdyQEcrzKMaeFnHJ5gKMg_4c8EGRAY";
+
+
+    const supabaseClient =
+      window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+      );
+
+
+
+    /* ==========================
+       CHECK EXISTING SESSION
+    ========================== */
+
+    async function checkExistingSession() {
+
+      const token =
+        sessionStorage.getItem(
+          "portfolio_admin_token"
+        );
+
+
+      if (!token) {
+        return;
       }
 
-    });
-</script>
+
+      try {
+
+        const { data, error } =
+          await supabaseClient.rpc(
+            "check_admin_session",
+            {
+              p_token: token
+            }
+          );
+
+
+        if (
+          !error &&
+          data &&
+          data.valid === true
+        ) {
+
+          window.location.href =
+            "dashboard.html";
+
+        } else {
+
+          sessionStorage.removeItem(
+            "portfolio_admin_token"
+          );
+
+          sessionStorage.removeItem(
+            "portfolio_admin_username"
+          );
+
+          sessionStorage.removeItem(
+            "portfolio_admin_role"
+          );
+
+        }
+
+      }
+
+      catch (error) {
+
+        console.error(error);
+
+      }
+
+    }
+
+
+
+    /* ==========================
+       LOGIN
+    ========================== */
+
+    document
+      .getElementById("loginForm")
+      .addEventListener(
+        "submit",
+        async function(event) {
+
+          event.preventDefault();
+
+
+          const username =
+            document
+              .getElementById("userId")
+              .value
+              .trim()
+              .toLowerCase();
+
+
+          const password =
+            document
+              .getElementById("password")
+              .value;
+
+
+          const button =
+            document.getElementById(
+              "loginButton"
+            );
+
+
+          const message =
+            document.getElementById(
+              "message"
+            );
+
+
+          message.className =
+            "message";
+
+          message.style.display =
+            "none";
+
+
+          if (
+            !username ||
+            !password
+          ) {
+
+            showMessage(
+              "Please enter User ID and Password.",
+              "error"
+            );
+
+            return;
+
+          }
+
+
+          button.disabled = true;
+
+          button.textContent =
+            "Logging in...";
+
+
+          try {
+
+
+            const { data, error } =
+              await supabaseClient.rpc(
+                "admin_login",
+                {
+                  p_username:
+                    username,
+
+                  p_password:
+                    password
+                }
+              );
+
+
+
+            if (error) {
+
+              console.error(error);
+
+              showMessage(
+                "Login failed. Please try again.",
+                "error"
+              );
+
+              return;
+
+            }
+
+
+
+            if (
+              !data ||
+              data.success !== true
+            ) {
+
+              showMessage(
+                data?.message ||
+                "Invalid User ID or Password",
+                "error"
+              );
+
+              return;
+
+            }
+
+
+
+            /* SAVE SESSION TOKEN */
+
+            sessionStorage.setItem(
+              "portfolio_admin_token",
+              data.token
+            );
+
+
+            sessionStorage.setItem(
+              "portfolio_admin_username",
+              data.username
+            );
+
+
+            sessionStorage.setItem(
+              "portfolio_admin_role",
+              data.role
+            );
+
+
+
+            showMessage(
+              "Login successful.",
+              "success"
+            );
+
+
+
+            setTimeout(
+              function() {
+
+                window.location.href =
+                  "dashboard.html";
+
+              },
+              400
+            );
+
+
+          }
+
+          catch (error) {
+
+            console.error(error);
+
+            showMessage(
+              "Unable to connect to the database.",
+              "error"
+            );
+
+          }
+
+          finally {
+
+            button.disabled = false;
+
+            button.textContent =
+              "Log In";
+
+          }
+
+        }
+      );
+
+
+
+    /* ==========================
+       MESSAGE
+    ========================== */
+
+    function showMessage(
+      text,
+      type
+    ) {
+
+      const message =
+        document.getElementById(
+          "message"
+        );
+
+
+      message.textContent =
+        text;
+
+
+      message.className =
+        "message " + type;
+
+    }
+
+
+
+    /* START */
+
+    checkExistingSession();
+
+
+  </script>
+
+
 </body>
 </html>
