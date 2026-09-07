@@ -1,2837 +1,987 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
-  <title>
-    Admin Dashboard | Fatema Nusrat Jahan
-  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | Fatema Nusrat Jahan</title>
 
   <style>
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f3f6f9;
-      color: #17324a;
-    }
-
-    /* TOPBAR */
-
-    .topbar {
-
-      background:
-        linear-gradient(
-          135deg,
-          #173e64,
-          #008590
-        );
-
-      color: white;
-
-      padding: 20px 28px;
-
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      gap: 20px;
-    }
-
-    .brand h1 {
-      font-family: Georgia, serif;
-      font-size: 28px;
-      font-weight: normal;
-    }
-
-    .brand p {
-      margin-top: 5px;
-      font-size: 13px;
-      opacity: .8;
-    }
-
-    .top-actions {
-      display: flex;
-      gap: 15px;
-      align-items: center;
-    }
-
-    .logout-btn {
-
-      border:
-        1px solid rgba(255,255,255,.6);
-
-      background: transparent;
-
-      color: white;
-
-      padding: 10px 16px;
-
-      border-radius: 6px;
-
-      cursor: pointer;
-    }
-
-    /* TABS */
-
-    .tabs {
-
-      max-width: 1250px;
-
-      margin: 25px auto 0;
-
-      padding: 0 20px;
-
-      display: flex;
-
-      gap: 10px;
-
-      flex-wrap: wrap;
-    }
-
-    .tab-btn {
-
-      border: none;
-
-      background: white;
-
-      color: #315064;
-
-      padding: 12px 20px;
-
-      border-radius: 8px;
-
-      cursor: pointer;
-
-      font-weight: bold;
-
-      box-shadow:
-        0 5px 15px
-        rgba(20,50,70,.06);
-    }
-
-    .tab-btn.active {
-
-      background: #086a82;
-      color: white;
-    }
-
-    .tab-section {
-      display: none;
-    }
-
-    .tab-section.active {
-      display: block;
-    }
-
-    /* LAYOUT */
-
-    .layout {
-
-      max-width: 1250px;
-
-      margin: 25px auto;
-
-      padding: 0 20px 60px;
-
-      display: grid;
-
-      grid-template-columns:
-        350px 1fr;
-
-      gap: 25px;
-    }
-
-    .media-layout {
-
-      max-width: 1250px;
-
-      margin: 25px auto;
-
-      padding: 0 20px 60px;
-
-      display: grid;
-
-      grid-template-columns:
-        400px 1fr;
-
-      gap: 25px;
-    }
-
-    .panel {
-
-      background: white;
-
-      border-radius: 12px;
-
-      padding: 25px;
-
-      box-shadow:
-        0 10px 30px
-        rgba(20,50,70,.08);
-    }
-
-    .panel h2 {
-
-      color: #075c73;
-
-      font-family: Georgia, serif;
-
-      font-size: 26px;
-
-      margin-bottom: 20px;
-    }
-
-    /* FORM */
-
-    label {
-
-      display: block;
-
-      margin-top: 15px;
-      margin-bottom: 7px;
-
-      font-weight: 700;
-    }
-
-    input,
-    textarea,
-    select {
-
-      width: 100%;
-
-      padding: 12px;
-
-      border:
-        1px solid #ccd5dd;
-
-      border-radius: 6px;
-
-      font-size: 15px;
-
-      background: white;
-    }
-
-    textarea {
-
-      min-height: 140px;
-
-      resize: vertical;
-    }
-
-    .checkbox-row {
-
-      display: flex;
-
-      gap: 18px;
-
-      margin-top: 20px;
-
-      flex-wrap: wrap;
-    }
-
-    .checkbox-row label {
-
-      margin: 0;
-
-      font-weight: normal;
-
-      display: flex;
-
-      gap: 6px;
-
-      align-items: center;
-    }
-
-    .checkbox-row input {
-      width: auto;
-    }
-
-    .save-btn,
-    .upload-btn {
-
-      width: 100%;
-
-      margin-top: 22px;
-
-      padding: 13px;
-
-      border: none;
-
-      border-radius: 6px;
-
-      background:
-        linear-gradient(
-          135deg,
-          #075c73,
-          #008995
-        );
-
-      color: white;
-
-      font-size: 16px;
-
-      font-weight: bold;
-
-      cursor: pointer;
-    }
-
-    button:disabled {
-      opacity: .6;
-      cursor: not-allowed;
-    }
-
-    .cancel-btn {
-
-      width: 100%;
-
-      margin-top: 10px;
-
-      padding: 12px;
-
-      border: none;
-
-      border-radius: 6px;
-
-      background: #6d7883;
-
-      color: white;
-
-      cursor: pointer;
-
-      display: none;
-    }
-
-    /* MESSAGE */
-
-    .message {
-
-      display: none;
-
-      margin-top: 15px;
-
-      padding: 12px;
-
-      border-radius: 6px;
-
-      font-size: 14px;
-    }
-
-    .message.success {
-
-      display: block;
-
-      background: #e7f7ee;
-
-      color: #17623b;
-    }
-
-    .message.error {
-
-      display: block;
-
-      background: #ffe6e8;
-
-      color: #9c2b38;
-    }
-
-    /* PAGE LIST */
-
-    .page-item {
-
-      border:
-        1px solid #e1e7ec;
-
-      border-radius: 10px;
-
-      padding: 18px;
-
-      margin-bottom: 15px;
-
-      display: flex;
-
-      justify-content:
-        space-between;
-
-      align-items: center;
-
-      gap: 20px;
-    }
-
-    .page-info {
-      flex: 1;
-    }
-
-    .page-info h3 {
-
-      color: #173e64;
-
-      margin-bottom: 6px;
-    }
-
-    .slug {
-
-      font-size: 13px;
-
-      color: #778793;
-    }
-
-    .preview {
-
-      margin-top: 9px;
-
-      color: #657582;
-
-      font-size: 14px;
-
-      line-height: 1.5;
-    }
-
-    .badges {
-      margin-top: 10px;
-    }
-
-    .badge {
-
-      display: inline-block;
-
-      background: #eef3f6;
-
-      border-radius: 20px;
-
-      padding: 5px 9px;
-
-      margin-right: 5px;
-      margin-bottom: 5px;
-
-      font-size: 12px;
-    }
-
-    .actions {
-
-      display: flex;
-
-      gap: 7px;
-
-      flex-wrap: wrap;
-    }
-
-    .actions button {
-
-      border: none;
-
-      padding: 8px 11px;
-
-      border-radius: 5px;
-
-      cursor: pointer;
-    }
-
-    .edit-btn {
-      background: #e4f3f7;
-      color: #08657a;
-    }
-
-    .visibility-btn {
-      background: #fff1c9;
-      color: #745800;
-    }
-
-    .menu-btn {
-      background: #ede9ff;
-      color: #57439e;
-    }
-
-    .delete-btn {
-      background: #ffe3e5;
-      color: #a62c38;
-    }
-
-    /* MEDIA */
-
-    .media-item {
-
-      border:
-        1px solid #e1e7ec;
-
-      border-radius: 10px;
-
-      padding: 16px;
-
-      margin-bottom: 15px;
-
-      display: flex;
-
-      gap: 18px;
-
-      align-items: center;
-    }
-
-    .media-preview {
-
-      width: 90px;
-      height: 90px;
-
-      border-radius: 8px;
-
-      background: #eef3f6;
-
-      overflow: hidden;
-
-      display: flex;
-
-      align-items: center;
-      justify-content: center;
-
-      flex-shrink: 0;
-
-      font-size: 34px;
-    }
-
-    .media-preview img {
-
-      width: 100%;
-      height: 100%;
-
-      object-fit: cover;
-    }
-
-    .media-info {
-
-      flex: 1;
-      min-width: 0;
-    }
-
-    .media-info h3 {
-
-      color: #173e64;
-
-      margin-bottom: 6px;
-
-      word-break: break-word;
-    }
-
-    .media-info p {
-
-      color: #657582;
-
-      font-size: 13px;
-
-      margin-top: 4px;
-    }
-
-    .media-actions {
-
-      display: flex;
-
-      flex-direction: column;
-
-      gap: 7px;
-    }
-
-    .open-btn,
-    .media-delete-btn {
-
-      border: none;
-
-      padding: 8px 12px;
-
-      border-radius: 5px;
-
-      cursor: pointer;
-
-      text-decoration: none;
-
-      text-align: center;
-
-      font-size: 13px;
-    }
-
-    .open-btn {
-
-      background: #e4f3f7;
-
-      color: #08657a;
-    }
-
-    .media-delete-btn {
-
-      background: #ffe3e5;
-
-      color: #a62c38;
-    }
-
-    .hint {
-
-      margin-top: 8px;
-
-      font-size: 12px;
-
-      color: #798995;
-
-      line-height: 1.5;
-    }
-
-    .loading,
-    .empty {
-
-      text-align: center;
-
-      padding: 40px;
-
-      color: #71818d;
-    }
-
-    @media(max-width: 900px) {
-
-      .layout,
-      .media-layout {
-
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media(max-width: 650px) {
-
-      .topbar {
-
-        flex-direction: column;
-
-        align-items: flex-start;
-      }
-
-      .page-item,
-      .media-item {
-
-        flex-direction: column;
-
-        align-items: flex-start;
-      }
-
-      .media-actions {
-
-        flex-direction: row;
-      }
-    }
-
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:Arial,Helvetica,sans-serif;background:#f3f6f9;color:#17324a}
+    .topbar{background:linear-gradient(135deg,#173e64,#008590);color:#fff;padding:20px 28px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+    .brand h1{font-family:Georgia,serif;font-size:28px;font-weight:normal}
+    .brand p{margin-top:5px;font-size:13px;opacity:.82}
+    .top-actions{display:flex;gap:15px;align-items:center}
+    .logout-btn{border:1px solid rgba(255,255,255,.6);background:transparent;color:#fff;padding:10px 16px;border-radius:6px;cursor:pointer}
+    .tabs{max-width:1250px;margin:25px auto 0;padding:0 20px;display:flex;gap:10px;flex-wrap:wrap}
+    .tab-btn{border:none;background:#fff;color:#315064;padding:12px 20px;border-radius:8px;cursor:pointer;font-weight:bold;box-shadow:0 5px 15px rgba(20,50,70,.06)}
+    .tab-btn.active{background:#086a82;color:#fff}
+    .tab-section{display:none}
+    .tab-section.active{display:block}
+    .layout,.media-layout,.settings-layout{max-width:1250px;margin:25px auto;padding:0 20px 60px;display:grid;gap:25px}
+    .layout{grid-template-columns:350px 1fr}
+    .media-layout{grid-template-columns:400px 1fr}
+    .settings-layout{grid-template-columns:1fr 420px}
+    .panel{background:#fff;border-radius:12px;padding:25px;box-shadow:0 10px 30px rgba(20,50,70,.08)}
+    .panel h2{color:#075c73;font-family:Georgia,serif;font-size:26px;margin-bottom:20px}
+    .panel h3{color:#173e64}
+    label{display:block;margin-top:15px;margin-bottom:7px;font-weight:700}
+    input,textarea,select{width:100%;padding:12px;border:1px solid #ccd5dd;border-radius:6px;font-size:15px;background:#fff}
+    textarea{min-height:140px;resize:vertical}
+    .checkbox-row{display:flex;gap:18px;margin-top:20px;flex-wrap:wrap}
+    .checkbox-row label{margin:0;font-weight:normal;display:flex;gap:6px;align-items:center}
+    .checkbox-row input{width:auto}
+    .primary-btn,.save-btn,.upload-btn{width:100%;margin-top:22px;padding:13px;border:none;border-radius:6px;background:linear-gradient(135deg,#075c73,#008995);color:#fff;font-size:16px;font-weight:bold;cursor:pointer}
+    button:disabled{opacity:.6;cursor:not-allowed}
+    .secondary-btn{width:100%;margin-top:10px;padding:12px;border:none;border-radius:6px;background:#6d7883;color:#fff;cursor:pointer}
+    .danger-wide{width:100%;margin-top:10px;padding:12px;border:none;border-radius:6px;background:#ffe3e5;color:#a62c38;cursor:pointer;font-weight:bold}
+    .cancel-btn{display:none}
+    .message{display:none;margin-top:15px;padding:12px;border-radius:6px;font-size:14px}
+    .message.success{display:block;background:#e7f7ee;color:#17623b}
+    .message.error{display:block;background:#ffe6e8;color:#9c2b38}
+    .page-item{border:1px solid #e1e7ec;border-radius:10px;padding:18px;margin-bottom:15px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+    .page-info{flex:1}
+    .page-info h3{margin-bottom:6px}
+    .slug{font-size:13px;color:#778793}
+    .preview{margin-top:9px;color:#657582;font-size:14px;line-height:1.5}
+    .badges{margin-top:10px}
+    .badge{display:inline-block;background:#eef3f6;border-radius:20px;padding:5px 9px;margin-right:5px;margin-bottom:5px;font-size:12px}
+    .actions{display:flex;gap:7px;flex-wrap:wrap}
+    .actions button{border:none;padding:8px 11px;border-radius:5px;cursor:pointer}
+    .edit-btn{background:#e4f3f7;color:#08657a}
+    .visibility-btn{background:#fff1c9;color:#745800}
+    .menu-btn{background:#ede9ff;color:#57439e}
+    .delete-btn{background:#ffe3e5;color:#a62c38}
+    .media-item{border:1px solid #e1e7ec;border-radius:10px;padding:16px;margin-bottom:15px;display:flex;gap:18px;align-items:center}
+    .media-preview{width:90px;height:90px;border-radius:8px;background:#eef3f6;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:34px}
+    .media-preview img{width:100%;height:100%;object-fit:cover}
+    .media-info{flex:1;min-width:0}
+    .media-info h3{margin-bottom:6px;word-break:break-word}
+    .media-info p{color:#657582;font-size:13px;margin-top:4px}
+    .media-actions{display:flex;flex-direction:column;gap:7px}
+    .open-btn,.media-delete-btn{border:none;padding:8px 12px;border-radius:5px;cursor:pointer;text-decoration:none;text-align:center;font-size:13px}
+    .open-btn{background:#e4f3f7;color:#08657a}
+    .media-delete-btn{background:#ffe3e5;color:#a62c38}
+    .profile-box{text-align:center}
+    .profile-preview{width:230px;height:230px;margin:0 auto 18px;border-radius:50%;background:#eef3f6;border:8px solid #f7f9fb;overflow:hidden;display:flex;align-items:center;justify-content:center;color:#788894}
+    .profile-preview img{width:100%;height:100%;object-fit:cover}
+    .hint{margin-top:8px;font-size:12px;color:#798995;line-height:1.5}
+    .loading,.empty{text-align:center;padding:40px;color:#71818d}
+    .section-note{background:#f5f9fb;border-left:4px solid #0a7f95;padding:12px 14px;border-radius:6px;color:#58707f;font-size:13px;line-height:1.5;margin-bottom:18px}
+    @media(max-width:900px){.layout,.media-layout,.settings-layout{grid-template-columns:1fr}}
+    @media(max-width:650px){.topbar{flex-direction:column;align-items:flex-start}.page-item,.media-item{flex-direction:column;align-items:flex-start}.media-actions{flex-direction:row}.profile-preview{width:190px;height:190px}}
   </style>
-
 </head>
-
 
 <body>
 
-
 <header class="topbar">
-
   <div class="brand">
-
-    <h1>
-      Fatema Nusrat Jahan
-    </h1>
-
-    <p>
-      Admin Dashboard
-    </p>
-
+    <h1>Fatema Nusrat Jahan</h1>
+    <p>Admin Dashboard</p>
   </div>
-
 
   <div class="top-actions">
-
-    <span id="currentUser">
-      Checking...
-    </span>
-
-    <button
-      class="logout-btn"
-      onclick="logout()"
-    >
-      Log Out
-    </button>
-
+    <span id="currentUser">Checking...</span>
+    <button class="logout-btn" onclick="logout()">Log Out</button>
   </div>
-
 </header>
 
-
-
-<!-- TABS -->
-
 <div class="tabs">
-
-  <button
-    class="tab-btn active"
-    onclick="showTab('pagesTab', this)"
-  >
-    Pages
-  </button>
-
-  <button
-    class="tab-btn"
-    onclick="showTab('mediaTab', this)"
-  >
-    Media / Files
-  </button>
-
+  <button class="tab-btn active" onclick="showTab('pagesTab', this)">Pages</button>
+  <button class="tab-btn" onclick="showTab('mediaTab', this)">Media / Files</button>
+  <button class="tab-btn" onclick="showTab('settingsTab', this)">Site Settings</button>
 </div>
 
-
-
-<!-- =========================
-     PAGE MANAGEMENT
-========================= -->
-
-<div
-  id="pagesTab"
-  class="tab-section active"
->
-
+<!-- ================= PAGES ================= -->
+<div id="pagesTab" class="tab-section active">
   <main class="layout">
 
-
     <section class="panel">
-
-      <h2 id="formTitle">
-        Add New Page
-      </h2>
-
+      <h2 id="formTitle">Add New Page</h2>
 
       <form id="pageForm">
+        <input type="hidden" id="editId">
 
+        <label>Page Title</label>
+        <input type="text" id="title" required>
 
-        <input
-          type="hidden"
-          id="editId"
-        >
+        <label>Page Slug</label>
+        <input type="text" id="slug" placeholder="education" required>
 
+        <label>Content</label>
+        <textarea id="content"></textarea>
 
-        <label>
-          Page Title
-        </label>
-
-        <input
-          type="text"
-          id="title"
-          required
-        >
-
-
-        <label>
-          Page Slug
-        </label>
-
-        <input
-          type="text"
-          id="slug"
-          placeholder="education"
-          required
-        >
-
-
-        <label>
-          Content
-        </label>
-
-        <textarea
-          id="content"
-        ></textarea>
-
-
-        <label>
-          Menu Order
-        </label>
-
-        <input
-          type="number"
-          id="menuOrder"
-          min="1"
-          value="2"
-          required
-        >
-
+        <label>Menu Order</label>
+        <input type="number" id="menuOrder" min="1" value="2" required>
 
         <div class="checkbox-row">
-
-          <label>
-
-            <input
-              type="checkbox"
-              id="visible"
-              checked
-            >
-
-            Visible
-
-          </label>
-
-
-          <label>
-
-            <input
-              type="checkbox"
-              id="showInMenu"
-              checked
-            >
-
-            Show in Menu
-
-          </label>
-
+          <label><input type="checkbox" id="visible" checked> Visible</label>
+          <label><input type="checkbox" id="showInMenu" checked> Show in Menu</label>
         </div>
 
+        <button type="submit" id="saveButton" class="save-btn">Save Page</button>
+        <button type="button" id="cancelButton" class="secondary-btn cancel-btn" onclick="resetForm()">Cancel Edit</button>
 
-        <button
-          type="submit"
-          id="saveButton"
-          class="save-btn"
-        >
-          Save Page
-        </button>
-
-
-        <button
-          type="button"
-          id="cancelButton"
-          class="cancel-btn"
-          onclick="resetForm()"
-        >
-          Cancel Edit
-        </button>
-
-
-        <div
-          id="pageMessage"
-          class="message"
-        ></div>
-
+        <div id="pageMessage" class="message"></div>
       </form>
-
     </section>
-
-
 
     <section class="panel">
-
-      <h2>
-        Manage Pages
-      </h2>
-
-      <div id="pageList">
-
-        <div class="loading">
-          Loading pages...
-        </div>
-
-      </div>
-
+      <h2>Manage Pages</h2>
+      <div id="pageList"><div class="loading">Loading pages...</div></div>
     </section>
 
-
   </main>
-
 </div>
 
-
-
-<!-- =========================
-     MEDIA
-========================= -->
-
-<div
-  id="mediaTab"
-  class="tab-section"
->
-
+<!-- ================= MEDIA ================= -->
+<div id="mediaTab" class="tab-section">
   <main class="media-layout">
 
-
-    <!-- UPLOAD -->
-
     <section class="panel">
-
-      <h2>
-        Upload Media
-      </h2>
-
+      <h2>Upload Media</h2>
 
       <form id="mediaForm">
+        <label>Select Page</label>
+        <select id="mediaPage" required></select>
 
+        <label>Title</label>
+        <input type="text" id="mediaTitle" placeholder="Example: Graduation Photo">
 
-        <label>
-          Select Page
-        </label>
+        <label>Description</label>
+        <textarea id="mediaDescription" placeholder="Optional description"></textarea>
 
-        <select
-          id="mediaPage"
-          required
-        ></select>
-
-
-        <label>
-          Title
-        </label>
-
-        <input
-          type="text"
-          id="mediaTitle"
-          placeholder="Example: Graduation Photo"
-        >
-
-
-        <label>
-          Description
-        </label>
-
-        <textarea
-          id="mediaDescription"
-          placeholder="Optional description"
-        ></textarea>
-
-
-        <label>
-          Type
-        </label>
-
+        <label>Type</label>
         <select id="mediaType">
-
-          <option value="image">
-            Image
-          </option>
-
-          <option value="gallery">
-            Gallery Image
-          </option>
-
-          <option value="cv">
-            CV
-          </option>
-
-          <option value="document">
-            Document
-          </option>
-
+          <option value="image">Image</option>
+          <option value="gallery">Gallery Image</option>
+          <option value="cv">CV</option>
+          <option value="document">Document</option>
         </select>
 
+        <label>Choose File</label>
+        <input type="file" id="mediaFile" accept="image/*,.pdf,.doc,.docx,.txt" required>
 
-        <label>
-          Choose File
-        </label>
+        <div class="hint">Maximum file size: 10 MB. Examples: JPG, PNG, WebP, PDF, DOC, DOCX, TXT.</div>
 
-        <input
-          type="file"
-          id="mediaFile"
-          accept="image/*,.pdf,.doc,.docx,.txt"
-          required
-        >
+        <button type="submit" class="upload-btn" id="uploadButton">Upload File</button>
 
-
-        <div class="hint">
-
-          Maximum file size:
-          10 MB.
-
-          <br>
-
-          Supported examples:
-          JPG, PNG, WebP, PDF,
-          DOC, DOCX and TXT.
-
-        </div>
-
-
-        <button
-          type="submit"
-          class="upload-btn"
-          id="uploadButton"
-        >
-          Upload File
-        </button>
-
-
-        <div
-          id="mediaMessage"
-          class="message"
-        ></div>
-
+        <div id="mediaMessage" class="message"></div>
       </form>
-
     </section>
-
-
-
-    <!-- FILE LIST -->
 
     <section class="panel">
+      <h2>Uploaded Files</h2>
 
-      <h2>
-        Uploaded Files
-      </h2>
+      <label>Show files for page</label>
+      <select id="mediaListPage" onchange="loadMedia()"></select>
 
-
-      <label>
-        Show files for page
-      </label>
-
-      <select
-        id="mediaListPage"
-        onchange="loadMedia()"
-      ></select>
-
-
-      <div
-        id="mediaList"
-        style="margin-top:20px;"
-      >
-
-        <div class="empty">
-          Select a page.
-        </div>
-
+      <div id="mediaList" style="margin-top:20px;">
+        <div class="empty">Select a page.</div>
       </div>
-
     </section>
 
-
   </main>
-
 </div>
 
+<!-- ================= SITE SETTINGS ================= -->
+<div id="settingsTab" class="tab-section">
+  <main class="settings-layout">
 
+    <section class="panel">
+      <h2>Site Settings</h2>
 
-<script
-  src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
-</script>
+      <div class="section-note">
+        Changes here will later be loaded by the public website automatically.
+      </div>
 
+      <form id="settingsForm">
+
+        <label>Site Name</label>
+        <input type="text" id="siteName" required>
+
+        <label>Hero Label</label>
+        <input type="text" id="heroLabel" placeholder="PORTFOLIO OF">
+
+        <label>Homepage Intro</label>
+        <textarea id="introText"></textarea>
+
+        <label>Footer Text</label>
+        <input type="text" id="footerText">
+
+        <button type="submit" id="settingsSaveButton" class="primary-btn">
+          Save Site Settings
+        </button>
+
+        <div id="settingsMessage" class="message"></div>
+      </form>
+    </section>
+
+    <section class="panel profile-box">
+      <h2>Profile Picture</h2>
+
+      <div class="profile-preview" id="profilePreview">
+        No Photo
+      </div>
+
+      <input type="file" id="profileFile" accept="image/*">
+
+      <div class="hint">
+        JPG, PNG or WebP recommended. Maximum 5 MB.
+      </div>
+
+      <button type="button" id="profileUploadButton" class="primary-btn" onclick="updateProfilePhoto()">
+        Update Profile Picture
+      </button>
+
+      <button type="button" class="danger-wide" onclick="removeProfilePhoto()">
+        Remove Profile Picture
+      </button>
+
+      <div id="profileMessage" class="message"></div>
+    </section>
+
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
+  const SUPABASE_URL = "https://clyqhkpvhqeukgblklbu.supabase.co";
+  const SUPABASE_KEY = "sb_publishable_MRdyQEcrzKMaeFnHJ5gKMg_4c8EGRAY";
 
-  /* ===========================
-     SUPABASE
-  =========================== */
-
-  const SUPABASE_URL =
-    "https://clyqhkpvhqeukgblklbu.supabase.co";
-
-
-  const SUPABASE_KEY =
-    "sb_publishable_MRdyQEcrzKMaeFnHJ5gKMg_4c8EGRAY";
-
-
-  const supabaseClient =
-    window.supabase.createClient(
-      SUPABASE_URL,
-      SUPABASE_KEY
-    );
-
+  const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
 
   let pages = [];
 
-
-  /* ===========================
-     TOKEN
-  =========================== */
-
   function getToken() {
-
-    return sessionStorage.getItem(
-      "portfolio_admin_token"
-    );
-
+    return sessionStorage.getItem("portfolio_admin_token");
   }
 
+  function showTab(tabId, button) {
+    document.querySelectorAll(".tab-section").forEach(section => section.classList.remove("active"));
+    document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
 
-  /* ===========================
-     TAB
-  =========================== */
+    document.getElementById(tabId).classList.add("active");
+    button.classList.add("active");
 
-  function showTab(
-    tabId,
-    button
-  ) {
-
-    document
-      .querySelectorAll(
-        ".tab-section"
-      )
-      .forEach(
-        section =>
-          section.classList.remove(
-            "active"
-          )
-      );
-
-
-    document
-      .querySelectorAll(
-        ".tab-btn"
-      )
-      .forEach(
-        btn =>
-          btn.classList.remove(
-            "active"
-          )
-      );
-
-
-    document
-      .getElementById(
-        tabId
-      )
-      .classList.add(
-        "active"
-      );
-
-
-    button.classList.add(
-      "active"
-    );
-
-
-    if (
-      tabId ===
-      "mediaTab"
-    ) {
-
+    if (tabId === "mediaTab") {
       populatePageSelects();
-
       loadMedia();
-
     }
 
+    if (tabId === "settingsTab") {
+      loadSiteSettings();
+    }
   }
-
-
-  /* ===========================
-     CHECK LOGIN
-  =========================== */
 
   async function checkLogin() {
-
-    const token =
-      getToken();
-
+    const token = getToken();
 
     if (!token) {
-
       goToLogin();
-
       return false;
-
     }
 
+    const { data, error } = await supabaseClient.rpc(
+      "check_admin_session",
+      { p_token: token }
+    );
 
-    const { data, error } =
-      await supabaseClient.rpc(
-        "check_admin_session",
-        {
-          p_token: token
-        }
-      );
-
-
-    if (
-      error ||
-      !data ||
-      data.valid !== true
-    ) {
-
+    if (error || !data || data.valid !== true) {
       clearSession();
-
       goToLogin();
-
       return false;
-
     }
 
-
-    document
-      .getElementById(
-        "currentUser"
-      )
-      .textContent =
-      "Logged in: " +
-      data.username;
-
+    document.getElementById("currentUser").textContent =
+      "Logged in: " + data.username;
 
     return true;
-
   }
-
-
-  /* ===========================
-     LOAD PAGES
-  =========================== */
 
   async function loadPages() {
-
-    const { data, error } =
-      await supabaseClient.rpc(
-        "admin_get_pages",
-        {
-          p_token:
-            getToken()
-        }
-      );
-
+    const { data, error } = await supabaseClient.rpc(
+      "admin_get_pages",
+      { p_token: getToken() }
+    );
 
     if (error) {
-
-      handleError(
-        error,
-        "pageMessage"
-      );
-
+      handleError(error, "pageMessage");
       return;
-
     }
 
-
-    pages =
-      data || [];
-
-
+    pages = data || [];
     renderPages();
-
     populatePageSelects();
-
     setNextMenuOrder();
-
   }
-
-
-  /* ===========================
-     RENDER PAGES
-  =========================== */
 
   function renderPages() {
-
-    const list =
-      document.getElementById(
-        "pageList"
-      );
-
-
+    const list = document.getElementById("pageList");
     list.innerHTML = "";
 
-
-    if (
-      pages.length === 0
-    ) {
-
-      list.innerHTML =
-        '<div class="empty">No pages found.</div>';
-
+    if (pages.length === 0) {
+      list.innerHTML = '<div class="empty">No pages found.</div>';
       return;
-
     }
 
+    pages.forEach(page => {
+      const item = document.createElement("div");
+      item.className = "page-item";
 
-    pages.forEach(
-      page => {
+      const info = document.createElement("div");
+      info.className = "page-info";
 
-        const item =
-          document.createElement(
-            "div"
-          );
+      const heading = document.createElement("h3");
+      heading.textContent = page.title;
 
+      const slug = document.createElement("div");
+      slug.className = "slug";
+      slug.textContent = "/" + page.slug;
 
-        item.className =
-          "page-item";
+      const preview = document.createElement("div");
+      preview.className = "preview";
+      preview.textContent = (page.content || "").substring(0, 120);
 
+      const badges = document.createElement("div");
+      badges.className = "badges";
 
-        const info =
-          document.createElement(
-            "div"
-          );
+      const badgeTexts = [
+        page.visible ? "Visible" : "Hidden",
+        page.show_in_menu ? "In Menu" : "Not in Menu",
+        "Order: " + page.menu_order
+      ];
 
+      if (page.is_home) badgeTexts.push("Home");
 
-        info.className =
-          "page-info";
+      badgeTexts.forEach(text => {
+        const badge = document.createElement("span");
+        badge.className = "badge";
+        badge.textContent = text;
+        badges.appendChild(badge);
+      });
 
+      info.appendChild(heading);
+      info.appendChild(slug);
+      info.appendChild(preview);
+      info.appendChild(badges);
 
-        const heading =
-          document.createElement(
-            "h3"
-          );
+      const actions = document.createElement("div");
+      actions.className = "actions";
 
+      actions.appendChild(makeActionButton("Edit", "edit-btn", () => editPage(page.id)));
+      actions.appendChild(makeActionButton(page.visible ? "Hide" : "Show", "visibility-btn", () => toggleVisibility(page.id)));
+      actions.appendChild(makeActionButton(page.show_in_menu ? "Remove Menu" : "Add Menu", "menu-btn", () => toggleMenu(page.id)));
 
-        heading.textContent =
-          page.title;
-
-
-        const slug =
-          document.createElement(
-            "div"
-          );
-
-
-        slug.className =
-          "slug";
-
-
-        slug.textContent =
-          "/" + page.slug;
-
-
-        const preview =
-          document.createElement(
-            "div"
-          );
-
-
-        preview.className =
-          "preview";
-
-
-        preview.textContent =
-          (
-            page.content || ""
-          ).substring(
-            0,
-            120
-          );
-
-
-        const badges =
-          document.createElement(
-            "div"
-          );
-
-
-        badges.className =
-          "badges";
-
-
-        badges.innerHTML =
-          `
-            <span class="badge">
-              ${page.visible
-                ? "Visible"
-                : "Hidden"}
-            </span>
-
-            <span class="badge">
-              ${page.show_in_menu
-                ? "In Menu"
-                : "Not in Menu"}
-            </span>
-
-            <span class="badge">
-              Order:
-              ${page.menu_order}
-            </span>
-
-            ${
-              page.is_home
-              ? '<span class="badge">Home</span>'
-              : ''
-            }
-          `;
-
-
-        info.appendChild(
-          heading
-        );
-
-        info.appendChild(
-          slug
-        );
-
-        info.appendChild(
-          preview
-        );
-
-        info.appendChild(
-          badges
-        );
-
-
-        const actions =
-          document.createElement(
-            "div"
-          );
-
-
-        actions.className =
-          "actions";
-
-
-        actions.innerHTML =
-          `
-            <button
-              class="edit-btn"
-              onclick="editPage('${page.id}')"
-            >
-              Edit
-            </button>
-
-            <button
-              class="visibility-btn"
-              onclick="toggleVisibility('${page.id}')"
-            >
-              ${
-                page.visible
-                ? "Hide"
-                : "Show"
-              }
-            </button>
-
-            <button
-              class="menu-btn"
-              onclick="toggleMenu('${page.id}')"
-            >
-              ${
-                page.show_in_menu
-                ? "Remove Menu"
-                : "Add Menu"
-              }
-            </button>
-
-            ${
-              !page.is_home
-              ?
-              `
-                <button
-                  class="delete-btn"
-                  onclick="deletePage('${page.id}')"
-                >
-                  Delete
-                </button>
-              `
-              :
-              ""
-            }
-          `;
-
-
-        item.appendChild(
-          info
-        );
-
-        item.appendChild(
-          actions
-        );
-
-
-        list.appendChild(
-          item
-        );
-
+      if (!page.is_home) {
+        actions.appendChild(makeActionButton("Delete", "delete-btn", () => deletePage(page.id)));
       }
-    );
 
+      item.appendChild(info);
+      item.appendChild(actions);
+      list.appendChild(item);
+    });
   }
 
+  function makeActionButton(text, className, handler) {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.textContent = text;
+    btn.className = className;
+    btn.onclick = handler;
+    return btn;
+  }
 
-  /* ===========================
-     SAVE PAGE
-  =========================== */
+  document.getElementById("pageForm").addEventListener(
+    "submit",
+    async function(event) {
+      event.preventDefault();
 
-  document
-    .getElementById(
-      "pageForm"
-    )
-    .addEventListener(
-      "submit",
-      async function(event) {
+      const editId = document.getElementById("editId").value;
 
-        event.preventDefault();
-
-
-        const editId =
-          document
-            .getElementById(
-              "editId"
-            )
-            .value;
-
-
-        const { data, error } =
-          await supabaseClient.rpc(
-            "admin_save_page",
-            {
-
-              p_token:
-                getToken(),
-
-              p_id:
-                editId || null,
-
-              p_title:
-                document
-                  .getElementById(
-                    "title"
-                  )
-                  .value,
-
-              p_slug:
-                document
-                  .getElementById(
-                    "slug"
-                  )
-                  .value,
-
-              p_content:
-                document
-                  .getElementById(
-                    "content"
-                  )
-                  .value,
-
-              p_visible:
-                document
-                  .getElementById(
-                    "visible"
-                  )
-                  .checked,
-
-              p_show_in_menu:
-                document
-                  .getElementById(
-                    "showInMenu"
-                  )
-                  .checked,
-
-              p_menu_order:
-                Number(
-                  document
-                    .getElementById(
-                      "menuOrder"
-                    )
-                    .value
-                )
-
-            }
-          );
-
-
-        if (error) {
-
-          handleError(
-            error,
-            "pageMessage"
-          );
-
-          return;
-
+      const { data, error } = await supabaseClient.rpc(
+        "admin_save_page",
+        {
+          p_token: getToken(),
+          p_id: editId || null,
+          p_title: document.getElementById("title").value,
+          p_slug: document.getElementById("slug").value,
+          p_content: document.getElementById("content").value,
+          p_visible: document.getElementById("visible").checked,
+          p_show_in_menu: document.getElementById("showInMenu").checked,
+          p_menu_order: Number(document.getElementById("menuOrder").value)
         }
+      );
 
-
-        if (
-          !data ||
-          data.success !== true
-        ) {
-
-          showMessage(
-            "pageMessage",
-            data?.message ||
-            "Unable to save page.",
-            "error"
-          );
-
-          return;
-
-        }
-
-
-        showMessage(
-          "pageMessage",
-          data.message,
-          "success"
-        );
-
-
-        resetForm();
-
-        await loadPages();
-
+      if (error) {
+        handleError(error, "pageMessage");
+        return;
       }
-    );
 
+      if (!data || data.success !== true) {
+        showMessage("pageMessage", data?.message || "Unable to save page.", "error");
+        return;
+      }
 
-  /* ===========================
-     EDIT PAGE
-  =========================== */
+      showMessage("pageMessage", data.message, "success");
+      resetForm();
+      await loadPages();
+    }
+  );
 
   function editPage(id) {
-
-    const page =
-      pages.find(
-        item =>
-          item.id === id
-      );
-
-
+    const page = pages.find(item => item.id === id);
     if (!page) return;
 
-
-    document
-      .getElementById(
-        "editId"
-      )
-      .value =
-      page.id;
-
-
-    document
-      .getElementById(
-        "title"
-      )
-      .value =
-      page.title;
-
-
-    document
-      .getElementById(
-        "slug"
-      )
-      .value =
-      page.slug;
-
-
-    document
-      .getElementById(
-        "content"
-      )
-      .value =
-      page.content || "";
-
-
-    document
-      .getElementById(
-        "menuOrder"
-      )
-      .value =
-      page.menu_order;
-
-
-    document
-      .getElementById(
-        "visible"
-      )
-      .checked =
-      page.visible;
-
-
-    document
-      .getElementById(
-        "showInMenu"
-      )
-      .checked =
-      page.show_in_menu;
-
-
-    document
-      .getElementById(
-        "formTitle"
-      )
-      .textContent =
-      "Edit Page";
-
-
-    document
-      .getElementById(
-        "cancelButton"
-      )
-      .style.display =
-      "block";
-
+    document.getElementById("editId").value = page.id;
+    document.getElementById("title").value = page.title;
+    document.getElementById("slug").value = page.slug;
+    document.getElementById("content").value = page.content || "";
+    document.getElementById("menuOrder").value = page.menu_order;
+    document.getElementById("visible").checked = page.visible;
+    document.getElementById("showInMenu").checked = page.show_in_menu;
+    document.getElementById("formTitle").textContent = "Edit Page";
+    document.getElementById("cancelButton").style.display = "block";
+    window.scrollTo({top:0,behavior:"smooth"});
   }
 
-
-  /* ===========================
-     TOGGLE VISIBILITY
-  =========================== */
-
-  async function toggleVisibility(
-    id
-  ) {
-
-    const { error } =
-      await supabaseClient.rpc(
-        "admin_toggle_visibility",
-        {
-          p_token:
-            getToken(),
-
-          p_id:
-            id
-        }
-      );
-
+  async function toggleVisibility(id) {
+    const { data, error } = await supabaseClient.rpc(
+      "admin_toggle_visibility",
+      { p_token: getToken(), p_id: id }
+    );
 
     if (error) {
-
-      handleError(
-        error,
-        "pageMessage"
-      );
-
+      handleError(error, "pageMessage");
       return;
-
     }
 
+    if (data && data.success === false) {
+      showMessage("pageMessage", data.message, "error");
+      return;
+    }
 
     await loadPages();
-
   }
 
-
-  /* ===========================
-     TOGGLE MENU
-  =========================== */
-
-  async function toggleMenu(
-    id
-  ) {
-
-    const { error } =
-      await supabaseClient.rpc(
-        "admin_toggle_menu",
-        {
-
-          p_token:
-            getToken(),
-
-          p_id:
-            id
-
-        }
-      );
-
+  async function toggleMenu(id) {
+    const { data, error } = await supabaseClient.rpc(
+      "admin_toggle_menu",
+      { p_token: getToken(), p_id: id }
+    );
 
     if (error) {
-
-      handleError(
-        error,
-        "pageMessage"
-      );
-
+      handleError(error, "pageMessage");
       return;
-
     }
 
+    if (data && data.success === false) {
+      showMessage("pageMessage", data.message, "error");
+      return;
+    }
 
     await loadPages();
-
   }
 
+  async function deletePage(id) {
+    if (!confirm("Delete this page?")) return;
 
-  /* ===========================
-     DELETE PAGE
-  =========================== */
-
-  async function deletePage(
-    id
-  ) {
-
-    if (
-      !confirm(
-        "Delete this page?"
-      )
-    ) {
-
-      return;
-
-    }
-
-
-    const { data, error } =
-      await supabaseClient.rpc(
-        "admin_delete_page",
-        {
-
-          p_token:
-            getToken(),
-
-          p_id:
-            id
-
-        }
-      );
-
+    const { data, error } = await supabaseClient.rpc(
+      "admin_delete_page",
+      { p_token: getToken(), p_id: id }
+    );
 
     if (error) {
-
-      handleError(
-        error,
-        "pageMessage"
-      );
-
+      handleError(error, "pageMessage");
       return;
-
     }
 
-
-    if (
-      data &&
-      data.success === false
-    ) {
-
-      showMessage(
-        "pageMessage",
-        data.message,
-        "error"
-      );
-
+    if (!data || data.success !== true) {
+      showMessage("pageMessage", data?.message || "Unable to delete page.", "error");
       return;
-
     }
-
 
     await loadPages();
-
   }
-
-
-  /* ===========================
-     RESET PAGE FORM
-  =========================== */
 
   function resetForm() {
-
-    document
-      .getElementById(
-        "pageForm"
-      )
-      .reset();
-
-
-    document
-      .getElementById(
-        "editId"
-      )
-      .value = "";
-
-
-    document
-      .getElementById(
-        "formTitle"
-      )
-      .textContent =
-      "Add New Page";
-
-
-    document
-      .getElementById(
-        "visible"
-      )
-      .checked =
-      true;
-
-
-    document
-      .getElementById(
-        "showInMenu"
-      )
-      .checked =
-      true;
-
-
-    document
-      .getElementById(
-        "cancelButton"
-      )
-      .style.display =
-      "none";
-
-
+    document.getElementById("pageForm").reset();
+    document.getElementById("editId").value = "";
+    document.getElementById("formTitle").textContent = "Add New Page";
+    document.getElementById("visible").checked = true;
+    document.getElementById("showInMenu").checked = true;
+    document.getElementById("cancelButton").style.display = "none";
     setNextMenuOrder();
-
   }
-
 
   function setNextMenuOrder() {
-
     let max = 0;
+    pages.forEach(page => {
+      const n = Number(page.menu_order) || 0;
+      if (n > max) max = n;
+    });
 
-
-    pages.forEach(
-      page => {
-
-        const n =
-          Number(
-            page.menu_order
-          ) || 0;
-
-
-        if (n > max) {
-          max = n;
-        }
-
-      }
-    );
-
-
-    document
-      .getElementById(
-        "menuOrder"
-      )
-      .value =
-      max + 1;
-
+    document.getElementById("menuOrder").value = max + 1;
   }
-
-
-  /* ===========================
-     POPULATE PAGE DROPDOWNS
-  =========================== */
 
   function populatePageSelects() {
+    const uploadSelect = document.getElementById("mediaPage");
+    const listSelect = document.getElementById("mediaListPage");
 
-    const uploadSelect =
-      document.getElementById(
-        "mediaPage"
-      );
-
-
-    const listSelect =
-      document.getElementById(
-        "mediaListPage"
-      );
-
-
-    const currentUpload =
-      uploadSelect.value;
-
-
-    const currentList =
-      listSelect.value;
-
+    const currentUpload = uploadSelect.value;
+    const currentList = listSelect.value;
 
     uploadSelect.innerHTML = "";
-
     listSelect.innerHTML = "";
 
+    pages.forEach(page => {
+      const option1 = document.createElement("option");
+      option1.value = page.id;
+      option1.textContent = page.title;
+      uploadSelect.appendChild(option1);
 
-    pages.forEach(
-      page => {
+      const option2 = option1.cloneNode(true);
+      listSelect.appendChild(option2);
+    });
 
-        const option1 =
-          document.createElement(
-            "option"
-          );
-
-
-        option1.value =
-          page.id;
-
-
-        option1.textContent =
-          page.title;
-
-
-        uploadSelect.appendChild(
-          option1
-        );
-
-
-        const option2 =
-          option1.cloneNode(
-            true
-          );
-
-
-        listSelect.appendChild(
-          option2
-        );
-
-      }
-    );
-
-
-    if (currentUpload) {
-
-      uploadSelect.value =
-        currentUpload;
-
-    }
-
-
-    if (currentList) {
-
-      listSelect.value =
-        currentList;
-
-    }
-
+    if (currentUpload) uploadSelect.value = currentUpload;
+    if (currentList) listSelect.value = currentList;
   }
 
-
-  /* ===========================
-     MEDIA UPLOAD
-  =========================== */
-
-  document
-    .getElementById(
-      "mediaForm"
-    )
-    .addEventListener(
-      "submit",
-      async function(event) {
-
-        event.preventDefault();
-
-
-        const fileInput =
-          document.getElementById(
-            "mediaFile"
-          );
-
-
-        const file =
-          fileInput.files[0];
-
-
-        if (!file) {
-
-          showMessage(
-            "mediaMessage",
-            "Please choose a file.",
-            "error"
-          );
-
-          return;
-
-        }
-
-
-        if (
-          file.size >
-          10 * 1024 * 1024
-        ) {
-
-          showMessage(
-            "mediaMessage",
-            "Maximum file size is 10 MB.",
-            "error"
-          );
-
-          return;
-
-        }
-
-
-        const uploadButton =
-          document.getElementById(
-            "uploadButton"
-          );
-
-
-        uploadButton.disabled =
-          true;
-
-
-        uploadButton.textContent =
-          "Uploading...";
-
-
-        try {
-
-
-          const base64 =
-            await fileToBase64(
-              file
-            );
-
-
-          const cleanBase64 =
-            base64.split(
-              ","
-            )[1];
-
-
-          const { data, error } =
-            await supabaseClient.rpc(
-              "admin_upload_media",
-              {
-
-                p_token:
-                  getToken(),
-
-                p_page_id:
-                  document
-                    .getElementById(
-                      "mediaPage"
-                    )
-                    .value,
-
-                p_file_name:
-                  file.name,
-
-                p_mime_type:
-                  file.type ||
-                  "application/octet-stream",
-
-                p_file_type:
-                  document
-                    .getElementById(
-                      "mediaType"
-                    )
-                    .value,
-
-                p_title:
-                  document
-                    .getElementById(
-                      "mediaTitle"
-                    )
-                    .value,
-
-                p_description:
-                  document
-                    .getElementById(
-                      "mediaDescription"
-                    )
-                    .value,
-
-                p_base64:
-                  cleanBase64
-
-              }
-            );
-
-
-          if (error) {
-
-            handleError(
-              error,
-              "mediaMessage"
-            );
-
-            return;
-
-          }
-
-
-          if (
-            !data ||
-            data.success !== true
-          ) {
-
-            showMessage(
-              "mediaMessage",
-              data?.message ||
-              "Upload failed.",
-              "error"
-            );
-
-            return;
-
-          }
-
-
-          showMessage(
-            "mediaMessage",
-            "File uploaded successfully.",
-            "success"
-          );
-
-
-          document
-            .getElementById(
-              "mediaTitle"
-            )
-            .value = "";
-
-
-          document
-            .getElementById(
-              "mediaDescription"
-            )
-            .value = "";
-
-
-          fileInput.value = "";
-
-
-          document
-            .getElementById(
-              "mediaListPage"
-            )
-            .value =
-            document
-              .getElementById(
-                "mediaPage"
-              )
-              .value;
-
-
-          await loadMedia();
-
-
-        }
-
-        catch (error) {
-
-          console.error(
-            error
-          );
-
-
-          showMessage(
-            "mediaMessage",
-            "Upload failed.",
-            "error"
-          );
-
-        }
-
-        finally {
-
-          uploadButton.disabled =
-            false;
-
-
-          uploadButton.textContent =
-            "Upload File";
-
-        }
-
+  document.getElementById("mediaForm").addEventListener(
+    "submit",
+    async function(event) {
+      event.preventDefault();
+
+      const fileInput = document.getElementById("mediaFile");
+      const file = fileInput.files[0];
+
+      if (!file) {
+        showMessage("mediaMessage", "Please choose a file.", "error");
+        return;
       }
-    );
 
+      if (file.size > 10 * 1024 * 1024) {
+        showMessage("mediaMessage", "Maximum file size is 10 MB.", "error");
+        return;
+      }
 
-  /* ===========================
-     FILE TO BASE64
-  =========================== */
+      const uploadButton = document.getElementById("uploadButton");
+      uploadButton.disabled = true;
+      uploadButton.textContent = "Uploading...";
 
-  function fileToBase64(
-    file
-  ) {
+      try {
+        const base64 = await fileToBase64(file);
+        const cleanBase64 = base64.split(",")[1];
 
-    return new Promise(
-      (
-        resolve,
-        reject
-      ) => {
-
-        const reader =
-          new FileReader();
-
-
-        reader.onload =
-          () =>
-            resolve(
-              reader.result
-            );
-
-
-        reader.onerror =
-          reject;
-
-
-        reader.readAsDataURL(
-          file
+        const { data, error } = await supabaseClient.rpc(
+          "admin_upload_media",
+          {
+            p_token: getToken(),
+            p_page_id: document.getElementById("mediaPage").value,
+            p_file_name: file.name,
+            p_mime_type: file.type || "application/octet-stream",
+            p_file_type: document.getElementById("mediaType").value,
+            p_title: document.getElementById("mediaTitle").value,
+            p_description: document.getElementById("mediaDescription").value,
+            p_base64: cleanBase64
+          }
         );
 
+        if (error) {
+          handleError(error, "mediaMessage");
+          return;
+        }
+
+        if (!data || data.success !== true) {
+          showMessage("mediaMessage", data?.message || "Upload failed.", "error");
+          return;
+        }
+
+        showMessage("mediaMessage", "File uploaded successfully.", "success");
+        document.getElementById("mediaTitle").value = "";
+        document.getElementById("mediaDescription").value = "";
+        fileInput.value = "";
+
+        document.getElementById("mediaListPage").value =
+          document.getElementById("mediaPage").value;
+
+        await loadMedia();
+
+      } catch (error) {
+        console.error(error);
+        showMessage("mediaMessage", "Upload failed.", "error");
+      } finally {
+        uploadButton.disabled = false;
+        uploadButton.textContent = "Upload File";
       }
-    );
+    }
+  );
 
+  function fileToBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
   }
-
-
-  /* ===========================
-     LOAD MEDIA
-  =========================== */
 
   async function loadMedia() {
-
-    const pageId =
-      document
-        .getElementById(
-          "mediaListPage"
-        )
-        .value;
-
-
-    const list =
-      document.getElementById(
-        "mediaList"
-      );
-
+    const pageId = document.getElementById("mediaListPage").value;
+    const list = document.getElementById("mediaList");
 
     if (!pageId) {
-
-      list.innerHTML =
-        '<div class="empty">No page selected.</div>';
-
+      list.innerHTML = '<div class="empty">No page selected.</div>';
       return;
-
     }
 
+    list.innerHTML = '<div class="loading">Loading files...</div>';
 
-    list.innerHTML =
-      '<div class="loading">Loading files...</div>';
-
-
-    const { data, error } =
-      await supabaseClient.rpc(
-        "get_public_media",
-        {
-          p_page_id:
-            pageId
-        }
-      );
-
-
-    if (error) {
-
-      console.error(
-        error
-      );
-
-
-      list.innerHTML =
-        '<div class="empty">Unable to load files.</div>';
-
-      return;
-
-    }
-
-
-    renderMedia(
-      data || []
+    const { data, error } = await supabaseClient.rpc(
+      "get_public_media",
+      { p_page_id: pageId }
     );
 
+    if (error) {
+      console.error(error);
+      list.innerHTML = '<div class="empty">Unable to load files.</div>';
+      return;
+    }
+
+    renderMedia(data || []);
   }
 
-
-  /* ===========================
-     RENDER MEDIA
-  =========================== */
-
-  function renderMedia(
-    media
-  ) {
-
-    const list =
-      document.getElementById(
-        "mediaList"
-      );
-
-
+  function renderMedia(media) {
+    const list = document.getElementById("mediaList");
     list.innerHTML = "";
 
-
-    if (
-      media.length === 0
-    ) {
-
-      list.innerHTML =
-        '<div class="empty">No files uploaded for this page.</div>';
-
+    if (media.length === 0) {
+      list.innerHTML = '<div class="empty">No files uploaded for this page.</div>';
       return;
-
     }
 
-
-    media.forEach(
-      item => {
-
-        const card =
-          document.createElement(
-            "div"
-          );
-
-
-        card.className =
-          "media-item";
-
-
-        const preview =
-          document.createElement(
-            "div"
-          );
-
-
-        preview.className =
-          "media-preview";
-
-
-        const dataUrl =
-          "data:" +
-          (
-            item.mime_type ||
-            "application/octet-stream"
-          ) +
-          ";base64," +
-          item.file_base64;
-
-
-        if (
-          item.mime_type &&
-          item.mime_type.startsWith(
-            "image/"
-          )
-        ) {
-
-          const img =
-            document.createElement(
-              "img"
-            );
-
-
-          img.src =
-            dataUrl;
-
-
-          preview.appendChild(
-            img
-          );
-
-        }
-
-        else if (
-          item.mime_type ===
-          "application/pdf"
-        ) {
-
-          preview.textContent =
-            "📄";
-
-        }
-
-        else {
-
-          preview.textContent =
-            "📁";
-
-        }
-
-
-        const info =
-          document.createElement(
-            "div"
-          );
-
-
-        info.className =
-          "media-info";
-
-
-        const title =
-          item.title ||
-          item.file_name;
-
-
-        info.innerHTML =
-          `
-            <h3>
-              ${escapeHtml(title)}
-            </h3>
-
-            <p>
-              ${escapeHtml(item.file_name)}
-            </p>
-
-            <p>
-              Type:
-              ${escapeHtml(item.file_type)}
-            </p>
-
-            <p>
-              Size:
-              ${formatBytes(item.file_size)}
-            </p>
-          `;
-
-
-        const actions =
-          document.createElement(
-            "div"
-          );
-
-
-        actions.className =
-          "media-actions";
-
-
-        const open =
-          document.createElement(
-            "a"
-          );
-
-
-        open.className =
-          "open-btn";
-
-
-        open.textContent =
-          "Open";
-
-
-        open.href =
-          dataUrl;
-
-
-        open.target =
-          "_blank";
-
-
-        open.rel =
-          "noopener";
-
-
-        const del =
-          document.createElement(
-            "button"
-          );
-
-
-        del.className =
-          "media-delete-btn";
-
-
-        del.textContent =
-          "Delete";
-
-
-        del.onclick =
-          function() {
-
-            deleteMedia(
-              item.id
-            );
-
-          };
-
-
-        actions.appendChild(
-          open
-        );
-
-
-        actions.appendChild(
-          del
-        );
-
-
-        card.appendChild(
-          preview
-        );
-
-
-        card.appendChild(
-          info
-        );
-
-
-        card.appendChild(
-          actions
-        );
-
-
-        list.appendChild(
-          card
-        );
-
+    media.forEach(item => {
+      const card = document.createElement("div");
+      card.className = "media-item";
+
+      const preview = document.createElement("div");
+      preview.className = "media-preview";
+
+      const dataUrl =
+        "data:" +
+        (item.mime_type || "application/octet-stream") +
+        ";base64," +
+        item.file_base64;
+
+      if (item.mime_type && item.mime_type.startsWith("image/")) {
+        const img = document.createElement("img");
+        img.src = dataUrl;
+        preview.appendChild(img);
+      } else if (item.mime_type === "application/pdf") {
+        preview.textContent = "📄";
+      } else {
+        preview.textContent = "📁";
       }
-    );
 
+      const info = document.createElement("div");
+      info.className = "media-info";
+
+      const heading = document.createElement("h3");
+      heading.textContent = item.title || item.file_name;
+
+      const p1 = document.createElement("p");
+      p1.textContent = item.file_name;
+
+      const p2 = document.createElement("p");
+      p2.textContent = "Type: " + item.file_type;
+
+      const p3 = document.createElement("p");
+      p3.textContent = "Size: " + formatBytes(item.file_size);
+
+      info.appendChild(heading);
+      info.appendChild(p1);
+      info.appendChild(p2);
+      info.appendChild(p3);
+
+      const actions = document.createElement("div");
+      actions.className = "media-actions";
+
+      const open = document.createElement("a");
+      open.className = "open-btn";
+      open.textContent = "Open";
+      open.href = dataUrl;
+      open.target = "_blank";
+      open.rel = "noopener";
+
+      const del = document.createElement("button");
+      del.className = "media-delete-btn";
+      del.textContent = "Delete";
+      del.onclick = () => deleteMedia(item.id);
+
+      actions.appendChild(open);
+      actions.appendChild(del);
+
+      card.appendChild(preview);
+      card.appendChild(info);
+      card.appendChild(actions);
+      list.appendChild(card);
+    });
   }
 
+  async function deleteMedia(id) {
+    if (!confirm("Delete this file?")) return;
 
-  /* ===========================
-     DELETE MEDIA
-  =========================== */
-
-  async function deleteMedia(
-    id
-  ) {
-
-    if (
-      !confirm(
-        "Delete this file?"
-      )
-    ) {
-
-      return;
-
-    }
-
-
-    const { data, error } =
-      await supabaseClient.rpc(
-        "admin_delete_media",
-        {
-
-          p_token:
-            getToken(),
-
-          p_media_id:
-            id
-
-        }
-      );
-
+    const { data, error } = await supabaseClient.rpc(
+      "admin_delete_media",
+      { p_token: getToken(), p_media_id: id }
+    );
 
     if (error) {
-
-      handleError(
-        error,
-        "mediaMessage"
-      );
-
+      handleError(error, "mediaMessage");
       return;
-
     }
 
-
-    if (
-      !data ||
-      data.success !== true
-    ) {
-
-      showMessage(
-        "mediaMessage",
-        data?.message ||
-        "Unable to delete file.",
-        "error"
-      );
-
+    if (!data || data.success !== true) {
+      showMessage("mediaMessage", data?.message || "Unable to delete file.", "error");
       return;
-
     }
 
-
-    showMessage(
-      "mediaMessage",
-      "File deleted successfully.",
-      "success"
-    );
-
-
+    showMessage("mediaMessage", "File deleted successfully.", "success");
     await loadMedia();
-
   }
 
+  /* ================= SITE SETTINGS ================= */
 
-  /* ===========================
-     HELPERS
-  =========================== */
-
-  function formatBytes(
-    bytes
-  ) {
-
-    bytes =
-      Number(bytes) || 0;
-
-
-    if (
-      bytes < 1024
-    ) {
-
-      return bytes +
-        " B";
-
-    }
-
-
-    if (
-      bytes <
-      1024 * 1024
-    ) {
-
-      return (
-        bytes / 1024
-      ).toFixed(1) +
-        " KB";
-
-    }
-
-
-    return (
-      bytes /
-      1024 /
-      1024
-    ).toFixed(1) +
-      " MB";
-
-  }
-
-
-  function escapeHtml(
-    text
-  ) {
-
-    const div =
-      document.createElement(
-        "div"
-      );
-
-
-    div.textContent =
-      text || "";
-
-
-    return div.innerHTML;
-
-  }
-
-
-  function showMessage(
-    elementId,
-    text,
-    type
-  ) {
-
-    const element =
-      document.getElementById(
-        elementId
-      );
-
-
-    element.textContent =
-      text;
-
-
-    element.className =
-      "message " +
-      type;
-
-  }
-
-
-  function handleError(
-    error,
-    messageId
-  ) {
-
-    console.error(
-      error
+  async function loadSiteSettings() {
+    const { data, error } = await supabaseClient.rpc(
+      "admin_get_site_settings",
+      { p_token: getToken() }
     );
 
-
-    const message =
-      (
-        error.message || ""
-      ).toLowerCase();
-
-
-    if (
-      message.includes(
-        "session"
-      )
-    ) {
-
-      clearSession();
-
-      goToLogin();
-
+    if (error) {
+      handleError(error, "settingsMessage");
       return;
-
     }
 
+    document.getElementById("siteName").value = data?.site_name || "";
+    document.getElementById("heroLabel").value = data?.hero_label || "";
+    document.getElementById("introText").value = data?.intro_text || "";
+    document.getElementById("footerText").value = data?.footer_text || "";
+
+    renderProfilePhoto(data);
+  }
+
+  function renderProfilePhoto(data) {
+    const preview = document.getElementById("profilePreview");
+    preview.innerHTML = "";
+
+    if (data?.profile_photo_base64 && data?.profile_photo_mime) {
+      const img = document.createElement("img");
+      img.src =
+        "data:" +
+        data.profile_photo_mime +
+        ";base64," +
+        data.profile_photo_base64;
+
+      preview.appendChild(img);
+    } else {
+      preview.textContent = "No Photo";
+    }
+  }
+
+  document.getElementById("settingsForm").addEventListener(
+    "submit",
+    async function(event) {
+      event.preventDefault();
+
+      const button = document.getElementById("settingsSaveButton");
+      button.disabled = true;
+      button.textContent = "Saving...";
+
+      try {
+        const { data, error } = await supabaseClient.rpc(
+          "admin_save_site_settings",
+          {
+            p_token: getToken(),
+            p_site_name: document.getElementById("siteName").value,
+            p_hero_label: document.getElementById("heroLabel").value,
+            p_intro_text: document.getElementById("introText").value,
+            p_footer_text: document.getElementById("footerText").value
+          }
+        );
+
+        if (error) {
+          handleError(error, "settingsMessage");
+          return;
+        }
+
+        if (!data || data.success !== true) {
+          showMessage("settingsMessage", data?.message || "Unable to save settings.", "error");
+          return;
+        }
+
+        showMessage("settingsMessage", data.message, "success");
+
+      } finally {
+        button.disabled = false;
+        button.textContent = "Save Site Settings";
+      }
+    }
+  );
+
+  async function updateProfilePhoto() {
+    const input = document.getElementById("profileFile");
+    const file = input.files[0];
+
+    if (!file) {
+      showMessage("profileMessage", "Please choose a picture.", "error");
+      return;
+    }
+
+    if (!file.type.startsWith("image/")) {
+      showMessage("profileMessage", "Please choose an image file.", "error");
+      return;
+    }
+
+    if (file.size > 5 * 1024 * 1024) {
+      showMessage("profileMessage", "Profile picture must be 5 MB or smaller.", "error");
+      return;
+    }
+
+    const button = document.getElementById("profileUploadButton");
+    button.disabled = true;
+    button.textContent = "Uploading...";
+
+    try {
+      const base64 = await fileToBase64(file);
+      const cleanBase64 = base64.split(",")[1];
+
+      const { data, error } = await supabaseClient.rpc(
+        "admin_update_profile_photo",
+        {
+          p_token: getToken(),
+          p_file_name: file.name,
+          p_mime_type: file.type,
+          p_base64: cleanBase64
+        }
+      );
+
+      if (error) {
+        handleError(error, "profileMessage");
+        return;
+      }
+
+      if (!data || data.success !== true) {
+        showMessage("profileMessage", data?.message || "Unable to update picture.", "error");
+        return;
+      }
+
+      showMessage("profileMessage", data.message, "success");
+      input.value = "";
+      await loadSiteSettings();
+
+    } catch (error) {
+      console.error(error);
+      showMessage("profileMessage", "Unable to update picture.", "error");
+    } finally {
+      button.disabled = false;
+      button.textContent = "Update Profile Picture";
+    }
+  }
+
+  async function removeProfilePhoto() {
+    if (!confirm("Remove the profile picture?")) return;
+
+    const { data, error } = await supabaseClient.rpc(
+      "admin_remove_profile_photo",
+      { p_token: getToken() }
+    );
+
+    if (error) {
+      handleError(error, "profileMessage");
+      return;
+    }
+
+    if (!data || data.success !== true) {
+      showMessage("profileMessage", data?.message || "Unable to remove picture.", "error");
+      return;
+    }
+
+    showMessage("profileMessage", data.message, "success");
+    await loadSiteSettings();
+  }
+
+  function formatBytes(bytes) {
+    bytes = Number(bytes) || 0;
+    if (bytes < 1024) return bytes + " B";
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + " KB";
+    return (bytes / 1024 / 1024).toFixed(1) + " MB";
+  }
+
+  function showMessage(elementId, text, type) {
+    const element = document.getElementById(elementId);
+    element.textContent = text;
+    element.className = "message " + type;
+  }
+
+  function handleError(error, messageId) {
+    console.error(error);
+
+    const message = (error.message || "").toLowerCase();
+
+    if (message.includes("session")) {
+      clearSession();
+      goToLogin();
+      return;
+    }
 
     showMessage(
       messageId,
-      error.message ||
-      "Something went wrong.",
+      error.message || "Something went wrong.",
       "error"
     );
-
   }
-
-
-  /* ===========================
-     LOGOUT
-  =========================== */
 
   async function logout() {
-
-    const token =
-      getToken();
-
+    const token = getToken();
 
     if (token) {
-
       await supabaseClient.rpc(
         "admin_logout",
-        {
-          p_token:
-            token
-        }
+        { p_token: token }
       );
-
     }
-
 
     clearSession();
-
     goToLogin();
-
   }
-
 
   function clearSession() {
-
-    sessionStorage.removeItem(
-      "portfolio_admin_token"
-    );
-
-
-    sessionStorage.removeItem(
-      "portfolio_admin_username"
-    );
-
-
-    sessionStorage.removeItem(
-      "portfolio_admin_role"
-    );
-
+    sessionStorage.removeItem("portfolio_admin_token");
+    sessionStorage.removeItem("portfolio_admin_username");
+    sessionStorage.removeItem("portfolio_admin_role");
   }
-
 
   function goToLogin() {
-
-    window.location.href =
-      "index.html";
-
+    window.location.href = "index.html";
   }
-
-
-  /* ===========================
-     START
-  =========================== */
 
   async function startDashboard() {
-
-    const valid =
-      await checkLogin();
-
-
-    if (!valid) {
-      return;
-    }
-
+    const valid = await checkLogin();
+    if (!valid) return;
 
     await loadPages();
-
   }
 
-
   startDashboard();
-
 </script>
-
 
 </body>
 </html>
