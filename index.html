@@ -13,16 +13,20 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: Arial, Helvetica, sans-serif;
       background: #f7f9fc;
       color: #18324a;
     }
 
-    /* NAVIGATION */
+    /* NAVBAR */
 
     .navbar {
-      background: white;
+      background: rgba(255,255,255,0.97);
       border-bottom: 1px solid #e5eaf0;
       position: sticky;
       top: 0;
@@ -48,20 +52,23 @@
 
     #dynamicMenu {
       display: flex;
-      gap: 30px;
+      gap: 28px;
       align-items: center;
+      flex-wrap: wrap;
     }
 
     #dynamicMenu a {
       text-decoration: none;
       color: #18324a;
-      font-size: 17px;
+      font-size: 16px;
       font-weight: 600;
+      transition: .2s;
     }
 
     #dynamicMenu a:hover {
       color: #e76576;
     }
+
 
     /* HERO */
 
@@ -87,7 +94,7 @@
       padding: 80px 25px;
 
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
+      grid-template-columns: 1.2fr .8fr;
       gap: 60px;
       align-items: center;
     }
@@ -118,10 +125,12 @@
       max-width: 650px;
       font-size: 20px;
       line-height: 1.8;
-      color: rgba(255,255,255,.88);
+      color: rgba(255,255,255,.9);
+      white-space: pre-line;
     }
 
-    /* PROFILE */
+
+    /* PROFILE CARD */
 
     .profile-card {
       background: white;
@@ -143,8 +152,7 @@
 
       border-radius: 50%;
 
-      margin: auto;
-      margin-bottom: 25px;
+      margin: 0 auto 25px;
 
       background: #e5eef1;
 
@@ -153,6 +161,8 @@
       justify-content: center;
 
       color: #6c7d87;
+
+      border: 7px solid #f7f9fc;
     }
 
     .profile-card h2 {
@@ -161,12 +171,13 @@
       font-size: 30px;
     }
 
+
     /* DYNAMIC CONTENT */
 
     #dynamicContent {
       max-width: 1100px;
       margin: auto;
-      padding: 30px 25px 80px;
+      padding: 35px 25px 80px;
     }
 
     .dynamic-section {
@@ -180,6 +191,8 @@
       box-shadow:
         0 10px 30px
         rgba(20,50,70,.08);
+
+      scroll-margin-top: 100px;
     }
 
     .dynamic-section h2 {
@@ -193,21 +206,45 @@
       line-height: 1.8;
       color: #60717f;
       font-size: 18px;
+      white-space: pre-line;
     }
+
+
+    /* STATUS */
+
+    .status-message {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 18px;
+      text-align: center;
+      color: #6b7885;
+    }
+
+
+    /* FOOTER */
 
     footer {
       background: #103249;
-      color: white;
-
+      color: rgba(255,255,255,.85);
       text-align: center;
       padding: 25px;
-
       font-size: 14px;
     }
+
 
     /* MOBILE */
 
     @media(max-width: 800px) {
+
+      .nav-container {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      #dynamicMenu {
+        justify-content: center;
+        gap: 18px;
+      }
 
       .hero-container {
         grid-template-columns: 1fr;
@@ -223,15 +260,38 @@
         font-size: 48px;
       }
 
-      .nav-container {
-        flex-direction: column;
-        gap: 15px;
+      .intro {
+        margin: auto;
       }
 
-      #dynamicMenu {
-        gap: 18px;
-        flex-wrap: wrap;
-        justify-content: center;
+      .profile-card {
+        max-width: 420px;
+        margin: auto;
+      }
+    }
+
+
+    @media(max-width: 500px) {
+
+      .hero h1 {
+        font-size: 40px;
+      }
+
+      .small-title {
+        font-size: 14px;
+        letter-spacing: 4px;
+      }
+
+      .logo {
+        font-size: 21px;
+      }
+
+      .dynamic-section {
+        padding: 30px 22px;
+      }
+
+      .dynamic-section h2 {
+        font-size: 32px;
       }
 
     }
@@ -252,11 +312,7 @@
         Fatema Nusrat Jahan
       </div>
 
-      <!--
-        MENU WILL BE CREATED AUTOMATICALLY
-        FROM DATABASE
-      -->
-
+      <!-- MENU COMES FROM SUPABASE -->
       <div id="dynamicMenu"></div>
 
     </div>
@@ -264,7 +320,7 @@
   </nav>
 
 
-  <!-- HOME -->
+  <!-- HOME HERO -->
 
   <section class="hero" id="home">
 
@@ -282,8 +338,9 @@
 
         <div class="line"></div>
 
+        <!-- HOME CONTENT FROM DATABASE -->
         <p class="intro">
-          Welcome to my portfolio.
+          Loading...
         </p>
 
       </div>
@@ -306,12 +363,15 @@
   </section>
 
 
-  <!--
-    ADMIN CREATED CONTENT
-    WILL LOAD HERE
-  -->
+  <!-- DATABASE PAGES LOAD HERE -->
 
-  <main id="dynamicContent"></main>
+  <main id="dynamicContent">
+
+    <div class="status-message" id="loadingMessage">
+      Loading portfolio...
+    </div>
+
+  </main>
 
 
   <footer>
@@ -319,62 +379,104 @@
   </footer>
 
 
+  <!-- SUPABASE -->
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
   <script>
 
-    /*
-    =========================================
-    TEMPORARY DATA
-    =========================================
+    const SUPABASE_URL =
+      "https://clyqhkpvhqeukgblklbu.supabase.co";
 
-    Later this array will be replaced by:
+    const SUPABASE_KEY =
+      "sb_publishable_MRdyQEcrzKMaeFnHJ5gKMg_4c8EGRAY";
 
-    fetch("OUR BACKEND API")
 
-    Admin Portal → Database → Website
+    const supabaseClient =
+      window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+      );
 
-    */
 
-    const pages = [
+    /* =============================
+       LOAD PAGES FROM DATABASE
+    ============================= */
 
-      {
-        title: "Home",
-        slug: "home",
-        showInMenu: true,
-        visible: true,
-        isHome: true
+    async function loadPages() {
+
+      const loadingMessage =
+        document.getElementById(
+          "loadingMessage"
+        );
+
+
+      const { data: pages, error } =
+        await supabaseClient
+          .from("pages")
+          .select("*")
+          .eq("visible", true)
+          .order(
+            "menu_order",
+            { ascending: true }
+          );
+
+
+      if (error) {
+
+        console.error(error);
+
+        loadingMessage.innerHTML =
+          "Unable to load portfolio.";
+
+        return;
       }
 
-    ];
+
+      loadingMessage.remove();
+
+      createMenu(pages);
+      createPages(pages);
+
+    }
 
 
-    /* ==============================
-       CREATE MENU AUTOMATICALLY
-    ============================== */
 
-    function createMenu() {
+    /* =============================
+       CREATE NAVIGATION
+    ============================= */
+
+    function createMenu(pages) {
 
       const menu =
-        document.getElementById("dynamicMenu");
+        document.getElementById(
+          "dynamicMenu"
+        );
 
       menu.innerHTML = "";
 
 
-      const visiblePages =
-        pages.filter(page =>
-          page.visible &&
-          page.showInMenu
+      const menuPages =
+        pages.filter(
+          page =>
+            page.show_in_menu === true
         );
 
 
-      visiblePages.forEach(page => {
+      menuPages.forEach(page => {
 
         const link =
           document.createElement("a");
 
 
-        if (page.isHome) {
+        link.textContent =
+          page.title;
 
-          link.href = "#home";
+
+        if (page.is_home) {
+
+          link.href =
+            "#home";
 
         } else {
 
@@ -384,10 +486,6 @@
         }
 
 
-        link.textContent =
-          page.title;
-
-
         menu.appendChild(link);
 
       });
@@ -395,11 +493,12 @@
     }
 
 
-    /* ==============================
-       CREATE PAGE CONTENT
-    ============================== */
 
-    function createPages() {
+    /* =============================
+       CREATE WEBSITE CONTENT
+    ============================= */
+
+    function createPages(pages) {
 
       const container =
         document.getElementById(
@@ -409,21 +508,41 @@
 
       pages.forEach(page => {
 
-        /*
-        Home already has hero,
-        so don't create another Home section.
-        */
 
-        if (
-          page.isHome ||
-          !page.visible
-        ) {
+        /* HOME */
+
+        if (page.is_home) {
+
+          const intro =
+            document.querySelector(
+              ".intro"
+            );
+
+
+          if (page.content) {
+
+            intro.textContent =
+              page.content;
+
+          } else {
+
+            intro.textContent =
+              "Welcome to my portfolio.";
+
+          }
+
+
           return;
         }
 
 
+
+        /* OTHER PAGES */
+
         const section =
-          document.createElement("section");
+          document.createElement(
+            "section"
+          );
 
 
         section.className =
@@ -434,28 +553,52 @@
           page.slug;
 
 
-        section.innerHTML = `
 
-          <h2>
-            ${page.title}
-          </h2>
-
-          <p>
-            ${page.content || ""}
-          </p>
-
-        `;
+        const heading =
+          document.createElement(
+            "h2"
+          );
 
 
-        container.appendChild(section);
+        heading.textContent =
+          page.title;
+
+
+
+        const content =
+          document.createElement(
+            "p"
+          );
+
+
+        content.textContent =
+          page.content || "";
+
+
+
+        section.appendChild(
+          heading
+        );
+
+
+        section.appendChild(
+          content
+        );
+
+
+        container.appendChild(
+          section
+        );
 
       });
 
     }
 
 
-    createMenu();
-    createPages();
+
+    /* START */
+
+    loadPages();
 
   </script>
 
