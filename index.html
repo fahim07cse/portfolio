@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Fatema Nusrat Jahan</title>
 
   <style>
@@ -12,79 +13,66 @@
       box-sizing: border-box;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
       font-family: Arial, Helvetica, sans-serif;
       background: #f7f9fc;
       color: #18324a;
     }
 
-    /* NAVBAR */
+    /* NAVIGATION */
 
     .navbar {
+      background: white;
+      border-bottom: 1px solid #e5eaf0;
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid #e5eaf0;
     }
 
     .nav-container {
       max-width: 1200px;
       margin: auto;
-      padding: 16px 24px;
+      padding: 18px 25px;
 
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
     }
 
     .logo {
       font-family: Georgia, serif;
       font-size: 25px;
-      font-weight: 700;
-      color: #0b526a;
-      text-decoration: none;
+      font-weight: bold;
+      color: #075c73;
     }
 
-    .nav-links {
+    #dynamicMenu {
       display: flex;
-      gap: 28px;
+      gap: 30px;
       align-items: center;
     }
 
-    .nav-links a {
-      color: #18324a;
+    #dynamicMenu a {
       text-decoration: none;
-      font-size: 16px;
+      color: #18324a;
+      font-size: 17px;
       font-weight: 600;
     }
 
-    .nav-links a:hover {
-      color: #e75f70;
-    }
-
-    .admin-link {
-      background: #076b84;
-      color: white !important;
-      padding: 10px 18px;
-      border-radius: 6px;
+    #dynamicMenu a:hover {
+      color: #e76576;
     }
 
     /* HERO */
 
     .hero {
-      min-height: 88vh;
-      background:
-        linear-gradient(
-          135deg,
-          rgba(21, 61, 98, 0.97),
-          rgba(0, 132, 145, 0.94)
-        );
+      min-height: 85vh;
+
+      background: linear-gradient(
+        135deg,
+        #173e64,
+        #008590
+      );
 
       color: white;
 
@@ -96,7 +84,7 @@
       max-width: 1200px;
       width: 100%;
       margin: auto;
-      padding: 80px 24px;
+      padding: 80px 25px;
 
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
@@ -105,292 +93,149 @@
     }
 
     .small-title {
-      font-size: 18px;
-      font-weight: 700;
+      font-size: 17px;
       letter-spacing: 6px;
+      font-weight: bold;
       margin-bottom: 20px;
     }
 
     .hero h1 {
       font-family: Georgia, serif;
       font-size: 68px;
-      font-weight: 400;
+      font-weight: normal;
       line-height: 1.05;
-      margin-bottom: 25px;
     }
 
-    .accent-line {
+    .line {
       width: 140px;
       height: 7px;
       background: #ff7080;
+      margin: 30px 0;
       border-radius: 20px;
-      margin-bottom: 30px;
     }
 
-    .hero-description {
+    .intro {
       max-width: 650px;
-      font-size: 21px;
-      line-height: 1.7;
-      color: rgba(255, 255, 255, 0.88);
-      margin-bottom: 35px;
+      font-size: 20px;
+      line-height: 1.8;
+      color: rgba(255,255,255,.88);
     }
 
-    .hero-buttons {
-      display: flex;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
+    /* PROFILE */
 
-    .btn {
-      display: inline-block;
-      text-decoration: none;
-      padding: 15px 25px;
-      border-radius: 7px;
-      font-size: 17px;
-      font-weight: 700;
-    }
-
-    .primary-btn {
-      background: #ff7080;
-      color: white;
-    }
-
-    .secondary-btn {
-      border: 2px solid rgba(255, 255, 255, 0.75);
-      color: white;
-    }
-
-    .hero-card {
+    .profile-card {
       background: white;
       color: #18324a;
+
+      padding: 40px;
       border-radius: 18px;
-      padding: 45px 35px;
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+
       text-align: center;
+
+      box-shadow:
+        0 25px 60px
+        rgba(0,0,0,.18);
     }
 
-    .photo-placeholder {
+    .profile-photo {
       width: 210px;
       height: 210px;
-      margin: 0 auto 25px;
 
       border-radius: 50%;
 
+      margin: auto;
+      margin-bottom: 25px;
+
+      background: #e5eef1;
+
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
 
-      background:
-        linear-gradient(
-          135deg,
-          #edf2f6,
-          #d7e6ea
-        );
-
-      color: #537181;
-      font-size: 18px;
-
-      border: 7px solid #f7f9fc;
-      box-shadow: 0 10px 30px rgba(0,0,0,.12);
+      color: #6c7d87;
     }
 
-    .hero-card h2 {
+    .profile-card h2 {
       font-family: Georgia, serif;
-      font-size: 31px;
       color: #075c73;
-      margin-bottom: 12px;
+      font-size: 30px;
     }
 
-    .hero-card p {
-      color: #71808e;
-      line-height: 1.6;
-    }
+    /* DYNAMIC CONTENT */
 
-    /* GENERAL SECTION */
-
-    section {
-      padding: 90px 24px;
-    }
-
-    .section-container {
+    #dynamicContent {
       max-width: 1100px;
       margin: auto;
+      padding: 30px 25px 80px;
     }
 
-    .section-heading {
-      text-align: center;
-      margin-bottom: 50px;
-    }
-
-    .section-heading span {
-      color: #e76576;
-      font-size: 15px;
-      font-weight: 700;
-      letter-spacing: 5px;
-    }
-
-    .section-heading h2 {
-      font-family: Georgia, serif;
-      font-size: 44px;
-      margin-top: 12px;
-      color: #123e57;
-    }
-
-    /* ABOUT */
-
-    .about {
+    .dynamic-section {
       background: white;
-    }
 
-    .about-card {
-      max-width: 850px;
-      margin: auto;
-      font-size: 19px;
-      line-height: 1.9;
-      color: #526575;
-      text-align: center;
-    }
+      margin-top: 35px;
+      padding: 45px;
 
-    /* PORTFOLIO SECTIONS */
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
-    }
-
-    .card {
-      background: white;
       border-radius: 12px;
-      padding: 32px;
 
       box-shadow:
-        0 12px 30px
-        rgba(22, 55, 78, 0.08);
-
-      transition: 0.25s;
+        0 10px 30px
+        rgba(20,50,70,.08);
     }
 
-    .card:hover {
-      transform: translateY(-5px);
-    }
-
-    .card-icon {
-      font-size: 35px;
+    .dynamic-section h2 {
+      font-family: Georgia, serif;
+      font-size: 38px;
+      color: #075c73;
       margin-bottom: 20px;
     }
 
-    .card h3 {
-      font-size: 23px;
-      margin-bottom: 12px;
-      color: #075c73;
-    }
-
-    .card p {
-      color: #6d7d89;
-      line-height: 1.7;
-    }
-
-    /* CONTACT */
-
-    .contact {
-      background:
-        linear-gradient(
-          135deg,
-          #153d62,
-          #047b88
-        );
-      color: white;
-    }
-
-    .contact .section-heading h2,
-    .contact .section-heading span {
-      color: white;
-    }
-
-    .contact-box {
-      max-width: 700px;
-      margin: auto;
-      text-align: center;
-      font-size: 19px;
+    .dynamic-section p {
       line-height: 1.8;
-      color: rgba(255, 255, 255, 0.9);
+      color: #60717f;
+      font-size: 18px;
     }
-
-    /* FOOTER */
 
     footer {
       background: #103249;
-      color: rgba(255, 255, 255, 0.8);
+      color: white;
+
       text-align: center;
       padding: 25px;
-      font-size: 15px;
+
+      font-size: 14px;
     }
 
     /* MOBILE */
 
-    @media(max-width: 850px) {
+    @media(max-width: 800px) {
 
       .hero-container {
         grid-template-columns: 1fr;
         text-align: center;
       }
 
-      .accent-line {
+      .line {
         margin-left: auto;
         margin-right: auto;
       }
 
-      .hero-description {
-        margin-left: auto;
-        margin-right: auto;
+      .hero h1 {
+        font-size: 48px;
       }
 
-      .hero-buttons {
+      .nav-container {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      #dynamicMenu {
+        gap: 18px;
+        flex-wrap: wrap;
         justify-content: center;
       }
 
-      .hero-card {
-        max-width: 420px;
-        margin: auto;
-      }
-
-      .cards {
-        grid-template-columns: 1fr;
-      }
-
-      .nav-links a:not(.admin-link) {
-        display: none;
-      }
-
-      .hero h1 {
-        font-size: 50px;
-      }
     }
 
-    @media(max-width: 500px) {
-
-      .hero h1 {
-        font-size: 40px;
-      }
-
-      .small-title {
-        font-size: 14px;
-        letter-spacing: 4px;
-      }
-
-      .hero-description {
-        font-size: 18px;
-      }
-
-      .section-heading h2 {
-        font-size: 35px;
-      }
-
-      .logo {
-        font-size: 20px;
-      }
-    }
   </style>
 </head>
 
@@ -400,26 +245,26 @@
   <!-- NAVIGATION -->
 
   <nav class="navbar">
+
     <div class="nav-container">
 
-      <a href="#" class="logo">
+      <div class="logo">
         Fatema Nusrat Jahan
-      </a>
-
-      <div class="nav-links">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#contact">Contact</a>
-
-    
       </div>
 
+      <!--
+        MENU WILL BE CREATED AUTOMATICALLY
+        FROM DATABASE
+      -->
+
+      <div id="dynamicMenu"></div>
+
     </div>
+
   </nav>
 
 
-  <!-- HERO -->
+  <!-- HOME -->
 
   <section class="hero" id="home">
 
@@ -435,31 +280,18 @@
           Fatema Nusrat Jahan
         </h1>
 
-        <div class="accent-line"></div>
+        <div class="line"></div>
 
-        <p class="hero-description">
-          Welcome to my portfolio. This website presents my profile,
-          experience, education, achievements, work and professional journey.
+        <p class="intro">
+          Welcome to my portfolio.
         </p>
-
-        <div class="hero-buttons">
-
-          <a href="#about" class="btn primary-btn">
-            About Me
-          </a>
-
-          <a href="#portfolio" class="btn secondary-btn">
-            View Portfolio
-          </a>
-
-        </div>
 
       </div>
 
 
-      <div class="hero-card">
+      <div class="profile-card">
 
-        <div class="photo-placeholder">
+        <div class="profile-photo">
           Profile Photo
         </div>
 
@@ -467,10 +299,6 @@
           Fatema Nusrat Jahan
         </h2>
 
-        <p>
-          Personal profile, experience and achievements.
-        </p>
-
       </div>
 
     </div>
@@ -478,216 +306,158 @@
   </section>
 
 
-  <!-- ABOUT -->
+  <!--
+    ADMIN CREATED CONTENT
+    WILL LOAD HERE
+  -->
 
-  <section class="about" id="about">
+  <main id="dynamicContent"></main>
 
-    <div class="section-container">
-
-      <div class="section-heading">
-
-        <span>
-          ABOUT
-        </span>
-
-        <h2>
-          About Me
-        </h2>
-
-      </div>
-
-      <div class="about-card">
-
-        This section will contain Fatema Nusrat Jahan's personal
-        introduction and professional biography.
-
-        Later, this information will be controlled from the Admin Portal,
-        so the text can be updated without changing the website code.
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- PORTFOLIO -->
-
-  <section id="portfolio">
-
-    <div class="section-container">
-
-      <div class="section-heading">
-
-        <span>
-          PORTFOLIO
-        </span>
-
-        <h2>
-          Explore My Profile
-        </h2>
-
-      </div>
-
-
-      <div class="cards">
-
-        <div class="card">
-
-          <div class="card-icon">
-            🎓
-          </div>
-
-          <h3>
-            Education
-          </h3>
-
-          <p>
-            Academic qualifications, courses and educational achievements
-            will appear here.
-          </p>
-
-        </div>
-
-
-        <div class="card">
-
-          <div class="card-icon">
-            💼
-          </div>
-
-          <h3>
-            Experience
-          </h3>
-
-          <p>
-            Professional experience, responsibilities and career history
-            will be displayed here.
-          </p>
-
-        </div>
-
-
-        <div class="card">
-
-          <div class="card-icon">
-            🏆
-          </div>
-
-          <h3>
-            Achievements
-          </h3>
-
-          <p>
-            Awards, achievements, certifications and important milestones
-            can be added here.
-          </p>
-
-        </div>
-
-
-        <div class="card">
-
-          <div class="card-icon">
-            📁
-          </div>
-
-          <h3>
-            Projects
-          </h3>
-
-          <p>
-            Projects, professional work or other portfolio items can be
-            presented in this section.
-          </p>
-
-        </div>
-
-
-        <div class="card">
-
-          <div class="card-icon">
-            📷
-          </div>
-
-          <h3>
-            Gallery
-          </h3>
-
-          <p>
-            Photos and portfolio images uploaded through the Admin Portal
-            will be shown here.
-          </p>
-
-        </div>
-
-
-        <div class="card">
-
-          <div class="card-icon">
-            📄
-          </div>
-
-          <h3>
-            CV
-          </h3>
-
-          <p>
-            A downloadable CV or other important documents can be provided
-            from this section.
-          </p>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- CONTACT -->
-
-  <section class="contact" id="contact">
-
-    <div class="section-container">
-
-      <div class="section-heading">
-
-        <span>
-          CONTACT
-        </span>
-
-        <h2>
-          Get In Touch
-        </h2>
-
-      </div>
-
-
-      <div class="contact-box">
-
-        Contact information, email address and social links can be
-        displayed here.
-
-        <br><br>
-
-        These details will later be editable from the Admin Portal.
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- FOOTER -->
 
   <footer>
-
-    © 2026 Fatema Nusrat Jahan · All Rights Reserved
-
+    © 2026 Fatema Nusrat Jahan
   </footer>
+
+
+  <script>
+
+    /*
+    =========================================
+    TEMPORARY DATA
+    =========================================
+
+    Later this array will be replaced by:
+
+    fetch("OUR BACKEND API")
+
+    Admin Portal → Database → Website
+
+    */
+
+    const pages = [
+
+      {
+        title: "Home",
+        slug: "home",
+        showInMenu: true,
+        visible: true,
+        isHome: true
+      }
+
+    ];
+
+
+    /* ==============================
+       CREATE MENU AUTOMATICALLY
+    ============================== */
+
+    function createMenu() {
+
+      const menu =
+        document.getElementById("dynamicMenu");
+
+      menu.innerHTML = "";
+
+
+      const visiblePages =
+        pages.filter(page =>
+          page.visible &&
+          page.showInMenu
+        );
+
+
+      visiblePages.forEach(page => {
+
+        const link =
+          document.createElement("a");
+
+
+        if (page.isHome) {
+
+          link.href = "#home";
+
+        } else {
+
+          link.href =
+            "#" + page.slug;
+
+        }
+
+
+        link.textContent =
+          page.title;
+
+
+        menu.appendChild(link);
+
+      });
+
+    }
+
+
+    /* ==============================
+       CREATE PAGE CONTENT
+    ============================== */
+
+    function createPages() {
+
+      const container =
+        document.getElementById(
+          "dynamicContent"
+        );
+
+
+      pages.forEach(page => {
+
+        /*
+        Home already has hero,
+        so don't create another Home section.
+        */
+
+        if (
+          page.isHome ||
+          !page.visible
+        ) {
+          return;
+        }
+
+
+        const section =
+          document.createElement("section");
+
+
+        section.className =
+          "dynamic-section";
+
+
+        section.id =
+          page.slug;
+
+
+        section.innerHTML = `
+
+          <h2>
+            ${page.title}
+          </h2>
+
+          <p>
+            ${page.content || ""}
+          </p>
+
+        `;
+
+
+        container.appendChild(section);
+
+      });
+
+    }
+
+
+    createMenu();
+    createPages();
+
+  </script>
 
 </body>
 </html>
