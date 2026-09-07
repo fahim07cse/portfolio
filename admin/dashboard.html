@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
 
   <meta
@@ -30,12 +32,10 @@
       color: #17324a;
     }
 
-
-    /* =========================
-       TOP BAR
-    ========================= */
+    /* TOPBAR */
 
     .topbar {
+
       background:
         linear-gradient(
           135deg,
@@ -68,38 +68,85 @@
 
     .top-actions {
       display: flex;
-      align-items: center;
       gap: 15px;
-    }
-
-    .username {
-      font-size: 14px;
+      align-items: center;
     }
 
     .logout-btn {
-      border: 1px solid rgba(255,255,255,.6);
+
+      border:
+        1px solid rgba(255,255,255,.6);
+
       background: transparent;
+
       color: white;
 
       padding: 10px 16px;
 
       border-radius: 6px;
+
       cursor: pointer;
     }
 
-    .logout-btn:hover {
-      background: rgba(255,255,255,.1);
-    }
+    /* TABS */
 
+    .tabs {
 
-    /* =========================
-       LAYOUT
-    ========================= */
-
-    .layout {
       max-width: 1250px;
 
-      margin: 35px auto;
+      margin: 25px auto 0;
+
+      padding: 0 20px;
+
+      display: flex;
+
+      gap: 10px;
+
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+
+      border: none;
+
+      background: white;
+
+      color: #315064;
+
+      padding: 12px 20px;
+
+      border-radius: 8px;
+
+      cursor: pointer;
+
+      font-weight: bold;
+
+      box-shadow:
+        0 5px 15px
+        rgba(20,50,70,.06);
+    }
+
+    .tab-btn.active {
+
+      background: #086a82;
+      color: white;
+    }
+
+    .tab-section {
+      display: none;
+    }
+
+    .tab-section.active {
+      display: block;
+    }
+
+    /* LAYOUT */
+
+    .layout {
+
+      max-width: 1250px;
+
+      margin: 25px auto;
 
       padding: 0 20px 60px;
 
@@ -111,7 +158,24 @@
       gap: 25px;
     }
 
+    .media-layout {
+
+      max-width: 1250px;
+
+      margin: 25px auto;
+
+      padding: 0 20px 60px;
+
+      display: grid;
+
+      grid-template-columns:
+        400px 1fr;
+
+      gap: 25px;
+    }
+
     .panel {
+
       background: white;
 
       border-radius: 12px;
@@ -124,6 +188,7 @@
     }
 
     .panel h2 {
+
       color: #075c73;
 
       font-family: Georgia, serif;
@@ -133,12 +198,10 @@
       margin-bottom: 20px;
     }
 
-
-    /* =========================
-       FORM
-    ========================= */
+    /* FORM */
 
     label {
+
       display: block;
 
       margin-top: 15px;
@@ -148,33 +211,27 @@
     }
 
     input,
-    textarea {
+    textarea,
+    select {
 
       width: 100%;
 
       padding: 12px;
 
-      border: 1px solid #ccd5dd;
+      border:
+        1px solid #ccd5dd;
 
       border-radius: 6px;
 
       font-size: 15px;
 
-      outline: none;
-    }
-
-    input:focus,
-    textarea:focus {
-
-      border-color: #078095;
-
-      box-shadow:
-        0 0 0 3px
-        rgba(0,128,149,.08);
+      background: white;
     }
 
     textarea {
-      min-height: 160px;
+
+      min-height: 140px;
+
       resize: vertical;
     }
 
@@ -197,20 +254,21 @@
 
       display: flex;
 
-      align-items: center;
-
       gap: 6px;
+
+      align-items: center;
     }
 
     .checkbox-row input {
       width: auto;
     }
 
-    .save-btn {
+    .save-btn,
+    .upload-btn {
 
       width: 100%;
 
-      margin-top: 23px;
+      margin-top: 22px;
 
       padding: 13px;
 
@@ -234,14 +292,12 @@
       cursor: pointer;
     }
 
-    .save-btn:disabled {
+    button:disabled {
       opacity: .6;
       cursor: not-allowed;
     }
 
     .cancel-btn {
-
-      display: none;
 
       width: 100%;
 
@@ -258,12 +314,11 @@
       color: white;
 
       cursor: pointer;
+
+      display: none;
     }
 
-
-    /* =========================
-       MESSAGE
-    ========================= */
+    /* MESSAGE */
 
     .message {
 
@@ -296,10 +351,7 @@
       color: #9c2b38;
     }
 
-
-    /* =========================
-       PAGE LIST
-    ========================= */
+    /* PAGE LIST */
 
     .page-item {
 
@@ -330,35 +382,26 @@
 
       color: #173e64;
 
-      font-size: 20px;
-
       margin-bottom: 6px;
     }
 
     .slug {
 
-      color: #778793;
-
       font-size: 13px;
+
+      color: #778793;
     }
 
     .preview {
 
-      margin-top: 10px;
+      margin-top: 9px;
 
       color: #657582;
 
       font-size: 14px;
 
       line-height: 1.5;
-
-      max-width: 550px;
     }
-
-
-    /* =========================
-       BADGES
-    ========================= */
 
     .badges {
       margin-top: 10px;
@@ -368,45 +411,25 @@
 
       display: inline-block;
 
-      margin-right: 5px;
-      margin-bottom: 5px;
-
-      padding: 5px 9px;
+      background: #eef3f6;
 
       border-radius: 20px;
 
-      background: #eef3f6;
+      padding: 5px 9px;
+
+      margin-right: 5px;
+      margin-bottom: 5px;
 
       font-size: 12px;
     }
-
-    .badge.home {
-      background: #e6f3ff;
-      color: #176098;
-    }
-
-    .badge.hidden {
-      background: #fff0d5;
-      color: #8a6200;
-    }
-
-
-    /* =========================
-       ACTION BUTTONS
-    ========================= */
 
     .actions {
 
       display: flex;
 
-      justify-content:
-        flex-end;
-
       gap: 7px;
 
       flex-wrap: wrap;
-
-      max-width: 300px;
     }
 
     .actions button {
@@ -418,8 +441,6 @@
       border-radius: 5px;
 
       cursor: pointer;
-
-      font-size: 13px;
     }
 
     .edit-btn {
@@ -442,32 +463,148 @@
       color: #a62c38;
     }
 
+    /* MEDIA */
 
-    /* =========================
-       EMPTY / LOADING
-    ========================= */
+    .media-item {
+
+      border:
+        1px solid #e1e7ec;
+
+      border-radius: 10px;
+
+      padding: 16px;
+
+      margin-bottom: 15px;
+
+      display: flex;
+
+      gap: 18px;
+
+      align-items: center;
+    }
+
+    .media-preview {
+
+      width: 90px;
+      height: 90px;
+
+      border-radius: 8px;
+
+      background: #eef3f6;
+
+      overflow: hidden;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      flex-shrink: 0;
+
+      font-size: 34px;
+    }
+
+    .media-preview img {
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+    }
+
+    .media-info {
+
+      flex: 1;
+      min-width: 0;
+    }
+
+    .media-info h3 {
+
+      color: #173e64;
+
+      margin-bottom: 6px;
+
+      word-break: break-word;
+    }
+
+    .media-info p {
+
+      color: #657582;
+
+      font-size: 13px;
+
+      margin-top: 4px;
+    }
+
+    .media-actions {
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 7px;
+    }
+
+    .open-btn,
+    .media-delete-btn {
+
+      border: none;
+
+      padding: 8px 12px;
+
+      border-radius: 5px;
+
+      cursor: pointer;
+
+      text-decoration: none;
+
+      text-align: center;
+
+      font-size: 13px;
+    }
+
+    .open-btn {
+
+      background: #e4f3f7;
+
+      color: #08657a;
+    }
+
+    .media-delete-btn {
+
+      background: #ffe3e5;
+
+      color: #a62c38;
+    }
+
+    .hint {
+
+      margin-top: 8px;
+
+      font-size: 12px;
+
+      color: #798995;
+
+      line-height: 1.5;
+    }
 
     .loading,
     .empty {
 
       text-align: center;
 
-      padding: 45px 10px;
+      padding: 40px;
 
       color: #71818d;
     }
 
-
-    /* =========================
-       MOBILE
-    ========================= */
-
     @media(max-width: 900px) {
 
-      .layout {
+      .layout,
+      .media-layout {
+
         grid-template-columns: 1fr;
       }
-
     }
 
     @media(max-width: 650px) {
@@ -479,87 +616,95 @@
         align-items: flex-start;
       }
 
-      .top-actions {
-
-        width: 100%;
-
-        justify-content:
-          space-between;
-      }
-
-      .page-item {
+      .page-item,
+      .media-item {
 
         flex-direction: column;
 
         align-items: flex-start;
       }
 
-      .actions {
+      .media-actions {
 
-        justify-content:
-          flex-start;
-
-        max-width: none;
+        flex-direction: row;
       }
-
     }
 
   </style>
+
 </head>
 
 
 <body>
 
 
-  <!-- =========================
-       TOP BAR
-  ========================== -->
+<header class="topbar">
 
-  <header class="topbar">
+  <div class="brand">
 
-    <div class="brand">
+    <h1>
+      Fatema Nusrat Jahan
+    </h1>
 
-      <h1>
-        Fatema Nusrat Jahan
-      </h1>
+    <p>
+      Admin Dashboard
+    </p>
 
-      <p>
-        Admin Dashboard
-      </p>
-
-    </div>
+  </div>
 
 
-    <div class="top-actions">
+  <div class="top-actions">
 
-      <div
-        class="username"
-        id="currentUser"
-      >
-        Checking login...
-      </div>
+    <span id="currentUser">
+      Checking...
+    </span>
 
-      <button
-        class="logout-btn"
-        onclick="logout()"
-      >
-        Log Out
-      </button>
+    <button
+      class="logout-btn"
+      onclick="logout()"
+    >
+      Log Out
+    </button>
 
-    </div>
+  </div>
 
-  </header>
+</header>
 
 
 
-  <!-- =========================
-       MAIN
-  ========================== -->
+<!-- TABS -->
+
+<div class="tabs">
+
+  <button
+    class="tab-btn active"
+    onclick="showTab('pagesTab', this)"
+  >
+    Pages
+  </button>
+
+  <button
+    class="tab-btn"
+    onclick="showTab('mediaTab', this)"
+  >
+    Media / Files
+  </button>
+
+</div>
+
+
+
+<!-- =========================
+     PAGE MANAGEMENT
+========================= -->
+
+<div
+  id="pagesTab"
+  class="tab-section active"
+>
 
   <main class="layout">
 
-
-    <!-- ADD / EDIT -->
 
     <section class="panel">
 
@@ -577,41 +722,39 @@
         >
 
 
-        <label for="title">
+        <label>
           Page Title
         </label>
 
         <input
           type="text"
           id="title"
-          placeholder="Example: Education"
           required
         >
 
 
-        <label for="slug">
+        <label>
           Page Slug
         </label>
 
         <input
           type="text"
           id="slug"
-          placeholder="Example: education"
+          placeholder="education"
           required
         >
 
 
-        <label for="content">
+        <label>
           Content
         </label>
 
         <textarea
           id="content"
-          placeholder="Write the page content here..."
         ></textarea>
 
 
-        <label for="menuOrder">
+        <label>
           Menu Order
         </label>
 
@@ -656,8 +799,8 @@
 
         <button
           type="submit"
-          class="save-btn"
           id="saveButton"
+          class="save-btn"
         >
           Save Page
         </button>
@@ -665,8 +808,8 @@
 
         <button
           type="button"
-          class="cancel-btn"
           id="cancelButton"
+          class="cancel-btn"
           onclick="resetForm()"
         >
           Cancel Edit
@@ -674,10 +817,9 @@
 
 
         <div
-          id="message"
+          id="pageMessage"
           class="message"
         ></div>
-
 
       </form>
 
@@ -685,14 +827,11 @@
 
 
 
-    <!-- MANAGE PAGES -->
-
     <section class="panel">
 
       <h2>
         Manage Pages
       </h2>
-
 
       <div id="pageList">
 
@@ -707,246 +846,405 @@
 
   </main>
 
-
-
-  <!-- SUPABASE -->
-
-  <script
-    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
-  </script>
-
-
-  <script>
-
-    /* =====================================
-       SUPABASE CONNECTION
-    ===================================== */
-
-    const SUPABASE_URL =
-      "https://clyqhkpvhqeukgblklbu.supabase.co";
-
-
-    const SUPABASE_KEY =
-      "sb_publishable_MRdyQEcrzKMaeFnHJ5gKMg_4c8EGRAY";
-
-
-    const supabaseClient =
-      window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_KEY
-      );
-
-
-    let pages = [];
-
-
-    /* =====================================
-       GET TOKEN
-    ===================================== */
-
-    function getToken() {
-
-      return sessionStorage.getItem(
-        "portfolio_admin_token"
-      );
-
-    }
+</div>
 
 
 
-    /* =====================================
-       LOGIN / SESSION CHECK
-    ===================================== */
+<!-- =========================
+     MEDIA
+========================= -->
 
-    async function checkLogin() {
+<div
+  id="mediaTab"
+  class="tab-section"
+>
 
-      const token =
-        getToken();
-
-
-      if (!token) {
-
-        goToLogin();
-
-        return false;
-
-      }
+  <main class="media-layout">
 
 
-      try {
+    <!-- UPLOAD -->
 
-        const { data, error } =
-          await supabaseClient.rpc(
-            "check_admin_session",
-            {
-              p_token: token
-            }
-          );
+    <section class="panel">
+
+      <h2>
+        Upload Media
+      </h2>
 
 
-        if (
-          error ||
-          !data ||
-          data.valid !== true
-        ) {
-
-          clearSession();
-
-          goToLogin();
-
-          return false;
-
-        }
+      <form id="mediaForm">
 
 
-        document
-          .getElementById(
-            "currentUser"
+        <label>
+          Select Page
+        </label>
+
+        <select
+          id="mediaPage"
+          required
+        ></select>
+
+
+        <label>
+          Title
+        </label>
+
+        <input
+          type="text"
+          id="mediaTitle"
+          placeholder="Example: Graduation Photo"
+        >
+
+
+        <label>
+          Description
+        </label>
+
+        <textarea
+          id="mediaDescription"
+          placeholder="Optional description"
+        ></textarea>
+
+
+        <label>
+          Type
+        </label>
+
+        <select id="mediaType">
+
+          <option value="image">
+            Image
+          </option>
+
+          <option value="gallery">
+            Gallery Image
+          </option>
+
+          <option value="cv">
+            CV
+          </option>
+
+          <option value="document">
+            Document
+          </option>
+
+        </select>
+
+
+        <label>
+          Choose File
+        </label>
+
+        <input
+          type="file"
+          id="mediaFile"
+          accept="image/*,.pdf,.doc,.docx,.txt"
+          required
+        >
+
+
+        <div class="hint">
+
+          Maximum file size:
+          10 MB.
+
+          <br>
+
+          Supported examples:
+          JPG, PNG, WebP, PDF,
+          DOC, DOCX and TXT.
+
+        </div>
+
+
+        <button
+          type="submit"
+          class="upload-btn"
+          id="uploadButton"
+        >
+          Upload File
+        </button>
+
+
+        <div
+          id="mediaMessage"
+          class="message"
+        ></div>
+
+      </form>
+
+    </section>
+
+
+
+    <!-- FILE LIST -->
+
+    <section class="panel">
+
+      <h2>
+        Uploaded Files
+      </h2>
+
+
+      <label>
+        Show files for page
+      </label>
+
+      <select
+        id="mediaListPage"
+        onchange="loadMedia()"
+      ></select>
+
+
+      <div
+        id="mediaList"
+        style="margin-top:20px;"
+      >
+
+        <div class="empty">
+          Select a page.
+        </div>
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+</div>
+
+
+
+<script
+  src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+</script>
+
+
+<script>
+
+  /* ===========================
+     SUPABASE
+  =========================== */
+
+  const SUPABASE_URL =
+    "https://clyqhkpvhqeukgblklbu.supabase.co";
+
+
+  const SUPABASE_KEY =
+    "sb_publishable_MRdyQEcrzKMaeFnHJ5gKMg_4c8EGRAY";
+
+
+  const supabaseClient =
+    window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_KEY
+    );
+
+
+  let pages = [];
+
+
+  /* ===========================
+     TOKEN
+  =========================== */
+
+  function getToken() {
+
+    return sessionStorage.getItem(
+      "portfolio_admin_token"
+    );
+
+  }
+
+
+  /* ===========================
+     TAB
+  =========================== */
+
+  function showTab(
+    tabId,
+    button
+  ) {
+
+    document
+      .querySelectorAll(
+        ".tab-section"
+      )
+      .forEach(
+        section =>
+          section.classList.remove(
+            "active"
           )
-          .textContent =
-          "Logged in: " +
-          data.username;
+      );
 
 
-        return true;
+    document
+      .querySelectorAll(
+        ".tab-btn"
+      )
+      .forEach(
+        btn =>
+          btn.classList.remove(
+            "active"
+          )
+      );
 
-      }
 
-      catch (error) {
+    document
+      .getElementById(
+        tabId
+      )
+      .classList.add(
+        "active"
+      );
 
-        console.error(error);
 
-        clearSession();
+    button.classList.add(
+      "active"
+    );
 
-        goToLogin();
 
-        return false;
+    if (
+      tabId ===
+      "mediaTab"
+    ) {
 
-      }
+      populatePageSelects();
+
+      loadMedia();
+
+    }
+
+  }
+
+
+  /* ===========================
+     CHECK LOGIN
+  =========================== */
+
+  async function checkLogin() {
+
+    const token =
+      getToken();
+
+
+    if (!token) {
+
+      goToLogin();
+
+      return false;
 
     }
 
 
-
-    /* =====================================
-       LOAD ALL PAGES
-    ===================================== */
-
-    async function loadPages() {
-
-      const token =
-        getToken();
-
-
-      const pageList =
-        document.getElementById(
-          "pageList"
-        );
-
-
-      pageList.innerHTML =
-        '<div class="loading">Loading pages...</div>';
-
-
-      try {
-
-        const { data, error } =
-          await supabaseClient.rpc(
-            "admin_get_pages",
-            {
-              p_token: token
-            }
-          );
-
-
-        if (error) {
-
-          console.error(error);
-
-
-          if (
-            error.message
-              .toLowerCase()
-              .includes("session")
-          ) {
-
-            clearSession();
-            goToLogin();
-
-            return;
-          }
-
-
-          pageList.innerHTML =
-            '<div class="empty">Unable to load pages.</div>';
-
-          return;
-
+    const { data, error } =
+      await supabaseClient.rpc(
+        "check_admin_session",
+        {
+          p_token: token
         }
+      );
 
 
-        pages =
-          data || [];
+    if (
+      error ||
+      !data ||
+      data.valid !== true
+    ) {
 
+      clearSession();
 
-        renderPages();
+      goToLogin();
 
-
-        if (
-          !document
-            .getElementById("editId")
-            .value
-        ) {
-
-          setNextMenuOrder();
-
-        }
-
-      }
-
-      catch (error) {
-
-        console.error(error);
-
-        pageList.innerHTML =
-          '<div class="empty">Unable to load pages.</div>';
-
-      }
+      return false;
 
     }
 
 
-
-    /* =====================================
-       RENDER PAGE LIST
-    ===================================== */
-
-    function renderPages() {
-
-      const pageList =
-        document.getElementById(
-          "pageList"
-        );
+    document
+      .getElementById(
+        "currentUser"
+      )
+      .textContent =
+      "Logged in: " +
+      data.username;
 
 
-      pageList.innerHTML = "";
+    return true;
+
+  }
 
 
-      if (
-        !pages ||
-        pages.length === 0
-      ) {
+  /* ===========================
+     LOAD PAGES
+  =========================== */
 
-        pageList.innerHTML =
-          '<div class="empty">No pages found.</div>';
+  async function loadPages() {
 
-        return;
+    const { data, error } =
+      await supabaseClient.rpc(
+        "admin_get_pages",
+        {
+          p_token:
+            getToken()
+        }
+      );
 
-      }
+
+    if (error) {
+
+      handleError(
+        error,
+        "pageMessage"
+      );
+
+      return;
+
+    }
 
 
-      pages.forEach(page => {
+    pages =
+      data || [];
 
+
+    renderPages();
+
+    populatePageSelects();
+
+    setNextMenuOrder();
+
+  }
+
+
+  /* ===========================
+     RENDER PAGES
+  =========================== */
+
+  function renderPages() {
+
+    const list =
+      document.getElementById(
+        "pageList"
+      );
+
+
+    list.innerHTML = "";
+
+
+    if (
+      pages.length === 0
+    ) {
+
+      list.innerHTML =
+        '<div class="empty">No pages found.</div>';
+
+      return;
+
+    }
+
+
+    pages.forEach(
+      page => {
 
         const item =
           document.createElement(
@@ -958,9 +1256,6 @@
           "page-item";
 
 
-
-        /* PAGE INFO */
-
         const info =
           document.createElement(
             "div"
@@ -971,7 +1266,6 @@
           "page-info";
 
 
-
         const heading =
           document.createElement(
             "h3"
@@ -980,7 +1274,6 @@
 
         heading.textContent =
           page.title;
-
 
 
         const slug =
@@ -997,7 +1290,6 @@
           "/" + page.slug;
 
 
-
         const preview =
           document.createElement(
             "div"
@@ -1008,18 +1300,13 @@
           "preview";
 
 
-        const shortContent =
-          page.content || "";
-
-
         preview.textContent =
-          shortContent.length > 120
-            ? shortContent.substring(
-                0,
-                120
-              ) + "..."
-            : shortContent;
-
+          (
+            page.content || ""
+          ).substring(
+            0,
+            120
+          );
 
 
         const badges =
@@ -1032,45 +1319,31 @@
           "badges";
 
 
-        badges.appendChild(
-          createBadge(
-            page.visible
-              ? "Visible"
-              : "Hidden",
-            page.visible
-              ? ""
-              : "hidden"
-          )
-        );
+        badges.innerHTML =
+          `
+            <span class="badge">
+              ${page.visible
+                ? "Visible"
+                : "Hidden"}
+            </span>
 
+            <span class="badge">
+              ${page.show_in_menu
+                ? "In Menu"
+                : "Not in Menu"}
+            </span>
 
-        badges.appendChild(
-          createBadge(
-            page.show_in_menu
-              ? "In Menu"
-              : "Not in Menu"
-          )
-        );
+            <span class="badge">
+              Order:
+              ${page.menu_order}
+            </span>
 
-
-        badges.appendChild(
-          createBadge(
-            "Order: " +
-            page.menu_order
-          )
-        );
-
-
-        if (page.is_home) {
-
-          badges.appendChild(
-            createBadge(
-              "Home",
-              "home"
-            )
-          );
-
-        }
+            ${
+              page.is_home
+              ? '<span class="badge">Home</span>'
+              : ''
+            }
+          `;
 
 
         info.appendChild(
@@ -1090,9 +1363,6 @@
         );
 
 
-
-        /* ACTION BUTTONS */
-
         const actions =
           document.createElement(
             "div"
@@ -1103,673 +1373,150 @@
           "actions";
 
 
+        actions.innerHTML =
+          `
+            <button
+              class="edit-btn"
+              onclick="editPage('${page.id}')"
+            >
+              Edit
+            </button>
 
-        actions.appendChild(
-          createButton(
-            "Edit",
-            "edit-btn",
-            function() {
-              editPage(page.id);
-            }
-          )
-        );
-
-
-
-        actions.appendChild(
-          createButton(
-            page.visible
-              ? "Hide"
-              : "Show",
-
-            "visibility-btn",
-
-            function() {
-              toggleVisibility(
-                page.id
-              );
-            }
-          )
-        );
-
-
-
-        actions.appendChild(
-          createButton(
-            page.show_in_menu
-              ? "Remove Menu"
-              : "Add Menu",
-
-            "menu-btn",
-
-            function() {
-              toggleMenu(
-                page.id
-              );
-            }
-          )
-        );
-
-
-
-        if (!page.is_home) {
-
-          actions.appendChild(
-            createButton(
-              "Delete",
-              "delete-btn",
-
-              function() {
-                deletePage(page);
+            <button
+              class="visibility-btn"
+              onclick="toggleVisibility('${page.id}')"
+            >
+              ${
+                page.visible
+                ? "Hide"
+                : "Show"
               }
-            )
-          );
+            </button>
 
-        }
+            <button
+              class="menu-btn"
+              onclick="toggleMenu('${page.id}')"
+            >
+              ${
+                page.show_in_menu
+                ? "Remove Menu"
+                : "Add Menu"
+              }
+            </button>
 
+            ${
+              !page.is_home
+              ?
+              `
+                <button
+                  class="delete-btn"
+                  onclick="deletePage('${page.id}')"
+                >
+                  Delete
+                </button>
+              `
+              :
+              ""
+            }
+          `;
 
 
         item.appendChild(
           info
         );
 
-
         item.appendChild(
           actions
         );
 
 
-        pageList.appendChild(
+        list.appendChild(
           item
         );
 
-      });
-
-    }
-
-
-
-    /* =====================================
-       CREATE BADGE
-    ===================================== */
-
-    function createBadge(
-      text,
-      extraClass = ""
-    ) {
-
-      const badge =
-        document.createElement(
-          "span"
-        );
-
-
-      badge.className =
-        "badge " +
-        extraClass;
-
-
-      badge.textContent =
-        text;
-
-
-      return badge;
-
-    }
-
-
-
-    /* =====================================
-       CREATE BUTTON
-    ===================================== */
-
-    function createButton(
-      text,
-      className,
-      callback
-    ) {
-
-      const button =
-        document.createElement(
-          "button"
-        );
-
-
-      button.type =
-        "button";
-
-
-      button.textContent =
-        text;
-
-
-      button.className =
-        className;
-
-
-      button.onclick =
-        callback;
-
-
-      return button;
-
-    }
-
-
-
-    /* =====================================
-       SAVE / UPDATE PAGE
-    ===================================== */
-
-    document
-      .getElementById(
-        "pageForm"
-      )
-      .addEventListener(
-        "submit",
-        async function(event) {
-
-          event.preventDefault();
-
-
-          const token =
-            getToken();
-
-
-          if (!token) {
-
-            goToLogin();
-
-            return;
-
-          }
-
-
-
-          const editId =
-            document
-              .getElementById(
-                "editId"
-              )
-              .value;
-
-
-
-          const title =
-            document
-              .getElementById(
-                "title"
-              )
-              .value
-              .trim();
-
-
-
-          const slug =
-            document
-              .getElementById(
-                "slug"
-              )
-              .value
-              .trim();
-
-
-
-          const content =
-            document
-              .getElementById(
-                "content"
-              )
-              .value;
-
-
-
-          const menuOrder =
-            Number(
-              document
-                .getElementById(
-                  "menuOrder"
-                )
-                .value
-            );
-
-
-
-          const visible =
-            document
-              .getElementById(
-                "visible"
-              )
-              .checked;
-
-
-
-          const showInMenu =
-            document
-              .getElementById(
-                "showInMenu"
-              )
-              .checked;
-
-
-
-          const saveButton =
-            document.getElementById(
-              "saveButton"
-            );
-
-
-          saveButton.disabled =
-            true;
-
-
-          saveButton.textContent =
-            "Saving...";
-
-
-          try {
-
-
-            const { data, error } =
-              await supabaseClient.rpc(
-                "admin_save_page",
-                {
-
-                  p_token:
-                    token,
-
-                  p_id:
-                    editId || null,
-
-                  p_title:
-                    title,
-
-                  p_slug:
-                    slug,
-
-                  p_content:
-                    content,
-
-                  p_visible:
-                    visible,
-
-                  p_show_in_menu:
-                    showInMenu,
-
-                  p_menu_order:
-                    menuOrder
-
-                }
-              );
-
-
-
-            if (error) {
-
-              console.error(error);
-
-
-              if (
-                error.message
-                  .toLowerCase()
-                  .includes(
-                    "session"
-                  )
-              ) {
-
-                clearSession();
-
-                goToLogin();
-
-                return;
-
-              }
-
-
-              showMessage(
-                error.message,
-                "error"
-              );
-
-
-              return;
-
-            }
-
-
-
-            if (
-              !data ||
-              data.success !== true
-            ) {
-
-              showMessage(
-                data?.message ||
-                "Unable to save page.",
-                "error"
-              );
-
-
-              return;
-
-            }
-
-
-
-            showMessage(
-              data.message ||
-              "Page saved successfully.",
-              "success"
-            );
-
-
-            resetForm();
-
-
-            await loadPages();
-
-
-          }
-
-          catch (error) {
-
-            console.error(error);
-
-
-            showMessage(
-              "Unable to save page.",
-              "error"
-            );
-
-          }
-
-          finally {
-
-            saveButton.disabled =
-              false;
-
-
-            saveButton.textContent =
-              "Save Page";
-
-          }
-
-        }
-      );
-
-
-
-    /* =====================================
-       EDIT PAGE
-    ===================================== */
-
-    function editPage(id) {
-
-      const page =
-        pages.find(
-          item =>
-            item.id === id
-        );
-
-
-      if (!page) {
-        return;
       }
+    );
+
+  }
 
 
-      document
-        .getElementById(
-          "editId"
-        )
-        .value =
-        page.id;
+  /* ===========================
+     SAVE PAGE
+  =========================== */
+
+  document
+    .getElementById(
+      "pageForm"
+    )
+    .addEventListener(
+      "submit",
+      async function(event) {
+
+        event.preventDefault();
 
 
-      document
-        .getElementById(
-          "title"
-        )
-        .value =
-        page.title;
+        const editId =
+          document
+            .getElementById(
+              "editId"
+            )
+            .value;
 
-
-      document
-        .getElementById(
-          "slug"
-        )
-        .value =
-        page.slug;
-
-
-      document
-        .getElementById(
-          "content"
-        )
-        .value =
-        page.content || "";
-
-
-      document
-        .getElementById(
-          "menuOrder"
-        )
-        .value =
-        page.menu_order;
-
-
-      document
-        .getElementById(
-          "visible"
-        )
-        .checked =
-        page.visible;
-
-
-      document
-        .getElementById(
-          "showInMenu"
-        )
-        .checked =
-        page.show_in_menu;
-
-
-      document
-        .getElementById(
-          "formTitle"
-        )
-        .textContent =
-        "Edit Page";
-
-
-      document
-        .getElementById(
-          "cancelButton"
-        )
-        .style.display =
-        "block";
-
-
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-
-    }
-
-
-
-    /* =====================================
-       TOGGLE VISIBILITY
-    ===================================== */
-
-    async function toggleVisibility(
-      id
-    ) {
-
-      const token =
-        getToken();
-
-
-      try {
 
         const { data, error } =
           await supabaseClient.rpc(
-            "admin_toggle_visibility",
-            {
-              p_token: token,
-              p_id: id
-            }
-          );
-
-
-        if (error) {
-
-          handleRpcError(error);
-
-          return;
-
-        }
-
-
-        if (
-          data &&
-          data.success === false
-        ) {
-
-          showMessage(
-            data.message,
-            "error"
-          );
-
-          return;
-
-        }
-
-
-        await loadPages();
-
-      }
-
-      catch (error) {
-
-        console.error(error);
-
-      }
-
-    }
-
-
-
-    /* =====================================
-       TOGGLE MENU
-    ===================================== */
-
-    async function toggleMenu(
-      id
-    ) {
-
-      const token =
-        getToken();
-
-
-      try {
-
-        const { data, error } =
-          await supabaseClient.rpc(
-            "admin_toggle_menu",
-            {
-              p_token: token,
-              p_id: id
-            }
-          );
-
-
-        if (error) {
-
-          handleRpcError(error);
-
-          return;
-
-        }
-
-
-        if (
-          data &&
-          data.success === false
-        ) {
-
-          showMessage(
-            data.message,
-            "error"
-          );
-
-          return;
-
-        }
-
-
-        await loadPages();
-
-      }
-
-      catch (error) {
-
-        console.error(error);
-
-      }
-
-    }
-
-
-
-    /* =====================================
-       DELETE PAGE
-    ===================================== */
-
-    async function deletePage(
-      page
-    ) {
-
-      if (page.is_home) {
-
-        alert(
-          "Home page cannot be deleted."
-        );
-
-        return;
-
-      }
-
-
-      const confirmed =
-        confirm(
-          'Delete "' +
-          page.title +
-          '"?'
-        );
-
-
-      if (!confirmed) {
-        return;
-      }
-
-
-      const token =
-        getToken();
-
-
-      try {
-
-        const { data, error } =
-          await supabaseClient.rpc(
-            "admin_delete_page",
+            "admin_save_page",
             {
 
               p_token:
-                token,
+                getToken(),
 
               p_id:
-                page.id
+                editId || null,
+
+              p_title:
+                document
+                  .getElementById(
+                    "title"
+                  )
+                  .value,
+
+              p_slug:
+                document
+                  .getElementById(
+                    "slug"
+                  )
+                  .value,
+
+              p_content:
+                document
+                  .getElementById(
+                    "content"
+                  )
+                  .value,
+
+              p_visible:
+                document
+                  .getElementById(
+                    "visible"
+                  )
+                  .checked,
+
+              p_show_in_menu:
+                document
+                  .getElementById(
+                    "showInMenu"
+                  )
+                  .checked,
+
+              p_menu_order:
+                Number(
+                  document
+                    .getElementById(
+                      "menuOrder"
+                    )
+                    .value
+                )
 
             }
           );
@@ -1777,7 +1524,10 @@
 
         if (error) {
 
-          handleRpcError(error);
+          handleError(
+            error,
+            "pageMessage"
+          );
 
           return;
 
@@ -1790,8 +1540,9 @@
         ) {
 
           showMessage(
+            "pageMessage",
             data?.message ||
-            "Unable to delete page.",
+            "Unable to save page.",
             "error"
           );
 
@@ -1801,306 +1552,1285 @@
 
 
         showMessage(
+          "pageMessage",
           data.message,
           "success"
         );
 
 
+        resetForm();
+
         await loadPages();
 
       }
+    );
 
-      catch (error) {
 
-        console.error(error);
+  /* ===========================
+     EDIT PAGE
+  =========================== */
 
-      }
+  function editPage(id) {
+
+    const page =
+      pages.find(
+        item =>
+          item.id === id
+      );
+
+
+    if (!page) return;
+
+
+    document
+      .getElementById(
+        "editId"
+      )
+      .value =
+      page.id;
+
+
+    document
+      .getElementById(
+        "title"
+      )
+      .value =
+      page.title;
+
+
+    document
+      .getElementById(
+        "slug"
+      )
+      .value =
+      page.slug;
+
+
+    document
+      .getElementById(
+        "content"
+      )
+      .value =
+      page.content || "";
+
+
+    document
+      .getElementById(
+        "menuOrder"
+      )
+      .value =
+      page.menu_order;
+
+
+    document
+      .getElementById(
+        "visible"
+      )
+      .checked =
+      page.visible;
+
+
+    document
+      .getElementById(
+        "showInMenu"
+      )
+      .checked =
+      page.show_in_menu;
+
+
+    document
+      .getElementById(
+        "formTitle"
+      )
+      .textContent =
+      "Edit Page";
+
+
+    document
+      .getElementById(
+        "cancelButton"
+      )
+      .style.display =
+      "block";
+
+  }
+
+
+  /* ===========================
+     TOGGLE VISIBILITY
+  =========================== */
+
+  async function toggleVisibility(
+    id
+  ) {
+
+    const { error } =
+      await supabaseClient.rpc(
+        "admin_toggle_visibility",
+        {
+          p_token:
+            getToken(),
+
+          p_id:
+            id
+        }
+      );
+
+
+    if (error) {
+
+      handleError(
+        error,
+        "pageMessage"
+      );
+
+      return;
 
     }
 
 
+    await loadPages();
 
-    /* =====================================
-       RESET FORM
-    ===================================== */
-
-    function resetForm() {
-
-      document
-        .getElementById(
-          "pageForm"
-        )
-        .reset();
+  }
 
 
-      document
-        .getElementById(
-          "editId"
-        )
-        .value = "";
+  /* ===========================
+     TOGGLE MENU
+  =========================== */
+
+  async function toggleMenu(
+    id
+  ) {
+
+    const { error } =
+      await supabaseClient.rpc(
+        "admin_toggle_menu",
+        {
+
+          p_token:
+            getToken(),
+
+          p_id:
+            id
+
+        }
+      );
 
 
-      document
-        .getElementById(
-          "formTitle"
-        )
-        .textContent =
-        "Add New Page";
+    if (error) {
 
+      handleError(
+        error,
+        "pageMessage"
+      );
 
-      document
-        .getElementById(
-          "visible"
-        )
-        .checked =
-        true;
-
-
-      document
-        .getElementById(
-          "showInMenu"
-        )
-        .checked =
-        true;
-
-
-      document
-        .getElementById(
-          "cancelButton"
-        )
-        .style.display =
-        "none";
-
-
-      setNextMenuOrder();
+      return;
 
     }
 
 
+    await loadPages();
 
-    /* =====================================
-       NEXT MENU ORDER
-    ===================================== */
-
-    function setNextMenuOrder() {
-
-      let highestOrder = 0;
+  }
 
 
-      pages.forEach(page => {
+  /* ===========================
+     DELETE PAGE
+  =========================== */
 
-        const order =
+  async function deletePage(
+    id
+  ) {
+
+    if (
+      !confirm(
+        "Delete this page?"
+      )
+    ) {
+
+      return;
+
+    }
+
+
+    const { data, error } =
+      await supabaseClient.rpc(
+        "admin_delete_page",
+        {
+
+          p_token:
+            getToken(),
+
+          p_id:
+            id
+
+        }
+      );
+
+
+    if (error) {
+
+      handleError(
+        error,
+        "pageMessage"
+      );
+
+      return;
+
+    }
+
+
+    if (
+      data &&
+      data.success === false
+    ) {
+
+      showMessage(
+        "pageMessage",
+        data.message,
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    await loadPages();
+
+  }
+
+
+  /* ===========================
+     RESET PAGE FORM
+  =========================== */
+
+  function resetForm() {
+
+    document
+      .getElementById(
+        "pageForm"
+      )
+      .reset();
+
+
+    document
+      .getElementById(
+        "editId"
+      )
+      .value = "";
+
+
+    document
+      .getElementById(
+        "formTitle"
+      )
+      .textContent =
+      "Add New Page";
+
+
+    document
+      .getElementById(
+        "visible"
+      )
+      .checked =
+      true;
+
+
+    document
+      .getElementById(
+        "showInMenu"
+      )
+      .checked =
+      true;
+
+
+    document
+      .getElementById(
+        "cancelButton"
+      )
+      .style.display =
+      "none";
+
+
+    setNextMenuOrder();
+
+  }
+
+
+  function setNextMenuOrder() {
+
+    let max = 0;
+
+
+    pages.forEach(
+      page => {
+
+        const n =
           Number(
             page.menu_order
           ) || 0;
 
 
-        if (
-          order >
-          highestOrder
-        ) {
-
-          highestOrder =
-            order;
-
+        if (n > max) {
+          max = n;
         }
 
-      });
+      }
+    );
 
 
-      document
-        .getElementById(
-          "menuOrder"
-        )
-        .value =
-        highestOrder + 1;
+    document
+      .getElementById(
+        "menuOrder"
+      )
+      .value =
+      max + 1;
 
-    }
+  }
 
 
+  /* ===========================
+     POPULATE PAGE DROPDOWNS
+  =========================== */
 
-    /* =====================================
-       MESSAGE
-    ===================================== */
+  function populatePageSelects() {
 
-    function showMessage(
-      text,
-      type
-    ) {
+    const uploadSelect =
+      document.getElementById(
+        "mediaPage"
+      );
 
-      const message =
-        document.getElementById(
-          "message"
+
+    const listSelect =
+      document.getElementById(
+        "mediaListPage"
+      );
+
+
+    const currentUpload =
+      uploadSelect.value;
+
+
+    const currentList =
+      listSelect.value;
+
+
+    uploadSelect.innerHTML = "";
+
+    listSelect.innerHTML = "";
+
+
+    pages.forEach(
+      page => {
+
+        const option1 =
+          document.createElement(
+            "option"
+          );
+
+
+        option1.value =
+          page.id;
+
+
+        option1.textContent =
+          page.title;
+
+
+        uploadSelect.appendChild(
+          option1
         );
 
 
-      message.textContent =
-        text;
+        const option2 =
+          option1.cloneNode(
+            true
+          );
 
 
-      message.className =
-        "message " +
-        type;
-
-
-      setTimeout(
-        function() {
-
-          message.className =
-            "message";
-
-        },
-        5000
-      );
-
-    }
-
-
-
-    /* =====================================
-       RPC ERROR
-    ===================================== */
-
-    function handleRpcError(
-      error
-    ) {
-
-      console.error(error);
-
-
-      const errorText =
-        (
-          error.message || ""
-        ).toLowerCase();
-
-
-      if (
-        errorText.includes(
-          "session"
-        )
-      ) {
-
-        clearSession();
-
-        goToLogin();
-
-        return;
+        listSelect.appendChild(
+          option2
+        );
 
       }
+    );
 
 
-      showMessage(
-        error.message ||
-        "Something went wrong.",
-        "error"
-      );
+    if (currentUpload) {
+
+      uploadSelect.value =
+        currentUpload;
 
     }
 
 
+    if (currentList) {
 
-    /* =====================================
-       LOGOUT
-    ===================================== */
+      listSelect.value =
+        currentList;
 
-    async function logout() {
+    }
 
-      const token =
-        getToken();
+  }
 
 
-      try {
+  /* ===========================
+     MEDIA UPLOAD
+  =========================== */
 
-        if (token) {
+  document
+    .getElementById(
+      "mediaForm"
+    )
+    .addEventListener(
+      "submit",
+      async function(event) {
 
-          await supabaseClient.rpc(
-            "admin_logout",
-            {
-              p_token: token
-            }
+        event.preventDefault();
+
+
+        const fileInput =
+          document.getElementById(
+            "mediaFile"
+          );
+
+
+        const file =
+          fileInput.files[0];
+
+
+        if (!file) {
+
+          showMessage(
+            "mediaMessage",
+            "Please choose a file.",
+            "error"
+          );
+
+          return;
+
+        }
+
+
+        if (
+          file.size >
+          10 * 1024 * 1024
+        ) {
+
+          showMessage(
+            "mediaMessage",
+            "Maximum file size is 10 MB.",
+            "error"
+          );
+
+          return;
+
+        }
+
+
+        const uploadButton =
+          document.getElementById(
+            "uploadButton"
+          );
+
+
+        uploadButton.disabled =
+          true;
+
+
+        uploadButton.textContent =
+          "Uploading...";
+
+
+        try {
+
+
+          const base64 =
+            await fileToBase64(
+              file
+            );
+
+
+          const cleanBase64 =
+            base64.split(
+              ","
+            )[1];
+
+
+          const { data, error } =
+            await supabaseClient.rpc(
+              "admin_upload_media",
+              {
+
+                p_token:
+                  getToken(),
+
+                p_page_id:
+                  document
+                    .getElementById(
+                      "mediaPage"
+                    )
+                    .value,
+
+                p_file_name:
+                  file.name,
+
+                p_mime_type:
+                  file.type ||
+                  "application/octet-stream",
+
+                p_file_type:
+                  document
+                    .getElementById(
+                      "mediaType"
+                    )
+                    .value,
+
+                p_title:
+                  document
+                    .getElementById(
+                      "mediaTitle"
+                    )
+                    .value,
+
+                p_description:
+                  document
+                    .getElementById(
+                      "mediaDescription"
+                    )
+                    .value,
+
+                p_base64:
+                  cleanBase64
+
+              }
+            );
+
+
+          if (error) {
+
+            handleError(
+              error,
+              "mediaMessage"
+            );
+
+            return;
+
+          }
+
+
+          if (
+            !data ||
+            data.success !== true
+          ) {
+
+            showMessage(
+              "mediaMessage",
+              data?.message ||
+              "Upload failed.",
+              "error"
+            );
+
+            return;
+
+          }
+
+
+          showMessage(
+            "mediaMessage",
+            "File uploaded successfully.",
+            "success"
+          );
+
+
+          document
+            .getElementById(
+              "mediaTitle"
+            )
+            .value = "";
+
+
+          document
+            .getElementById(
+              "mediaDescription"
+            )
+            .value = "";
+
+
+          fileInput.value = "";
+
+
+          document
+            .getElementById(
+              "mediaListPage"
+            )
+            .value =
+            document
+              .getElementById(
+                "mediaPage"
+              )
+              .value;
+
+
+          await loadMedia();
+
+
+        }
+
+        catch (error) {
+
+          console.error(
+            error
+          );
+
+
+          showMessage(
+            "mediaMessage",
+            "Upload failed.",
+            "error"
           );
 
         }
 
+        finally {
+
+          uploadButton.disabled =
+            false;
+
+
+          uploadButton.textContent =
+            "Upload File";
+
+        }
+
       }
+    );
 
-      catch (error) {
 
-        console.error(error);
+  /* ===========================
+     FILE TO BASE64
+  =========================== */
+
+  function fileToBase64(
+    file
+  ) {
+
+    return new Promise(
+      (
+        resolve,
+        reject
+      ) => {
+
+        const reader =
+          new FileReader();
+
+
+        reader.onload =
+          () =>
+            resolve(
+              reader.result
+            );
+
+
+        reader.onerror =
+          reject;
+
+
+        reader.readAsDataURL(
+          file
+        );
 
       }
+    );
 
+  }
+
+
+  /* ===========================
+     LOAD MEDIA
+  =========================== */
+
+  async function loadMedia() {
+
+    const pageId =
+      document
+        .getElementById(
+          "mediaListPage"
+        )
+        .value;
+
+
+    const list =
+      document.getElementById(
+        "mediaList"
+      );
+
+
+    if (!pageId) {
+
+      list.innerHTML =
+        '<div class="empty">No page selected.</div>';
+
+      return;
+
+    }
+
+
+    list.innerHTML =
+      '<div class="loading">Loading files...</div>';
+
+
+    const { data, error } =
+      await supabaseClient.rpc(
+        "get_public_media",
+        {
+          p_page_id:
+            pageId
+        }
+      );
+
+
+    if (error) {
+
+      console.error(
+        error
+      );
+
+
+      list.innerHTML =
+        '<div class="empty">Unable to load files.</div>';
+
+      return;
+
+    }
+
+
+    renderMedia(
+      data || []
+    );
+
+  }
+
+
+  /* ===========================
+     RENDER MEDIA
+  =========================== */
+
+  function renderMedia(
+    media
+  ) {
+
+    const list =
+      document.getElementById(
+        "mediaList"
+      );
+
+
+    list.innerHTML = "";
+
+
+    if (
+      media.length === 0
+    ) {
+
+      list.innerHTML =
+        '<div class="empty">No files uploaded for this page.</div>';
+
+      return;
+
+    }
+
+
+    media.forEach(
+      item => {
+
+        const card =
+          document.createElement(
+            "div"
+          );
+
+
+        card.className =
+          "media-item";
+
+
+        const preview =
+          document.createElement(
+            "div"
+          );
+
+
+        preview.className =
+          "media-preview";
+
+
+        const dataUrl =
+          "data:" +
+          (
+            item.mime_type ||
+            "application/octet-stream"
+          ) +
+          ";base64," +
+          item.file_base64;
+
+
+        if (
+          item.mime_type &&
+          item.mime_type.startsWith(
+            "image/"
+          )
+        ) {
+
+          const img =
+            document.createElement(
+              "img"
+            );
+
+
+          img.src =
+            dataUrl;
+
+
+          preview.appendChild(
+            img
+          );
+
+        }
+
+        else if (
+          item.mime_type ===
+          "application/pdf"
+        ) {
+
+          preview.textContent =
+            "📄";
+
+        }
+
+        else {
+
+          preview.textContent =
+            "📁";
+
+        }
+
+
+        const info =
+          document.createElement(
+            "div"
+          );
+
+
+        info.className =
+          "media-info";
+
+
+        const title =
+          item.title ||
+          item.file_name;
+
+
+        info.innerHTML =
+          `
+            <h3>
+              ${escapeHtml(title)}
+            </h3>
+
+            <p>
+              ${escapeHtml(item.file_name)}
+            </p>
+
+            <p>
+              Type:
+              ${escapeHtml(item.file_type)}
+            </p>
+
+            <p>
+              Size:
+              ${formatBytes(item.file_size)}
+            </p>
+          `;
+
+
+        const actions =
+          document.createElement(
+            "div"
+          );
+
+
+        actions.className =
+          "media-actions";
+
+
+        const open =
+          document.createElement(
+            "a"
+          );
+
+
+        open.className =
+          "open-btn";
+
+
+        open.textContent =
+          "Open";
+
+
+        open.href =
+          dataUrl;
+
+
+        open.target =
+          "_blank";
+
+
+        open.rel =
+          "noopener";
+
+
+        const del =
+          document.createElement(
+            "button"
+          );
+
+
+        del.className =
+          "media-delete-btn";
+
+
+        del.textContent =
+          "Delete";
+
+
+        del.onclick =
+          function() {
+
+            deleteMedia(
+              item.id
+            );
+
+          };
+
+
+        actions.appendChild(
+          open
+        );
+
+
+        actions.appendChild(
+          del
+        );
+
+
+        card.appendChild(
+          preview
+        );
+
+
+        card.appendChild(
+          info
+        );
+
+
+        card.appendChild(
+          actions
+        );
+
+
+        list.appendChild(
+          card
+        );
+
+      }
+    );
+
+  }
+
+
+  /* ===========================
+     DELETE MEDIA
+  =========================== */
+
+  async function deleteMedia(
+    id
+  ) {
+
+    if (
+      !confirm(
+        "Delete this file?"
+      )
+    ) {
+
+      return;
+
+    }
+
+
+    const { data, error } =
+      await supabaseClient.rpc(
+        "admin_delete_media",
+        {
+
+          p_token:
+            getToken(),
+
+          p_media_id:
+            id
+
+        }
+      );
+
+
+    if (error) {
+
+      handleError(
+        error,
+        "mediaMessage"
+      );
+
+      return;
+
+    }
+
+
+    if (
+      !data ||
+      data.success !== true
+    ) {
+
+      showMessage(
+        "mediaMessage",
+        data?.message ||
+        "Unable to delete file.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    showMessage(
+      "mediaMessage",
+      "File deleted successfully.",
+      "success"
+    );
+
+
+    await loadMedia();
+
+  }
+
+
+  /* ===========================
+     HELPERS
+  =========================== */
+
+  function formatBytes(
+    bytes
+  ) {
+
+    bytes =
+      Number(bytes) || 0;
+
+
+    if (
+      bytes < 1024
+    ) {
+
+      return bytes +
+        " B";
+
+    }
+
+
+    if (
+      bytes <
+      1024 * 1024
+    ) {
+
+      return (
+        bytes / 1024
+      ).toFixed(1) +
+        " KB";
+
+    }
+
+
+    return (
+      bytes /
+      1024 /
+      1024
+    ).toFixed(1) +
+      " MB";
+
+  }
+
+
+  function escapeHtml(
+    text
+  ) {
+
+    const div =
+      document.createElement(
+        "div"
+      );
+
+
+    div.textContent =
+      text || "";
+
+
+    return div.innerHTML;
+
+  }
+
+
+  function showMessage(
+    elementId,
+    text,
+    type
+  ) {
+
+    const element =
+      document.getElementById(
+        elementId
+      );
+
+
+    element.textContent =
+      text;
+
+
+    element.className =
+      "message " +
+      type;
+
+  }
+
+
+  function handleError(
+    error,
+    messageId
+  ) {
+
+    console.error(
+      error
+    );
+
+
+    const message =
+      (
+        error.message || ""
+      ).toLowerCase();
+
+
+    if (
+      message.includes(
+        "session"
+      )
+    ) {
 
       clearSession();
 
+      goToLogin();
 
-      window.location.href =
-        "index.html";
+      return;
 
     }
 
 
+    showMessage(
+      messageId,
+      error.message ||
+      "Something went wrong.",
+      "error"
+    );
 
-    /* =====================================
-       CLEAR SESSION
-    ===================================== */
+  }
 
-    function clearSession() {
 
-      sessionStorage.removeItem(
-        "portfolio_admin_token"
+  /* ===========================
+     LOGOUT
+  =========================== */
+
+  async function logout() {
+
+    const token =
+      getToken();
+
+
+    if (token) {
+
+      await supabaseClient.rpc(
+        "admin_logout",
+        {
+          p_token:
+            token
+        }
       );
 
-
-      sessionStorage.removeItem(
-        "portfolio_admin_username"
-      );
-
-
-      sessionStorage.removeItem(
-        "portfolio_admin_role"
-      );
-
     }
 
 
+    clearSession();
 
-    /* =====================================
-       LOGIN PAGE
-    ===================================== */
+    goToLogin();
 
-    function goToLogin() {
+  }
 
-      window.location.href =
-        "index.html";
 
+  function clearSession() {
+
+    sessionStorage.removeItem(
+      "portfolio_admin_token"
+    );
+
+
+    sessionStorage.removeItem(
+      "portfolio_admin_username"
+    );
+
+
+    sessionStorage.removeItem(
+      "portfolio_admin_role"
+    );
+
+  }
+
+
+  function goToLogin() {
+
+    window.location.href =
+      "index.html";
+
+  }
+
+
+  /* ===========================
+     START
+  =========================== */
+
+  async function startDashboard() {
+
+    const valid =
+      await checkLogin();
+
+
+    if (!valid) {
+      return;
     }
 
 
+    await loadPages();
 
-    /* =====================================
-       START DASHBOARD
-    ===================================== */
-
-    async function startDashboard() {
-
-      const valid =
-        await checkLogin();
+  }
 
 
-      if (!valid) {
-        return;
-      }
+  startDashboard();
 
-
-      await loadPages();
-
-    }
-
-
-    startDashboard();
-
-  </script>
+</script>
 
 
 </body>
