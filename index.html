@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
   <meta charset="UTF-8">
 
   <meta
@@ -38,51 +36,38 @@
     .navbar {
       background: rgba(255,255,255,.97);
       border-bottom: 1px solid #e5eaf0;
-
       position: sticky;
       top: 0;
-
       z-index: 1000;
     }
 
     .nav-container {
       max-width: 1200px;
-
       margin: auto;
-
       padding: 18px 25px;
 
       display: flex;
-
       justify-content: space-between;
       align-items: center;
-
       gap: 20px;
     }
 
     .logo {
       font-family: Georgia, serif;
-
       font-size: 25px;
-
       font-weight: bold;
-
       color: #075c73;
     }
 
     #dynamicMenu {
       display: flex;
-
       gap: 28px;
-
       flex-wrap: wrap;
     }
 
     #dynamicMenu a {
       text-decoration: none;
-
       color: #18324a;
-
       font-weight: 600;
     }
 
@@ -96,7 +81,6 @@
     ========================= */
 
     .hero {
-
       min-height: 85vh;
 
       background:
@@ -109,18 +93,14 @@
       color: white;
 
       display: flex;
-
       align-items: center;
     }
 
     .hero-container {
-
       max-width: 1200px;
-
       width: 100%;
 
       margin: auto;
-
       padding: 80px 25px;
 
       display: grid;
@@ -134,46 +114,31 @@
     }
 
     .small-title {
-
       font-size: 17px;
-
       letter-spacing: 6px;
-
       font-weight: bold;
-
       margin-bottom: 20px;
     }
 
     .hero h1 {
-
       font-family: Georgia, serif;
-
       font-size: 68px;
-
       font-weight: normal;
-
       line-height: 1.05;
     }
 
     .line {
-
       width: 140px;
-
       height: 7px;
-
       background: #ff7080;
-
       margin: 30px 0;
-
       border-radius: 20px;
     }
 
     .intro {
-
       max-width: 650px;
 
       font-size: 20px;
-
       line-height: 1.8;
 
       color: rgba(255,255,255,.9);
@@ -187,9 +152,7 @@
     ========================= */
 
     .profile-card {
-
       background: white;
-
       color: #18324a;
 
       padding: 40px;
@@ -204,9 +167,7 @@
     }
 
     .profile-photo {
-
       width: 230px;
-
       height: 230px;
 
       border-radius: 50%;
@@ -216,9 +177,7 @@
       background: #e5eef1;
 
       display: flex;
-
       align-items: center;
-
       justify-content: center;
 
       overflow: hidden;
@@ -229,21 +188,52 @@
     }
 
     .profile-photo img {
-
       width: 100%;
-
       height: 100%;
-
       object-fit: cover;
     }
 
     .profile-card h2 {
-
       font-family: Georgia, serif;
+      color: #075c73;
+      font-size: 30px;
+    }
+
+
+    /* =========================
+       HOME UPLOADED FILES
+    ========================= */
+
+    #homeFilesSection {
+      display: none;
+
+      max-width: 1100px;
+
+      margin: 35px auto 0;
+
+      padding: 0 25px;
+    }
+
+    .home-files-box {
+      background: white;
+
+      padding: 35px;
+
+      border-radius: 12px;
+
+      box-shadow:
+        0 10px 30px
+        rgba(20,50,70,.08);
+    }
+
+    .home-files-box h2 {
+      font-family: Georgia, serif;
+
+      font-size: 32px;
 
       color: #075c73;
 
-      font-size: 30px;
+      margin-bottom: 20px;
     }
 
 
@@ -252,16 +242,14 @@
     ========================= */
 
     #dynamicContent {
-
       max-width: 1100px;
 
       margin: auto;
 
-      padding: 35px 25px 80px;
+      padding: 0 25px 80px;
     }
 
     .dynamic-section {
-
       background: white;
 
       margin-top: 35px;
@@ -278,7 +266,6 @@
     }
 
     .dynamic-section h2 {
-
       font-family: Georgia, serif;
 
       font-size: 38px;
@@ -289,7 +276,6 @@
     }
 
     .page-content {
-
       line-height: 1.8;
 
       color: #60717f;
@@ -301,12 +287,11 @@
 
 
     /* =========================
-       PUBLIC MEDIA
+       MEDIA
     ========================= */
 
     .public-media {
-
-      margin-top: 30px;
+      margin-top: 25px;
 
       display: grid;
 
@@ -320,7 +305,6 @@
     }
 
     .public-media-card {
-
       background: #f8fafc;
 
       border: 1px solid #e1e7ec;
@@ -328,68 +312,65 @@
       padding: 20px;
 
       border-radius: 12px;
+
+      overflow: hidden;
     }
 
     .public-media-card img {
-
       width: 100%;
 
-      max-height: 350px;
+      max-height: 400px;
 
-      object-fit: cover;
+      object-fit: contain;
 
       display: block;
 
-      margin-bottom: 15px;
+      background: white;
 
       border-radius: 9px;
-    }
-
-    .file-icon {
-
-      font-size: 46px;
 
       margin-bottom: 15px;
     }
 
     .public-media-card h3 {
-
       font-family: Georgia, serif;
 
       color: #075c73;
 
       font-size: 20px;
 
-      margin-bottom: 9px;
+      margin-bottom: 8px;
 
       word-break: break-word;
     }
 
     .media-description {
-
       font-size: 15px;
 
       line-height: 1.6;
 
       color: #60717f;
 
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .media-size {
-
       font-size: 13px;
 
-      color: #84929d;
+      color: #83929d;
 
-      margin-bottom: 8px;
+      margin-top: 7px;
+    }
+
+    .file-icon {
+      font-size: 48px;
+      margin-bottom: 15px;
     }
 
     .file-button {
-
       display: inline-block;
 
-      margin-top: 10px;
+      margin-top: 15px;
 
       padding: 11px 17px;
 
@@ -405,8 +386,24 @@
     }
 
     .file-button:hover {
-
       background: #07566a;
+    }
+
+
+    /* =========================
+       MESSAGE
+    ========================= */
+
+    .load-error {
+      background: #ffe8ea;
+
+      color: #9a2833;
+
+      padding: 15px;
+
+      border-radius: 8px;
+
+      margin-top: 20px;
     }
 
 
@@ -415,7 +412,6 @@
     ========================= */
 
     footer {
-
       background: #103249;
 
       color: rgba(255,255,255,.85);
@@ -433,59 +429,49 @@
     @media(max-width: 800px) {
 
       .nav-container {
-
         flex-direction: column;
-
         gap: 15px;
       }
 
       #dynamicMenu {
-
         justify-content: center;
-
         gap: 18px;
       }
 
       .hero-container {
-
         grid-template-columns: 1fr;
-
         text-align: center;
       }
 
       .line {
-
         margin-left: auto;
-
         margin-right: auto;
       }
 
       .hero h1 {
-
         font-size: 48px;
       }
 
       .profile-card {
-
         max-width: 420px;
-
         margin: auto;
       }
 
       .dynamic-section {
-
         padding: 28px 22px;
       }
 
       .dynamic-section h2 {
-
         font-size: 30px;
+      }
+
+      .home-files-box {
+        padding: 25px 20px;
       }
 
     }
 
   </style>
-
 </head>
 
 
@@ -516,7 +502,7 @@
 
 
 <!-- =========================
-     HERO / HOME
+     HOME / HERO
 ========================= -->
 
 <section
@@ -581,7 +567,28 @@
 
 
 <!-- =========================
-     DYNAMIC CONTENT
+     HOME FILES
+========================= -->
+
+<section id="homeFilesSection">
+
+  <div class="home-files-box">
+
+    <h2>Uploaded Files</h2>
+
+    <div
+      id="homeMedia"
+      class="public-media"
+    ></div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     OTHER PAGES
 ========================= -->
 
 <main id="dynamicContent"></main>
@@ -660,58 +667,47 @@
       "Fatema Nusrat Jahan";
 
 
-    document
-      .getElementById(
-        "siteLogo"
-      )
-      .textContent =
+    document.getElementById(
+      "siteLogo"
+    ).textContent =
       name;
 
 
-    document
-      .getElementById(
-        "heroName"
-      )
-      .textContent =
+    document.getElementById(
+      "heroName"
+    ).textContent =
       name;
 
 
-    document
-      .getElementById(
-        "profileName"
-      )
-      .textContent =
+    document.getElementById(
+      "profileName"
+    ).textContent =
       name;
 
 
-    document
-      .getElementById(
-        "heroLabel"
-      )
-      .textContent =
+    document.getElementById(
+      "heroLabel"
+    ).textContent =
       data.hero_label ||
       "PORTFOLIO OF";
 
 
-    document
-      .getElementById(
-        "introText"
-      )
-      .textContent =
+    document.getElementById(
+      "introText"
+    ).textContent =
       data.intro_text ||
       "Welcome to my portfolio.";
 
 
-    document
-      .getElementById(
-        "footerText"
-      )
-      .textContent =
+    document.getElementById(
+      "footerText"
+    ).textContent =
       data.footer_text ||
       "© 2026 Fatema Nusrat Jahan";
 
 
-    /* PROFILE PICTURE */
+
+    /* PROFILE PHOTO */
 
     const profile =
       document.getElementById(
@@ -737,7 +733,9 @@
         data.profile_photo_base64;
 
 
-      profile.innerHTML = "";
+      profile.innerHTML =
+        "";
+
 
       profile.appendChild(
         img
@@ -757,41 +755,109 @@
 
 
   /* =====================================
-     LOAD PUBLIC PAGES
+     LOAD PAGES
   ===================================== */
 
   async function loadPages() {
 
-    const { data: pages, error } =
+    const { data, error } =
       await supabaseClient.rpc(
-        "get_public_pages"
+        "get_public_pages_v2"
       );
+
+
+    console.log(
+      "PAGE DATA:",
+      data
+    );
+
+
+    console.log(
+      "PAGE ERROR:",
+      error
+    );
 
 
     if (error) {
 
-      console.error(
-        "Pages error:",
-        error
-      );
+      document.getElementById(
+        "dynamicContent"
+      ).innerHTML =
+        `
+          <div class="load-error">
+            Unable to load pages.
+          </div>
+        `;
 
       return;
     }
 
 
+    let pages =
+      data || [];
+
+
+    /*
+      If Supabase returns JSON
+      as text, convert to array.
+    */
+
+    if (
+      typeof pages === "string"
+    ) {
+
+      try {
+
+        pages =
+          JSON.parse(
+            pages
+          );
+
+      }
+
+      catch (err) {
+
+        console.error(
+          "JSON Parse Error:",
+          err
+        );
+
+        pages = [];
+
+      }
+
+    }
+
+
+    if (
+      !Array.isArray(
+        pages
+      )
+    ) {
+
+      console.error(
+        "Pages is not array:",
+        pages
+      );
+
+      pages = [];
+
+    }
+
+
     console.log(
-      "PUBLIC PAGES:",
+      "FINAL PAGES:",
       pages
     );
 
 
     createMenu(
-      pages || []
+      pages
     );
 
 
     await createPages(
-      pages || []
+      pages
     );
 
   }
@@ -802,7 +868,9 @@
      CREATE MENU
   ===================================== */
 
-  function createMenu(pages) {
+  function createMenu(
+    pages
+  ) {
 
     const menu =
       document.getElementById(
@@ -862,10 +930,12 @@
 
 
   /* =====================================
-     CREATE PUBLIC PAGES
+     CREATE PAGES
   ===================================== */
 
-  async function createPages(pages) {
+  async function createPages(
+    pages
+  ) {
 
     const container =
       document.getElementById(
@@ -875,6 +945,26 @@
 
     container.innerHTML =
       "";
+
+
+    const homeFilesSection =
+      document.getElementById(
+        "homeFilesSection"
+      );
+
+
+    const homeMedia =
+      document.getElementById(
+        "homeMedia"
+      );
+
+
+    homeMedia.innerHTML =
+      "";
+
+
+    homeFilesSection.style.display =
+      "none";
 
 
     for (
@@ -887,20 +977,46 @@
       ===================== */
 
       if (
-        page.is_home
+        page.is_home === true
       ) {
+
+
+        /*
+          HOME TEXT
+        */
 
         if (
           page.content &&
           page.content.trim() !== ""
         ) {
 
-          document
-            .getElementById(
-              "introText"
-            )
-            .textContent =
+          document.getElementById(
+            "introText"
+          ).textContent =
             page.content;
+
+        }
+
+
+        /*
+          HOME MEDIA
+
+          THIS IS THE IMPORTANT FIX
+        */
+
+        const mediaCount =
+          await loadPageMedia(
+            page.id,
+            homeMedia
+          );
+
+
+        if (
+          mediaCount > 0
+        ) {
+
+          homeFilesSection.style.display =
+            "block";
 
         }
 
@@ -930,7 +1046,7 @@
 
 
 
-      /* PAGE TITLE */
+      /* TITLE */
 
       const heading =
         document.createElement(
@@ -948,7 +1064,7 @@
 
 
 
-      /* PAGE CONTENT */
+      /* CONTENT */
 
       if (
         page.content &&
@@ -977,7 +1093,7 @@
 
 
 
-      /* MEDIA CONTAINER */
+      /* MEDIA */
 
       const mediaContainer =
         document.createElement(
@@ -999,8 +1115,6 @@
       );
 
 
-      /* LOAD MEDIA */
-
       await loadPageMedia(
         page.id,
         mediaContainer
@@ -1013,7 +1127,7 @@
 
 
   /* =====================================
-     BASE64 → BLOB URL
+     BASE64 → BLOB
   ===================================== */
 
   function base64ToBlobUrl(
@@ -1022,7 +1136,9 @@
   ) {
 
     const binary =
-      atob(base64);
+      atob(
+        base64
+      );
 
 
     const bytes =
@@ -1038,7 +1154,9 @@
     ) {
 
       bytes[i] =
-        binary.charCodeAt(i);
+        binary.charCodeAt(
+          i
+        );
 
     }
 
@@ -1066,7 +1184,9 @@
      FORMAT FILE SIZE
   ===================================== */
 
-  function formatBytes(bytes) {
+  function formatBytes(
+    bytes
+  ) {
 
     bytes =
       Number(bytes) || 0;
@@ -1114,7 +1234,7 @@
 
 
   /* =====================================
-     LOAD MEDIA FOR EACH PAGE
+     LOAD PAGE MEDIA
   ===================================== */
 
   async function loadPageMedia(
@@ -1132,6 +1252,13 @@
       );
 
 
+    console.log(
+      "MEDIA FOR PAGE:",
+      pageId,
+      data
+    );
+
+
     if (error) {
 
       console.error(
@@ -1144,7 +1271,7 @@
         "";
 
 
-      return;
+      return 0;
 
     }
 
@@ -1160,13 +1287,18 @@
       container.innerHTML =
         "";
 
-      return;
+
+      return 0;
 
     }
 
 
     container.innerHTML =
       "";
+
+
+    let rendered =
+      0;
 
 
     media.forEach(
@@ -1182,6 +1314,9 @@
         }
 
 
+        rendered++;
+
+
         const card =
           document.createElement(
             "div"
@@ -1192,6 +1327,10 @@
           "public-media-card";
 
 
+
+        /*
+          CREATE FILE URL
+        */
 
         const fileUrl =
           base64ToBlobUrl(
@@ -1235,7 +1374,7 @@
 
 
         /* =====================
-           DOCUMENT ICON
+           DOCUMENT
         ===================== */
 
         else {
@@ -1315,7 +1454,8 @@
         ===================== */
 
         if (
-          item.description
+          item.description &&
+          item.description.trim() !== ""
         ) {
 
           const description =
@@ -1359,6 +1499,7 @@
 
 
           size.textContent =
+            "Size: " +
             formatBytes(
               item.file_size
             );
@@ -1386,7 +1527,10 @@
           "file-button";
 
 
-        /* PDF */
+
+        /*
+          PDF
+        */
 
         if (
           item.mime_type ===
@@ -1411,7 +1555,10 @@
         }
 
 
-        /* IMAGE */
+
+        /*
+          IMAGE
+        */
 
         else if (
           item.mime_type &&
@@ -1421,7 +1568,7 @@
         ) {
 
           link.textContent =
-            "View Image";
+            "Open Image";
 
 
           link.href =
@@ -1438,12 +1585,15 @@
         }
 
 
-        /* DOC / DOCX / TXT */
+
+        /*
+          DOC / DOCX / TXT
+        */
 
         else {
 
           link.textContent =
-            "Download";
+            "Download File";
 
 
           link.href =
@@ -1468,6 +1618,9 @@
       }
     );
 
+
+    return rendered;
+
   }
 
 
@@ -1477,15 +1630,6 @@
   ===================================== */
 
   async function startWebsite() {
-
-    /*
-      Settings first.
-
-      After that pages load.
-
-      Home page content can then
-      replace Homepage Intro.
-    */
 
     await loadSiteSettings();
 
@@ -1500,5 +1644,4 @@
 
 
 </body>
-
 </html>
